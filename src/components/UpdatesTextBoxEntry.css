@@ -1,0 +1,26 @@
+#updates--text-box--entry {
+    display: grid;
+    grid-template-rows: 25px 1fr;
+    margin-bottom: 50px;
+}
+
+#updates--text-box--entry--header{
+    grid-row: 1/2;
+    display: flex;
+    justify-content:space-between;
+    /* padding: 0 15px; */
+    /* background-color: coral; */
+
+    font-family: Poppins;
+    font-size:1.5vmax;
+}
+
+#updates--text-box--entry--header--title{
+    font-weight:bold; 
+}
+
+#updates--text-box--entry--body{
+    /* background-color: rgb(86, 80, 255); */
+    grid-row: 2/3;  
+    text-align:justify;
+}

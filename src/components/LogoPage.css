@@ -1,0 +1,15 @@
+#home{
+    /* background-color: #bababa; */
+    background-image: url("../images/Moratia_splatter_background.png");
+    /* color: #f9f9ff; */
+
+}
+
+#logo-container{
+    height: 100vh;
+}
+
+#landing-logo{
+    height: 90vh;
+    padding-top: 25px;
+}
