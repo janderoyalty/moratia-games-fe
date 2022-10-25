@@ -11,7 +11,7 @@ const Updates = () => {
         <div className="headers-text" id="updates-left--top">
           Updates
         </div>
-        <div id="updates-left--middle">Get the latest news</div>
+        <div className="sub-headers" id="updates-left--middle">Get the latest news</div>
         <div id="updates-left--bottom">
           <UpdatesForms></UpdatesForms>
         </div>

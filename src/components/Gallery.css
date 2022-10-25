@@ -1,4 +1,14 @@
-#gallery{
-    background-color: #f9f9f9;
-    /* color: #f9f9ff; */
+#gallery-container{
+    grid-template-rows: 1fr 10fr;
+    padding: 8% 5% 10% 5%;
+}
+
+#gallery--top {
+    text-align: center;
+}
+
+#gallery--bottom {
+    overflow-y: scroll;
+    height: 80vmin;
+    padding-right: 10px;
 }
