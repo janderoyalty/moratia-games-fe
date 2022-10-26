@@ -1,6 +1,6 @@
 #gallery-container{
     grid-template-rows: 1fr 10fr;
-    padding: 8% 5% 10% 5%;
+    padding: 2% 5% 2% 5%;
 }
 
 #gallery--top {

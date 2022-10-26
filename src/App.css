@@ -1,19 +1,39 @@
 .App {
   padding: 0;
   text-align: center;
-  display: grid;
-  grid-template-rows: 60px 5fr 4fr 6fr repeat(2, 8fr) repeat(2, 6fr) 4fr;
+  display: flex;
+  flex-direction: column;
+  /* grid-template-rows: 60px 5fr 4fr 6fr repeat(2, 8fr) repeat(2, 6fr) 4fr; */
 
 }
 
 .headers-text {
   font-weight:bolder;
   font-family: Poppins;
-  font-size:7vmax;
+  font-size:70px;
   text-align: left;
   text-transform: uppercase;
 }
-/* .content {
-  padding: 0;
-} */
 
+.content {
+  scroll-margin-top: 60px;
+}
+
+.body-title{
+  font-weight:bold; 
+  font-family: Poppins;
+  font-size:17px;
+}
+
+.sub-headers{
+  font-weight:bold; 
+  font-family: Poppins;
+  font-size:40px;
+  text-align: left;
+}
+
+.body-text{
+  font-family: Poppins;
+  font-size:15px;
+  text-align: justify;
+}
