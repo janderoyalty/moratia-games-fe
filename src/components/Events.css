@@ -1,4 +1,40 @@
 #events{
     background-color: #BABABA;
     /* color: #f9f9ff; */
+    display: flex;
+    flex-direction: row;
+}
+
+#events-left {
+    background-color: #dd1818;
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* display: grid;
+    grid-template-rows: 3fr 2fr 5fr; */
+    padding: 20% 10% 20% 5%;
+
+    /* padding: 20% 5% 10% 20%; */
+}
+
+#events-left--top {
+    background-color: #ddc318;
+    grid-row: 1/2;
+}
+
+#events-left--bottom {
+    background-color: #1832dd;
+    grid-row: 3/4;
+}
+
+#events-right {
+    background-color: #56dd18;
+    grid-column: 2/3;
+    padding: 20% 5% 10% 20%;
+
+    /* padding: 20% 10% 20% 5%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
