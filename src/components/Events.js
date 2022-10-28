@@ -1,29 +1,27 @@
 import React from "react";
 import "./Events.css";
+import Calendar from "./Calendar";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import UpdatesTextBoxEntry from "./UpdatesTextBoxEntry";
+
 
 const Events = () => {
   return (
-    <div className="content" id="events">
-      <div id="events-left">
+    <Row className="content" id="events">
+      <Col id="events-left" sm={12} md={7}>
         <div className="headers-text" id="events-left--top">
           EVENTS
         </div>
         <div id="events-left--bottom">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry’s standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
+          <UpdatesTextBoxEntry></UpdatesTextBoxEntry>
         </div>
-      </div>
-      <div id="events-right">
-        
-      </div>
-    </div>
+      </Col>
+      <Col id="events-right" sm={12} md={5}>
+        <Calendar></Calendar>
+      </Col>
+    </Row>
   );
 };
 
