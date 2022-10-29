@@ -43,9 +43,9 @@
 }
 
 #world--map--text:hover{
-    /* width: 90%; */
-    height: 90%;
     background-color: rgba(243, 251, 253, .8);
     opacity: 100%;
-    border-radius: 10px;
+    /* width: 1000px; */
+    /* height: 90%; */
+    /* border-radius: 10px; */
 }

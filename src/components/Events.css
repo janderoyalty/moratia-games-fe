@@ -10,21 +10,18 @@
     flex-direction: column;
     justify-content: center;
     /* padding: 5%; */
-    padding: 0 9%;
+    padding: 0 10%;
 }
 
-#events-left--top {
-    /* background-color: #ddc318; */
+/* #events-left--top {
     grid-row: 1/2;
-}
+} */
 
-#events-left--bottom {
-    /* background-color: #1832dd; */
+/* #events-left--bottom {
     grid-row: 3/4;
-}
+} */
 
 #events-right {
-    /* background-color: #56dd18; */
     display: flex;
     flex-direction: column;
     align-items: center;

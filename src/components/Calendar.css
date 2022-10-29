@@ -1,12 +1,12 @@
 .react-calendar { 
-    width: 500px;
+    width: 95%;
     max-width: 100%;
     background-color: #fff;
     color: #222;
     border-radius: 8px;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.125em;
+    line-height: 2em;
     font-family: Poppins;
     padding: 25px;
 }
@@ -14,15 +14,23 @@
     color: #2f2f2f;
     min-width: 44px;
     background: none;
-    font-size: 26px;
+    font-size: 1.5rem;
     margin-top: 8px;
     font-weight:bolder;
     /* font-family: Poppins; */
 }
-.react-calendar__navigation button:enabled:hover,
-.react-calendar__navigation button:enabled:focus {
-background-color: #f8f8fa;
+
+.react-calendar__navigation button:enabled:hover {
+    background-color: #2F2F2F15;
+    /* background-color: #f8f8fa; */
+    /* background-color: #0e0ec2; */
 }
+
+.react-calendar__navigation button:enabled:focus
+{
+    background-color: #fff;
+}
+
 .react-calendar__navigation button[disabled] {
     background-color: #f0f0f0;
 }
