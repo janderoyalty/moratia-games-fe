@@ -1,30 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Classes.css";
-import Class1 from "./Class1";
-import Class2 from "./Class2";
-import Class3 from "./Class3";
-import Class4 from "./Class4";
-import Class5 from "./Class5";
+// imports to make carousel with rows and columns
 import Carousel from "react-bootstrap/Carousel";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
+// imports to access Firebase database
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../firebase-config";
 
 const Classes = () => {
+  const [moratiaClasses, setMoratiaClasses] = useState([]);
+  const classesCollectionRef = collection(db, "classes");
+
+  useEffect(() => {
+    const getClasses = async () => {
+      const classesData = await getDocs(classesCollectionRef);
+      setMoratiaClasses(classesData.docs.map((doc) => ({ ...doc.data() })));
+    };
+
+    getClasses();
+  });
   return (
     <Carousel className="content" id="classes" variant="dark">
-      <Carousel.Item>
-        <Class1></Class1>
-      </Carousel.Item>
-      <Carousel.Item>
-        <Class2></Class2>
-      </Carousel.Item>
-      <Carousel.Item>
-        <Class3></Class3>
-      </Carousel.Item>
-      <Carousel.Item>
-        <Class4></Class4>
-      </Carousel.Item>
-      <Carousel.Item>
-        <Class5></Class5>
-      </Carousel.Item>
+      {moratiaClasses.map((moratiaClass) => {
+        return (
+          <Carousel.Item>
+            <Row className="content" id="class">
+              <Col id="class-right" sm={12} md={12} lg={7}>
+                <div className="headers-text" id="class-right--top">
+                  {moratiaClass.class}
+                </div>
+                <div id="class--text-box--entry">
+                  <div className="body-text" id="class--text-box--entry--body">
+                    {moratiaClass.description}
+                  </div>
+                </div>
+              </Col>
+              <Col id="class-left" sm={12} md={12} lg={5}>
+                <Image
+                  src={moratiaClass.url}
+                  alt={moratiaClass.class}
+                  rounded
+                  id="class-image"
+                ></Image>
+              </Col>
+            </Row>
+          </Carousel.Item>
+        );
+      })}
     </Carousel>
   );
 };

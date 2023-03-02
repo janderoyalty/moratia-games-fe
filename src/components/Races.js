@@ -30,7 +30,7 @@ const Races = () => {
               <Col id="race-left" sm={12} md={12} lg={5}>
                 <Image
                   src={moratiaRace.url}
-                  alt="character"
+                  alt={moratiaRace.race}
                   rounded
                   id="race-image"
                 ></Image>

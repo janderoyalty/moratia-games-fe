@@ -24,7 +24,7 @@ function App() {
       <World></World>
       <Races></Races>
       <Classes></Classes>
-      {/* <Products></Products> */}
+      <Products></Products>
       <Footer></Footer>
     </div>
   );
