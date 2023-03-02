@@ -21,6 +21,7 @@ const Races = () => {
 
     getRaces();
   });
+
   return (
     <Carousel className="content" id="races">
       {moratiaRaces.map((moratiaRace) => {

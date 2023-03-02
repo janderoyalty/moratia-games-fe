@@ -2,3 +2,32 @@
     background-color: #BABABA;
     /* color: #f9f9ff; */
 }
+
+#product--text-box--entry {
+    display: flex;
+    flex-direction: column;
+    grid-template-rows: 25px 1fr;
+    margin-bottom: 50px;
+}
+
+/* #product--text-box--entry--header{
+    display: flex;
+    justify-content:space-between;
+} */
+
+#product-right {
+    padding: 5% 15% 5% 9%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#product-left {
+    padding: 5% 15% 5% 20%;
+    display: flex;
+    justify-content: center;
+}
+
+#product-image {
+    height: 75vmin;
+}
