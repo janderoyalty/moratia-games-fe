@@ -1,4 +1,22 @@
 #footer{
     background-color: #010203;
     color: #f9f9ff;
+    padding: 2% 5%;
+}
+
+#footer--left {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: right;
+}
+
+#footer-center{
+    font-size: small;
+}
+#footer--right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-align: right;
 }

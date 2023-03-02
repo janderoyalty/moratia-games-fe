@@ -11,8 +11,8 @@ const NaviBar = () => {
       <Navbar id="navi-bar" bg="light" variant="light" sticky="top" expand="lg">
         <Container fluid>
           <Navbar.Brand href="#home">
-            <img src={logo} alt="Moratia Games logo black" height="25px" />{" "}
-          </Navbar.Brand>{" "}
+            <img src={logo} alt="Moratia Games logo black" height="25px" />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
