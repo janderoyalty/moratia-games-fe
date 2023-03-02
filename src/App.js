@@ -16,16 +16,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <div className="App">
-      {/* <header className="App-header"> */}
       <NaviBar></NaviBar>
       <LogoPage></LogoPage>
       <Updates></Updates>
-      <Events></Events>
+      {/* <Events></Events> */}
       <Gallery></Gallery>
       <World></World>
       <Races></Races>
       <Classes></Classes>
-      <Products></Products>
+      {/* <Products></Products> */}
       <Footer></Footer>
     </div>
   );

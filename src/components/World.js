@@ -8,7 +8,7 @@ const World = () => {
       <div id="world--map">
         <img
           id="world--map-image"
-          src="https://res.cloudinary.com/dvbdefnwx/image/upload/v1666678438/Moratia%20Images/IMG_4098_w65sgn.png"
+          src="https://firebasestorage.googleapis.com/v0/b/moratia-games.appspot.com/o/moratia_world_map.png?alt=media&token=c15e87bc-b13b-464b-b350-33673b21fd69"
           alt="map of the world of Moratia"
         ></img>
         <div id="world--map--text">

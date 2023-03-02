@@ -3,7 +3,6 @@ import "./Updates.css";
 import "../App.css";
 import UpdatesForms from "./UpdatesForm";
 import UpdatesTextBox from "./UpdatesTextBox";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
@@ -14,7 +13,9 @@ const Updates = () => {
         <div className="headers-text" id="updates-left--top">
           Updates
         </div>
-        <div className="sub-headers" id="updates-left--middle">Get the latest news</div>
+        <div className="sub-headers" id="updates-left--middle">
+          Get the latest news
+        </div>
         <div id="updates-left--bottom">
           <UpdatesForms></UpdatesForms>
         </div>

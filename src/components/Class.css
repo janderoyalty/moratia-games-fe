@@ -1,0 +1,28 @@
+#class--text-box--entry {
+    display: flex;
+    flex-direction: column;
+    grid-template-rows: 25px 1fr;
+    margin-bottom: 50px;
+}
+
+#class--text-box--entry--header{
+    display: flex;
+    justify-content:space-between;
+}
+
+#class-right {
+    padding: 5% 9% 5% 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#class-left {
+    padding: 5% 20% 5% 15%;
+    display: flex;
+    justify-content: center;
+}
+
+#class-image {
+    height: 75vmin;
+}

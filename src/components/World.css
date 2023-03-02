@@ -37,13 +37,13 @@
     /* right: 50%;
     left: 50%;
     bottom: 15%; */
-    width: 100%;
+    width: 75%;
     height: 100%;
     opacity: 0%;
 }
 
 #world--map--text:hover{
-    background-color: rgba(243, 251, 253, .8);
+    background-color: rgba(243, 251, 253, .9);
     opacity: 100%;
     /* width: 1000px; */
     /* height: 90%; */
