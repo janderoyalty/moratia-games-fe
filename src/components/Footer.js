@@ -20,6 +20,17 @@ const Footer = () => {
         <Col id="footer-center">
           <div>© COPYRIGHT 2023. ALL RIGHTS RESERVED.</div>
           <div>Moratia Games</div>
+          <div>
+            Created by{" "}
+            <a
+              id="footer-link"
+              href="https://www.linkedin.com/in/janderoyalty/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Jande Royalty
+            </a>
+          </div>
         </Col>
         <Col>
           <Row>
