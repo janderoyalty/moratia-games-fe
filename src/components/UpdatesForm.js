@@ -2,34 +2,75 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+
+// imports to access Firebase database
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../firebase-config";
+
 // import { Row, Col, Form, Button } from "react-bootstrap";
 import "./UpdatesForm.css";
+import { useState } from "react";
 
 function UpdatesForm() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const mailingListCollectionRef = collection(db, "mailing-list");
+
+  const addPerson = async () => {
+    await addDoc(mailingListCollectionRef, {
+      first: firstName,
+      last:  lastName,
+      email,
+    });
+    console.log("submit hit");
+  };
+
   return (
-    <Form role="form" className="updates-forms" >
+    <Form role="form" className="updates-forms">
       <Form.Group>
         <Row>
           <Col lg={6} md={6} sm={12} xs={12}>
             <Form.Label>First</Form.Label>
-            <Form.Control type="name" placeholder="John" />
+            <Form.Control
+              type="name"
+              placeholder="John"
+              onChange={(event) => {
+                setFirstName(event.target.value);
+              }}
+            />
           </Col>
           <Col lg={6} md={6} sm={12} xs={12}>
-          <Form.Label>Last</Form.Label>
-            <Form.Control type="name" placeholder="Doe" />
+            <Form.Label>Last</Form.Label>
+            <Form.Control
+              type="name"
+              placeholder="Doe"
+              onChange={(event) => {
+                setLastName(event.target.value);
+              }}
+            />
           </Col>
         </Row>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
+        <Form.Control
+          type="email"
+          placeholder="Enter email"
+          onChange={(event) => {
+            setEmail(event.target.value);
+          }}
+        />
+        {/* <Form.Check type="checkbox" label="I agree to receive emails from Moratia Games." /> */}
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
       </Form.Group>
-      <Button variant="light" type="submit">
+      <Button variant="light" type="submit" onClick={addPerson}>
         Submit
-      </Button>    </Form>
+      </Button>
+    </Form>
   );
 }
 
