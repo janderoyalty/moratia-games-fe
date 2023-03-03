@@ -18,9 +18,9 @@ const Products = () => {
       const productsData = await getDocs(productsCollectionRef);
       setMoratiaProducts(productsData.docs.map((doc) => ({ ...doc.data() })));
     };
-
+    console.log("products");
     getProducts();
-  });
+  }, []);
 
   return (
     <Carousel className="content" id="products">

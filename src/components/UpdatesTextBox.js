@@ -17,28 +17,31 @@ const UpdatesTextBox = () => {
     };
 
     getUpdates();
-  });
+    console.log("update");
+  }, []);
 
   return (
     <div id="updates--text-box">
-          {moratiaUpdates.map((moratiaUpdate) => {
-      return(
-        <div id="updates--text-box--entry">
-        <div id="updates--text-box--entry--header">
-          <div
-            className="body-title"
-            id="updates--text-box--entry--header--title"
-          >
-            {moratiaUpdate.title}
+      {moratiaUpdates.map((moratiaUpdate) => {
+        return (
+          <div id="updates--text-box--entry">
+            <div id="updates--text-box--entry--header">
+              <div
+                className="body-title"
+                id="updates--text-box--entry--header--title"
+              >
+                {moratiaUpdate.title}
+              </div>
+              <div id="updates--text-box--entry--header--date">
+                {moratiaUpdate.date}
+              </div>
+            </div>
+            <div className="body-text" id="updates--text-box--entry--body">
+              {moratiaUpdate.body}
+            </div>
           </div>
-          <div id="updates--text-box--entry--header--date">{moratiaUpdate.date}</div>
-        </div>
-        <div className="body-text" id="updates--text-box--entry--body">
-        {moratiaUpdate.body}
-        </div>
-      </div>
-      )
-    })}
+        );
+      })}
     </div>
   );
 };

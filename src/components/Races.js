@@ -20,10 +20,9 @@ const Races = () => {
       const racesData = await getDocs(racesCollectionRef);
       setMoratiaRaces(racesData.docs.map((doc) => ({ ...doc.data() })));
     };
-
+    console.log("races");
     getRaces();
-  });
-  
+  }, []);
 
   return (
     <Carousel className="content" id="races">

@@ -18,9 +18,10 @@ const Classes = () => {
       const classesData = await getDocs(classesCollectionRef);
       setMoratiaClasses(classesData.docs.map((doc) => ({ ...doc.data() })));
     };
-
+    console.log();
     getClasses();
-  });
+  }, []);
+
   return (
     <Carousel className="content" id="classes" variant="dark">
       {moratiaClasses.map((moratiaClass) => {
