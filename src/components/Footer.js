@@ -11,7 +11,7 @@ const Footer = () => {
         <Col id="footer--left">
           <a href="#home">
             <img
-              src="https://firebasestorage.googleapis.com/v0/b/moratia-games.appspot.com/o/Moratia_Games_logo_white.png?alt=media&token=560d216c-d15a-4031-8066-e86ff3b13b9d"
+              src="https://firebasestorage.googleapis.com/v0/b/moratia-games.appspot.com/o/logos%2FMoratia_Games_logo_white.png?alt=media&token=7006baf5-fa84-4ea3-aed2-62e7182dc95f"
               alt="Moratia Games logo black"
               height="25px"
             />

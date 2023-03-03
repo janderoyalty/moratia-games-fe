@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./Races.css";
+
 // imports to make carousel with rows and columns
 import Carousel from "react-bootstrap/Carousel";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
+
 // imports to access Firebase database
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../firebase-config";

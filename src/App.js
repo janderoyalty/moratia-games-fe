@@ -1,10 +1,9 @@
-// import logo from './logo.svg';
 import React from "react";
 import "./App.css";
 import NaviBar from "./components/NaviBar";
 import LogoPage from "./components/LogoPage";
 import Updates from "./components/Updates";
-import Events from "./components/Events";
+// import Events from "./components/Events";
 import Gallery from "./components/Gallery";
 import World from "./components/World";
 import Races from "./components/Races";
@@ -19,7 +18,7 @@ function App() {
       <NaviBar></NaviBar>
       <LogoPage></LogoPage>
       <Updates></Updates>
-      {/* <Events></Events> */}
+      {/* <Events></Events> */} 
       <Gallery></Gallery>
       <World></World>
       <Races></Races>

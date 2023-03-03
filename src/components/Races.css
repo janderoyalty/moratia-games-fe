@@ -10,11 +10,6 @@
     margin-bottom: 50px;
 }
 
-/* #race--text-box--entry--header{
-    display: flex;
-    justify-content:space-between;
-} */
-
 #race-right {
     padding: 5% 15% 5% 9%;
     display: flex;
@@ -31,8 +26,3 @@
 #race-image {
     height: 75vmin;
 }
-
-/* .carousel-indicators button{
-    width: 50px;
-    height: 10px;
-} */

@@ -1,6 +1,5 @@
 #products{
     background-color: #BABABA;
-    /* color: #f9f9ff; */
 }
 
 #product--text-box--entry {
@@ -9,11 +8,6 @@
     grid-template-rows: 25px 1fr;
     margin-bottom: 50px;
 }
-
-/* #product--text-box--entry--header{
-    display: flex;
-    justify-content:space-between;
-} */
 
 #product-right {
     padding: 5% 15% 5% 9%;
