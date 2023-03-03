@@ -23,6 +23,7 @@ const Races = () => {
 
     getRaces();
   });
+  
 
   return (
     <Carousel className="content" id="races">

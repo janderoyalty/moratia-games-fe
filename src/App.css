@@ -15,6 +15,24 @@
   text-transform: uppercase;
 }
 
+@media (max-width: 1024px) {
+  .headers-text {
+      font-size: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .headers-text {
+      font-size: 50px;
+  }    
+}    
+
+@media (max-width: 480px) {
+  .headers-text {
+      font-size: 2rem;
+  }        
+} 
+
 .content {
   scroll-margin-top: 59px;
 }

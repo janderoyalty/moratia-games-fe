@@ -1,3 +1,8 @@
+#gallery{
+    background-color: #f9f9f9;
+    /* color: #f9f9ff; */
+}
+
 #gallery-container{
     grid-template-rows: 1fr 10fr;
     padding: 2% 5% 2% 5%;
