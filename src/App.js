@@ -9,7 +9,7 @@ import World from "./components/World";
 import Races from "./components/Races";
 import Classes from "./components/Classes";
 import Products from "./components/Products";
-import Reviews from "./components/Testimonials"
+import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -19,13 +19,14 @@ function App() {
       <NaviBar></NaviBar>
       <LogoPage></LogoPage>
       <Updates></Updates>
-      {/* <Events></Events> */} 
+      {/* <Events></Events> */}
       <Gallery></Gallery>
       <World></World>
       <Races></Races>
       <Classes></Classes>
       <Products></Products>
-      
+      {/* <Testimonials></Testimonials> */}
+
       <Footer></Footer>
     </div>
   );
