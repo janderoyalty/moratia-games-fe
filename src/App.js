@@ -9,6 +9,7 @@ import World from "./components/World";
 import Races from "./components/Races";
 import Classes from "./components/Classes";
 import Products from "./components/Products";
+import Reviews from "./components/Testimonials"
 import Footer from "./components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -24,6 +25,7 @@ function App() {
       <Races></Races>
       <Classes></Classes>
       <Products></Products>
+      
       <Footer></Footer>
     </div>
   );
