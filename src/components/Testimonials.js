@@ -9,22 +9,22 @@ import Image from "react-bootstrap/Image";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../firebase-config";
 
-const Classes = () => {
-  const [moratiaClasses, setMoratiaClasses] = useState([]);
+const Testimonials = () => {
+  const [moratiaTestimonials, setMoratiaTestimonials] = useState([]);
   const classesCollectionRef = collection(db, "classes");
 
   useEffect(() => {
-    const getClasses = async () => {
+    const getTestimonials = async () => {
       const classesData = await getDocs(classesCollectionRef);
-      setMoratiaClasses(classesData.docs.map((doc) => ({ ...doc.data() })));
+      setMoratiaTestimonials(classesData.docs.map((doc) => ({ ...doc.data() })));
     };
     console.log();
-    getClasses();
+    getTestimonials();
   }, []);
 
   return (
     <Carousel className="content" id="classes" variant="dark">
-      {moratiaClasses.map((moratiaClass) => {
+      {moratiaTestimonials.map((moratiaClass) => {
         return (
           <Carousel.Item>
             <Row className="content" id="class">
@@ -54,4 +54,4 @@ const Classes = () => {
   );
 };
 
-export default Classes;
+export default Testimonials;
