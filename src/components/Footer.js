@@ -8,22 +8,24 @@ const Footer = () => {
   return (
     <div className="content" id="footer">
       <Row>
+        {/* LEFT - logo */}
         <Col id="footer--left">
           <a href="#home">
             <img
               src="https://firebasestorage.googleapis.com/v0/b/moratia-games.appspot.com/o/logos%2FMoratia_Games_logo_white.png?alt=media&token=7006baf5-fa84-4ea3-aed2-62e7182dc95f"
-              alt="Moratia Games logo black"
+              alt="Moratia Games logo white"
               height="25px"
             />
           </a>
         </Col>
+        {/* MIDDLE - legal, created by, login */}
         <Col id="footer-center">
           <div>© COPYRIGHT 2023. ALL RIGHTS RESERVED.</div>
           <div>Moratia Games</div>
           <div>
             Created by{" "}
             <a
-              id="footer-link"
+              class="footer-link"
               href="https://www.linkedin.com/in/janderoyalty/"
               target="_blank"
               rel="noopener noreferrer"
@@ -31,7 +33,13 @@ const Footer = () => {
               Jande Royalty
             </a>
           </div>
+          <div id="login">
+            <a class="footer-link" href="#">
+              Login
+            </a>
+          </div>
         </Col>
+        {/* RIGHT - social media logos */}
         <Col>
           <Row>
             <Col id="footer--right">

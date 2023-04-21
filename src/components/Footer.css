@@ -21,17 +21,17 @@
     text-align: right;
 }
 
-#footer-link:link {
+.footer-link:link {
     color: #f9f9ff;
     text-decoration: none;
 }
 
-#footer-link:visited {
+.footer-link:visited {
     color: #f9f9ff;
     text-decoration: none;
 }
 
-#footer-link:hover {
+.footer-link:hover {
     color: #BABABA;
     text-decoration: underline;
 }
