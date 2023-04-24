@@ -1,49 +1,79 @@
 import React, { useEffect, useState } from "react";
-import "./UpdatesTextBox.css";
-import UpdatesTextBoxEntry from "./UpdatesTextBoxEntry";
+import "./TestimonialsTextBox.css";
+
+// imports to make carousel with rows and columns
+import Carousel from "react-bootstrap/Carousel";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
 
 // imports to access Firebase database
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../firebase-config";
 
-const UpdatesTextBox = () => {
-  const [moratiaUpdates, setMoratiaUpdates] = useState([]);
-  const updatesCollectionRef = collection(db, "updates");
+const TestimonialsTextBox = () => {
+  const [moratiaTestimonials, setMoratiaTestimonials] = useState([]);
+  const testimonialsCollectionRef = collection(db, "testimonials");
 
   useEffect(() => {
-    const getUpdates = async () => {
-      const updatesData = await getDocs(updatesCollectionRef);
-      setMoratiaUpdates(updatesData.docs.map((doc) => ({ ...doc.data() })));
+    const getTestimonials = async () => {
+      const testimonialsData = await getDocs(testimonialsCollectionRef);
+      setMoratiaTestimonials(
+        testimonialsData.docs.map((doc) => ({ ...doc.data() }))
+      );
     };
 
-    getUpdates();
+    getTestimonials();
     console.log("update");
   }, []);
 
+  const moratiaTestimonialsSorted = [...moratiaTestimonials].sort(
+    (a, b) => b.name - a.name
+  );
+
   return (
-    <div id="updates--text-box">
-      {moratiaUpdates.map((moratiaUpdate) => {
+    <Carousel variant="dark">
+      {moratiaTestimonialsSorted.map((moratiaTestimonialSorted) => {
         return (
-          <div id="updates--text-box--entry">
-            <div id="updates--text-box--entry--header">
-              <div
-                className="body-title"
-                id="updates--text-box--entry--header--title"
-              >
-                {moratiaUpdate.title}
-              </div>
-              <div id="updates--text-box--entry--header--date">
-                {moratiaUpdate.date}
-              </div>
-            </div>
-            <div className="body-text" id="updates--text-box--entry--body">
-              {moratiaUpdate.body}
-            </div>
-          </div>
+          <Carousel.Item id="testimonials">
+            <Row id="class">
+              <Col>
+                <div id="testimonials--text-box--quote">
+                  {moratiaTestimonialSorted.quote}
+                </div>
+                <div id="testimonials--text-box--person-name">
+                  {moratiaTestimonialSorted.name}
+                </div>
+              </Col>
+            </Row>
+          </Carousel.Item>
         );
       })}
-    </div>
+    </Carousel>
   );
+  // return (
+  //   <Carousel className="content" id="classes" variant="dark">
+
+  //   <div id="testimonials--text-box">
+  //     {moratiaTestimonialsSorted.map((moratiaTestimonialsSorted) => {
+  //       return (
+  //         <div id="testimonials--text-box">
+  //           <div id="testimonials--text-box--quote">
+  //             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  //             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+  //             enim ad minim veniam, quis nostrud exercitation ullamco laboris
+  //             nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+  //             reprehenderit in voluptate velit esse cillum dolore eu fugiat
+  //             nulla pariatur.
+  //           </div>
+  //           <div id="testimonials--text-box--person-name">Person A.</div>
+  //         </div>
+  //       );
+  //     })}
+  //   </div>
+  //   </Carousel>
+
+  // );
 };
 
-export default UpdatesTextBox;
+export default TestimonialsTextBox;

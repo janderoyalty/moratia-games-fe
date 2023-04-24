@@ -25,7 +25,7 @@ function App() {
       <Races></Races>
       <Classes></Classes>
       <Products></Products>
-      {/* <Testimonials></Testimonials> */}
+      <Testimonials></Testimonials>
 
       <Footer></Footer>
     </div>

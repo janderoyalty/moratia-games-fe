@@ -32,27 +32,24 @@ const Footer = () => {
             </a>
           </div>
         </Col>
-        <Col>
+        <Col id="footer--right">
           <Row>
-            <Col id="footer--right">
-              <div>
-                <a
-                  href="https://www.facebook.com/MoratiaGames"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <AiFillFacebook size="2em" color="#f9f9ff" />
-                </a>
-              </div>
-              <div>
-                <a
-                  href="https://www.instagram.com/moratiagames/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <AiFillInstagram size="2em" color="#f9f9ff" />
-                </a>
-              </div>
+            <Col>
+              <a
+                href="https://www.facebook.com/MoratiaGames"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <AiFillFacebook size="2em" color="#f9f9ff" />
+              </a>
+
+              <a
+                href="https://www.instagram.com/moratiagames/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <AiFillInstagram size="2em" color="#f9f9ff" />
+              </a>
             </Col>
           </Row>
         </Col>

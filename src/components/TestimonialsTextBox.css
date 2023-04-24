@@ -1,27 +1,20 @@
-#updates--text-box{
+#testimonials--text-box--quote{
+    font-weight:500; 
+    font-family: Poppins;
+    font-size:1.5em;
+    text-align:center;
+}
+
+#testimonials--text-box--person-name{
+    font-weight:700; 
+    font-family: Poppins;
+    font-size:1.25em;
+    text-align: center;
+    padding-top: 2%;
+}
+
+#testimonials {
     overflow-y: scroll;
-    height: 50vmin;
-    padding-right: 10px;
-}
-
-/* width */
-#updates--text-box::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-/* #updates--text-box::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
-    border-radius: 10px;
-} */
-
-/* Handle */
-#updates--text-box::-webkit-scrollbar-thumb {
-    background: #f9f9f9; 
-    border-radius: 10px;
-}
-
-/* Handle on hover */
-#updates--text-box::-webkit-scrollbar-thumb:hover {
-    background: #bababa; 
+    overflow-x: hidden;
+    padding-bottom: 2rem;
 }
