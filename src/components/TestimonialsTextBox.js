@@ -5,7 +5,6 @@ import "./TestimonialsTextBox.css";
 import Carousel from "react-bootstrap/Carousel";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Image from "react-bootstrap/Image";
 
 // imports to access Firebase database
 import { getDocs, collection } from "firebase/firestore";
@@ -32,7 +31,7 @@ const TestimonialsTextBox = () => {
   );
 
   return (
-    <Carousel variant="dark">
+    <Carousel variant="dark" indicators="false" controls="false" hover="false">
       {moratiaTestimonialsSorted.map((moratiaTestimonialSorted) => {
         return (
           <Carousel.Item id="testimonials">
@@ -51,29 +50,6 @@ const TestimonialsTextBox = () => {
       })}
     </Carousel>
   );
-  // return (
-  //   <Carousel className="content" id="classes" variant="dark">
-
-  //   <div id="testimonials--text-box">
-  //     {moratiaTestimonialsSorted.map((moratiaTestimonialsSorted) => {
-  //       return (
-  //         <div id="testimonials--text-box">
-  //           <div id="testimonials--text-box--quote">
-  //             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-  //             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-  //             enim ad minim veniam, quis nostrud exercitation ullamco laboris
-  //             nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-  //             reprehenderit in voluptate velit esse cillum dolore eu fugiat
-  //             nulla pariatur.
-  //           </div>
-  //           <div id="testimonials--text-box--person-name">Person A.</div>
-  //         </div>
-  //       );
-  //     })}
-  //   </div>
-  //   </Carousel>
-
-  // );
 };
 
 export default TestimonialsTextBox;

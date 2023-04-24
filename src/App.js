@@ -3,6 +3,7 @@ import "./App.css";
 import NaviBar from "./components/NaviBar";
 import LogoPage from "./components/LogoPage";
 import Updates from "./components/Updates";
+
 // import Events from "./components/Events";
 import Gallery from "./components/Gallery";
 import World from "./components/World";
@@ -19,14 +20,12 @@ function App() {
       <NaviBar></NaviBar>
       <LogoPage></LogoPage>
       <Updates></Updates>
-      {/* <Events></Events> */}
       <Gallery></Gallery>
       <World></World>
       <Races></Races>
       <Classes></Classes>
       <Products></Products>
       <Testimonials></Testimonials>
-
       <Footer></Footer>
     </div>
   );
