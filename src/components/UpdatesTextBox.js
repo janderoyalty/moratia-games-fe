@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./UpdatesTextBox.css";
-import UpdatesTextBoxEntry from "./UpdatesTextBoxEntry";
 
 // imports to access Firebase database
 import { getDocs, collection } from "firebase/firestore";
