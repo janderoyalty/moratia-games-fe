@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
 
-const Footer = () => {
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+
+const Footer = (props) => {
+  // const [showModal, setShowModal] = useState(false);
+
+  // const handleCloseModal = () => setShowModal(false);
+  // const handleShowModal = () => setShowModal(true);
+
   return (
     <div className="content" id="footer">
       <Row>
@@ -23,13 +32,37 @@ const Footer = () => {
           <div>
             Created by{" "}
             <a
-              id="footer-link"
+              className="footer-link"
               href="https://www.linkedin.com/in/janderoyalty/"
               target="_blank"
               rel="noopener noreferrer"
             >
               Jande Royalty
             </a>
+          </div>
+
+          {/* LOGIN + MODAL */}
+          <div>
+            <div className="footer-link" onClick={props.handleShowModal}>
+              Login
+            </div>
+
+            <Modal show={props.showModal} onHide={props.handleCloseModal}>
+              <Modal.Header closeButton>
+                <Modal.Title>Modal heading</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                Woohoo, you're reading this text in a modal!
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={props.handleCloseModal}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={props.handleCloseModal}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </div>
         </Col>
         <Col id="footer--right">
