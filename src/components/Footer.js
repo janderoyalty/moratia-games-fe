@@ -4,9 +4,9 @@ import "./Footer.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
-
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const Footer = (props) => {
   // const [showModal, setShowModal] = useState(false);
@@ -49,17 +49,38 @@ const Footer = (props) => {
 
             <Modal show={props.showModal} onHide={props.handleCloseModal}>
               <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Title id="modal-title">For Authorized Persons Only</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                Woohoo, you're reading this text in a modal!
+                <Form>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    {/* <Form.Label>Email address</Form.Label> */}
+                    <Form.Control type="email" placeholder="Enter email" />
+                    {/* <Form.Text className="text-muted">
+                      We'll never share your email with anyone else.
+                    </Form.Text> */}
+                  </Form.Group>
+
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                    {/* <Form.Label>Password</Form.Label> */}
+                    <Form.Control type="password" placeholder="Password" />
+                  </Form.Group>
+                  {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    <Form.Check type="checkbox" label="Check me out" />
+                  </Form.Group> */}
+                  <div id="modal-form-login-buttons">
+                    <Button variant="primary" onClick={props.handleCloseModal}>
+                      Sign Out
+                    </Button>
+                    <Button variant="primary" type="submit">
+                      Submit
+                    </Button>
+                  </div>
+                </Form>
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={props.handleCloseModal}>
                   Close
-                </Button>
-                <Button variant="primary" onClick={props.handleCloseModal}>
-                  Save Changes
                 </Button>
               </Modal.Footer>
             </Modal>
