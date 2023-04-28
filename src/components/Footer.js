@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Footer.css";
+import Login from "./Login";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -8,11 +9,11 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const Footer = (props) => {
-  // const [showModal, setShowModal] = useState(false);
+const Footer = () => {
+  const [showModal, setShowModal] = useState(false);
 
-  // const handleCloseModal = () => setShowModal(false);
-  // const handleShowModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
 
   return (
     <div className="content" id="footer">
@@ -43,43 +44,24 @@ const Footer = (props) => {
 
           {/* LOGIN + MODAL */}
           <div>
-            <div className="footer-link" onClick={props.handleShowModal}>
+            {/* <div className="footer-link" onClick={props.handleShowModal}> */}
+            <div className="footer-link" onClick={handleShowModal}>
               Login
             </div>
 
-            <Modal show={props.showModal} onHide={props.handleCloseModal}>
+            {/* <Modal show={props.showModal} onHide={props.handleCloseModal}> */}
+            <Modal show={showModal} onHide={handleCloseModal}>
               <Modal.Header closeButton>
-                <Modal.Title id="modal-title">For Authorized Persons Only</Modal.Title>
+                <Modal.Title id="modal-title">
+                  For Authorized Persons Only
+                </Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <Form>
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                    {/* <Form.Label>Email address</Form.Label> */}
-                    <Form.Control type="email" placeholder="Enter email" />
-                    {/* <Form.Text className="text-muted">
-                      We'll never share your email with anyone else.
-                    </Form.Text> */}
-                  </Form.Group>
-
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
-                    {/* <Form.Label>Password</Form.Label> */}
-                    <Form.Control type="password" placeholder="Password" />
-                  </Form.Group>
-                  {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                  </Form.Group> */}
-                  <div id="modal-form-login-buttons">
-                    <Button variant="primary" onClick={props.handleCloseModal}>
-                      Sign Out
-                    </Button>
-                    <Button variant="primary" type="submit">
-                      Submit
-                    </Button>
-                  </div>
-                </Form>
+                <Login handleCloseModal={handleCloseModal}></Login>
               </Modal.Body>
               <Modal.Footer>
-                <Button variant="secondary" onClick={props.handleCloseModal}>
+                {/* <Button variant="secondary" onClick={props.handleCloseModal}> */}
+                <Button variant="secondary" onClick={handleCloseModal}>
                   Close
                 </Button>
               </Modal.Footer>

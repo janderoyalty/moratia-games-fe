@@ -15,10 +15,10 @@ import Footer from "./components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
 
-  const handleCloseModal = () => setShowModal(false);
-  const handleShowModal = () => setShowModal(true);
+  // const handleCloseModal = () => setShowModal(false);
+  // const handleShowModal = () => setShowModal(true);
 
   return (
     <div className="App">
@@ -32,9 +32,9 @@ function App() {
       <Products></Products>
       <Testimonials></Testimonials>
       <Footer
-        showModal={showModal}
-        handleCloseModal={handleCloseModal}
-        handleShowModal={handleShowModal}
+        // showModal={showModal}
+        // handleCloseModal={handleCloseModal}
+        // handleShowModal={handleShowModal}
       ></Footer>
     </div>
   );
