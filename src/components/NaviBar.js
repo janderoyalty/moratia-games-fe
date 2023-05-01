@@ -7,7 +7,15 @@ import "./NaviBar.css";
 const NaviBar = () => {
   return (
     <>
-      <Navbar id="navi-bar" bg="light" variant="light" sticky="top" expand="lg">
+      <Navbar
+        id="navi-bar"
+        bg="light"
+        variant="light"
+        sticky="top"
+        expand="lg"
+        collapseOnSelect="true"
+        role="navigation"
+      >
         <Container fluid>
           <Navbar.Brand href="#home">
             <img
@@ -26,6 +34,7 @@ const NaviBar = () => {
               <Nav.Link href="#races">Races</Nav.Link>
               <Nav.Link href="#classes">Classes</Nav.Link>
               <Nav.Link href="#products">Products</Nav.Link>
+              <Nav.Link href="#testimonials">Testimonials</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

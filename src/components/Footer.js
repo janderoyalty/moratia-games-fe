@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css";
+import Login from "./Login";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const Footer = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
+
   return (
     <div className="content" id="footer">
       <Row>
@@ -25,7 +35,7 @@ const Footer = () => {
           <div>
             Created by{" "}
             <a
-              class="footer-link"
+              className="footer-link"
               href="https://www.linkedin.com/in/janderoyalty/"
               target="_blank"
               rel="noopener noreferrer"
@@ -33,34 +43,52 @@ const Footer = () => {
               Jande Royalty
             </a>
           </div>
-          <div id="login">
-            <a class="footer-link" href="#">
+
+
+          {/* LOGIN + MODAL */}
+          <div>
+            {/* <div className="footer-link" onClick={props.handleShowModal}> */}
+            <div className="footer-link" onClick={handleShowModal}>
               Login
-            </a>
+            </div>
+
+            {/* <Modal show={props.showModal} onHide={props.handleCloseModal}> */}
+            <Modal show={showModal} onHide={handleCloseModal}>
+              <Modal.Header closeButton>
+                <Modal.Title id="modal-title">
+                  For Authorized Persons Only
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Login handleCloseModal={handleCloseModal}></Login>
+              </Modal.Body>
+              <Modal.Footer>
+                {/* <Button variant="secondary" onClick={props.handleCloseModal}> */}
+                <Button variant="secondary" onClick={handleCloseModal}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </div>
         </Col>
-        {/* RIGHT - social media logos */}
-        <Col>
+        <Col id="footer--right">
           <Row>
-            <Col id="footer--right">
-              <div>
-                <a
-                  href="https://www.facebook.com/MoratiaGames"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <AiFillFacebook size="2em" color="#f9f9ff" />
-                </a>
-              </div>
-              <div>
-                <a
-                  href="https://www.instagram.com/moratiagames/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <AiFillInstagram size="2em" color="#f9f9ff" />
-                </a>
-              </div>
+            <Col>
+              <a
+                href="https://www.facebook.com/MoratiaGames"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <AiFillFacebook size="2em" color="#f9f9ff" />
+              </a>
+
+              <a
+                href="https://www.instagram.com/moratiagames/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <AiFillInstagram size="2em" color="#f9f9ff" />
+              </a>
             </Col>
           </Row>
         </Col>

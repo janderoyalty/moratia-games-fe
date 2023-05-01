@@ -1,0 +1,20 @@
+#testimonials {
+    background-color: #f9f9f9;
+}
+
+#testimonials-container {
+    padding: 2% 5%;
+}
+
+#testimonials--top {
+    text-align: center;
+}
+
+#testimonials--bottom {
+    height: 25vmin;
+}
+
+
+.carousel-indicators{
+    margin-bottom: -1rem;
+}

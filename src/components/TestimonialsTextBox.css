@@ -1,0 +1,20 @@
+#testimonials--text-box--quote{
+    font-weight:500; 
+    font-family: Poppins;
+    font-size:1.5em;
+    text-align:center;
+}
+
+#testimonials--text-box--person-name{
+    font-weight:700; 
+    font-family: Poppins;
+    font-size:1.25em;
+    text-align: center;
+    padding-top: 2%;
+}
+
+#testimonials {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-bottom: 2rem;
+}

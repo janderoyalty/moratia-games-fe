@@ -4,6 +4,18 @@
     padding-right: 10px;
 }
 
+#updates--text-box--entry {
+    display: flex;
+    flex-direction: column;
+    grid-template-rows: 25px 1fr;
+    margin-bottom: 50px;
+}
+
+#updates--text-box--entry--header{
+    display: flex;
+    justify-content:space-between;
+}
+
 /* width */
 #updates--text-box::-webkit-scrollbar {
     width: 10px;

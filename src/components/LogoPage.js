@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../images/Moratia_Games_stacked_black_logo.png";
 import "./LogoPage.css";
 
 const LogoPage = () => {

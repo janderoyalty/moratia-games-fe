@@ -2,7 +2,6 @@ import React from "react";
 import "./Events.css";
 import Calendar from "./Calendar";
 import UpdatesTextBoxEntry from "./UpdatesTextBoxEntry";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 

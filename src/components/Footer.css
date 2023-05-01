@@ -9,16 +9,19 @@
     flex-direction: row;
     justify-content: flex-start;
     text-align: right;
+    align-items: center;
 }
 
 #footer-center{
     font-size: small;
+    align-items: center;
 }
 #footer--right {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     text-align: right;
+    align-items: center;
 }
 
 .footer-link:link {
@@ -36,6 +39,11 @@
     text-decoration: underline;
 }
 
-/* #footer-link:active {
-text-decoration: underline;
-} */
+#modal-form-login-buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+#modal-title {
+    color: red;
+}

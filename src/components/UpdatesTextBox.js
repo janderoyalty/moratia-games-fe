@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./UpdatesTextBox.css";
-import UpdatesTextBoxEntry from "./UpdatesTextBoxEntry";
 
 // imports to access Firebase database
 import { getDocs, collection } from "firebase/firestore";
@@ -20,9 +19,13 @@ const UpdatesTextBox = () => {
     console.log("update");
   }, []);
 
+  const moratiaUpdatesSorted = [...moratiaUpdates].sort(
+    (a, b) => b.time - a.time
+  );
+
   return (
     <div id="updates--text-box">
-      {moratiaUpdates.map((moratiaUpdate) => {
+      {moratiaUpdatesSorted.map((moratiaUpdatesSorted) => {
         return (
           <div id="updates--text-box--entry">
             <div id="updates--text-box--entry--header">
@@ -30,14 +33,14 @@ const UpdatesTextBox = () => {
                 className="body-title"
                 id="updates--text-box--entry--header--title"
               >
-                {moratiaUpdate.title}
+                {moratiaUpdatesSorted.title}
               </div>
               <div id="updates--text-box--entry--header--date">
-                {moratiaUpdate.date}
+                {moratiaUpdatesSorted.date}
               </div>
             </div>
             <div className="body-text" id="updates--text-box--entry--body">
-              {moratiaUpdate.body}
+              {moratiaUpdatesSorted.body}
             </div>
           </div>
         );
