@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css";
+import Login from "./Login";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const Footer = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
+
   return (
     <div className="content" id="footer">
       <Row>
@@ -23,13 +33,39 @@ const Footer = () => {
           <div>
             Created by{" "}
             <a
-              id="footer-link"
+              className="footer-link"
               href="https://www.linkedin.com/in/janderoyalty/"
               target="_blank"
               rel="noopener noreferrer"
             >
               Jande Royalty
             </a>
+          </div>
+
+          {/* LOGIN + MODAL */}
+          <div>
+            {/* <div className="footer-link" onClick={props.handleShowModal}> */}
+            <div className="footer-link" onClick={handleShowModal}>
+              Login
+            </div>
+
+            {/* <Modal show={props.showModal} onHide={props.handleCloseModal}> */}
+            <Modal show={showModal} onHide={handleCloseModal}>
+              <Modal.Header closeButton>
+                <Modal.Title id="modal-title">
+                  For Authorized Persons Only
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Login handleCloseModal={handleCloseModal}></Login>
+              </Modal.Body>
+              <Modal.Footer>
+                {/* <Button variant="secondary" onClick={props.handleCloseModal}> */}
+                <Button variant="secondary" onClick={handleCloseModal}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </div>
         </Col>
         <Col id="footer--right">

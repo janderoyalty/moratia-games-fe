@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import NaviBar from "./components/NaviBar";
 import LogoPage from "./components/LogoPage";
@@ -15,6 +15,11 @@ import Footer from "./components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  // const [showModal, setShowModal] = useState(false);
+
+  // const handleCloseModal = () => setShowModal(false);
+  // const handleShowModal = () => setShowModal(true);
+
   return (
     <div className="App">
       <NaviBar></NaviBar>
@@ -26,7 +31,11 @@ function App() {
       <Classes></Classes>
       <Products></Products>
       <Testimonials></Testimonials>
-      <Footer></Footer>
+      <Footer
+        // showModal={showModal}
+        // handleCloseModal={handleCloseModal}
+        // handleShowModal={handleShowModal}
+      ></Footer>
     </div>
   );
 }
