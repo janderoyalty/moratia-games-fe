@@ -23,7 +23,6 @@ const TestimonialsTextBox = () => {
     };
 
     getTestimonials();
-    // console.log("update");
   }, []);
 
   const moratiaTestimonialsSorted = [...moratiaTestimonials].sort(
