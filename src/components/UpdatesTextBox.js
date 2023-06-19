@@ -16,7 +16,7 @@ const UpdatesTextBox = () => {
     };
 
     getUpdates();
-    console.log("update");
+    // console.log("update");
   }, []);
 
   const moratiaUpdatesSorted = [...moratiaUpdates].sort(

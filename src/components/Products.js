@@ -19,7 +19,7 @@ const Products = () => {
       const productsData = await getDocs(productsCollectionRef);
       setMoratiaProducts(productsData.docs.map((doc) => ({ ...doc.data() })));
     };
-    console.log("products");
+    // console.log("products");
     getProducts();
   }, []);
 
@@ -34,7 +34,7 @@ const Products = () => {
                 alt={moratiaProduct.product}
                 rounded
                 id="product-image"
-              ></Image>
+                ></Image>
             </Col>
             <Col id="product-right" sm={12} md={12} lg={7}>
               <div className="headers-text" id="product-right--top">

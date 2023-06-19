@@ -20,7 +20,7 @@ const Races = () => {
       const racesData = await getDocs(racesCollectionRef);
       setMoratiaRaces(racesData.docs.map((doc) => ({ ...doc.data() })));
     };
-    console.log("races");
+    // console.log("races");
     getRaces();
   }, []);
 
