@@ -18,13 +18,11 @@ function UpdatesForm() {
   const mailingListCollectionRef = collection(db, "mailing-list");
 
   const addPerson = async () => {
-    console.log("before submit hit");
     await addDoc(mailingListCollectionRef, {
       first,
       last,
       email,
     });
-    console.log("submit hit");
   };
 
   // handle change event
@@ -41,7 +39,6 @@ function UpdatesForm() {
   };
 
   const handleSubmit = (event) => {
-    console.log("handle START");
     addPerson();
     event.preventDefault(); // This prevents the page from refreshing on submit
     // alert(`You submitted: ${first}`);
