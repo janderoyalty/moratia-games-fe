@@ -3,7 +3,6 @@ import "./App.css";
 import NaviBar from "./components/NaviBar";
 import LogoPage from "./components/LogoPage";
 import Updates from "./components/Updates";
-import Updates2 from "./components/Updates OLD";
 
 // import Events from "./components/Events";
 import Gallery from "./components/Gallery";
@@ -33,9 +32,9 @@ function App() {
       <Products></Products>
       <Testimonials></Testimonials>
       <Footer
-        // showModal={showModal}
-        // handleCloseModal={handleCloseModal}
-        // handleShowModal={handleShowModal}
+      // showModal={showModal}
+      // handleCloseModal={handleCloseModal}
+      // handleShowModal={handleShowModal}
       ></Footer>
     </div>
   );

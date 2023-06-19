@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./UpdatesForm.css";
 
 import Button from "react-bootstrap/Button";
@@ -11,38 +11,45 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebase-config";
 
 function UpdatesForm() {
-  const [first, setFirst] = useState("");
-  const [last, setLast] = useState("");
-  const [email, setEmail] = useState("");
-
+  const [formValues, setFormValues] = useState({
+    first: "",
+    last: "",
+    email: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
   const mailingListCollectionRef = collection(db, "mailing-list");
 
   const addPerson = async () => {
     await addDoc(mailingListCollectionRef, {
-      first,
-      last,
-      email,
+      ...formValues,
     });
   };
 
-  // handle change event
-  const handleFirstChange = (event) => {
-    setFirst(event.target.value);
-  };
-
-  const handleLastChange = (event) => {
-    setLast(event.target.value);
-  };
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  // HANDLES CHANGES
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
+    setSubmitted(true);
     addPerson();
-    event.preventDefault(); // This prevents the page from refreshing on submit
-    // alert(`You submitted: ${first}`);
   };
+
+  useEffect(() => {
+    if (submitted) {
+      setFormValues({
+        first: "",
+        last: "",
+        email: "",
+      });
+      setSubmitted(false);
+    }
+  }, [submitted]);
 
   return (
     <Form onSubmit={handleSubmit} role="form" className="updates-forms">
@@ -53,9 +60,10 @@ function UpdatesForm() {
             <Form.Control
               placeholder="John"
               autoComplete="on"
-              value={first}
+              name="first"
+              value={formValues.first}
               type="name"
-              onChange={handleFirstChange}
+              onChange={handleInputChange}
             />
           </Col>
           <Col lg={6} md={6} sm={12} xs={12}>
@@ -63,9 +71,10 @@ function UpdatesForm() {
             <Form.Control
               placeholder="Doe"
               autoComplete="on"
-              value={last}
+              name="last"
+              value={formValues.last}
               type="name"
-              onChange={handleLastChange}
+              onChange={handleInputChange}
             />
           </Col>
         </Row>
@@ -75,9 +84,10 @@ function UpdatesForm() {
         <Form.Control
           placeholder="john.doe@email.com"
           autoComplete="on"
-          value={email}
+          name="email"
+          value={formValues.email}
           type="name"
-          onChange={handleEmailChange}
+          onChange={handleInputChange}
         />
       </Form.Group>
 

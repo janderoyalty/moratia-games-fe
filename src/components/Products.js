@@ -19,22 +19,21 @@ const Products = () => {
       const productsData = await getDocs(productsCollectionRef);
       setMoratiaProducts(productsData.docs.map((doc) => ({ ...doc.data() })));
     };
-    // console.log("products");
     getProducts();
   }, []);
 
   return (
-    <div className="content" id="products">
+    <div>
       {moratiaProducts.map((moratiaProduct) => {
         return (
-          <Row className="content" id="product">
+          <Row className="content" id="product" key={moratiaProduct.product}>
             <Col id="product-left" sm={12} md={12} lg={5}>
               <Image
                 src={moratiaProduct.url}
                 alt={moratiaProduct.product}
                 rounded
                 id="product-image"
-                ></Image>
+              ></Image>
             </Col>
             <Col id="product-right" sm={12} md={12} lg={7}>
               <div className="headers-text" id="product-right--top">
