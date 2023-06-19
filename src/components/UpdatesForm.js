@@ -22,6 +22,7 @@ function UpdatesForm() {
     await addDoc(mailingListCollectionRef, {
       first,
       last,
+      email,
     });
     console.log("submit hit");
   };
