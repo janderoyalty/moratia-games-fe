@@ -24,17 +24,26 @@
     align-items: center;
 }
 
-#footer-link:link {
+.footer-link:link {
     color: #f9f9ff;
     text-decoration: none;
 }
 
-#footer-link:visited {
+.footer-link:visited {
     color: #f9f9ff;
     text-decoration: none;
 }
 
-#footer-link:hover {
+.footer-link:hover {
     color: #BABABA;
     text-decoration: underline;
+}
+
+#modal-form-login-buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+#modal-title {
+    color: red;
 }

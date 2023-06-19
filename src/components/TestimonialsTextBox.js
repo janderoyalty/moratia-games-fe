@@ -23,7 +23,6 @@ const TestimonialsTextBox = () => {
     };
 
     getTestimonials();
-    // console.log("update");
   }, []);
 
   const moratiaTestimonialsSorted = [...moratiaTestimonials].sort(
@@ -31,7 +30,7 @@ const TestimonialsTextBox = () => {
   );
 
   return (
-    <Carousel variant="dark" indicators="false" controls="false" hover="false">
+    <Carousel variant="dark" controls={false} indicators={false}>
       {moratiaTestimonialsSorted.map((moratiaTestimonialSorted) => {
         return (
           <Carousel.Item id="testimonials">
