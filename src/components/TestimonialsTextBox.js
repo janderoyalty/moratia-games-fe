@@ -31,10 +31,10 @@ const TestimonialsTextBox = () => {
 
   return (
     <Carousel variant="dark" controls={false} indicators={false}>
-      {moratiaTestimonialsSorted.map((moratiaTestimonialSorted) => {
+      {moratiaTestimonialsSorted.map((moratiaTestimonialSorted, index) => {
         return (
-          <Carousel.Item id="testimonials">
-            <Row id="class">
+          <Carousel.Item id="testimonials" key={index}>
+            <Row>
               <Col>
                 <div id="testimonials--text-box--quote">
                   {moratiaTestimonialSorted.quote}

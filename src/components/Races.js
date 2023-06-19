@@ -26,10 +26,10 @@ const Races = () => {
 
   return (
     <Carousel className="content" id="races">
-      {moratiaRaces.map((moratiaRace) => {
+      {moratiaRaces.map((moratiaRace, index) => {
         return (
-          <Carousel.Item>
-            <Row className="content" id="race">
+          <Carousel.Item key={index}>
+            <Row key={moratiaRace.race}>
               <Col id="race-left" sm={12} md={12} lg={5}>
                 <Image
                   src={moratiaRace.url}

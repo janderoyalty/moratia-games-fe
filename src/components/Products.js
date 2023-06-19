@@ -23,10 +23,10 @@ const Products = () => {
   }, []);
 
   return (
-    <div>
+    <div className="content" id="products">
       {moratiaProducts.map((moratiaProduct) => {
         return (
-          <Row className="content" id="product" key={moratiaProduct.product}>
+          <Row key={moratiaProduct.product}>
             <Col id="product-left" sm={12} md={12} lg={5}>
               <Image
                 src={moratiaProduct.url}

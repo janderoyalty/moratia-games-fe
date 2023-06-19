@@ -14,9 +14,7 @@ const UpdatesTextBox = () => {
       const updatesData = await getDocs(updatesCollectionRef);
       setMoratiaUpdates(updatesData.docs.map((doc) => ({ ...doc.data() })));
     };
-
     getUpdates();
-    // console.log("update");
   }, []);
 
   const moratiaUpdatesSorted = [...moratiaUpdates].sort(
@@ -25,9 +23,9 @@ const UpdatesTextBox = () => {
 
   return (
     <div id="updates--text-box">
-      {moratiaUpdatesSorted.map((moratiaUpdatesSorted) => {
+      {moratiaUpdatesSorted.map((moratiaUpdatesSorted, index) => {
         return (
-          <div id="updates--text-box--entry">
+          <div id="updates--text-box--entry" key={index}>
             <div id="updates--text-box--entry--header">
               <div
                 className="body-title"

@@ -24,10 +24,10 @@ const Classes = () => {
 
   return (
     <Carousel className="content" id="classes" variant="dark">
-      {moratiaClasses.map((moratiaClass) => {
+      {moratiaClasses.map((moratiaClass, index) => {
         return (
-          <Carousel.Item>
-            <Row className="content" id="class">
+          <Carousel.Item key={index}>
+            <Row>
               <Col id="class-right" sm={12} md={12} lg={7}>
                 <div className="headers-text" id="class-right--top">
                   {moratiaClass.class}
