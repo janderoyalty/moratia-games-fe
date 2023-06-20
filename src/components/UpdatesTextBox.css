@@ -37,3 +37,8 @@
 #updates--text-box::-webkit-scrollbar-thumb:hover {
     background: #bababa; 
 }
+
+#updates--text-box--entry--body a {
+    color: #05ce78;
+    text-decoration: none;
+}
