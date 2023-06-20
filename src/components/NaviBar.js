@@ -28,6 +28,7 @@ const NaviBar = () => {
           <Navbar.Collapse id="navbarScroll">
             <Nav className="ms-auto my-2 my-lg-0" navbarScroll>
               <Nav.Link href="#updates">Updates</Nav.Link>
+              <Nav.Link id="kickstarter-menu" href="#kickstarter">Kickstarter</Nav.Link>
               {/* <Nav.Link href="#events">Events</Nav.Link> */}
               <Nav.Link href="#gallery">Gallery</Nav.Link>
               <Nav.Link href="#world">World</Nav.Link>
