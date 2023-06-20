@@ -12,7 +12,15 @@ const UpdatesTextBox = () => {
   useEffect(() => {
     const getUpdates = async () => {
       const updatesData = await getDocs(updatesCollectionRef);
-      setMoratiaUpdates(updatesData.docs.map((doc) => ({ ...doc.data() })));
+      const updates = updatesData.docs.map((doc) => ({ ...doc.data() }));
+
+      // Replace "\\n" sequences with newline characters
+      const formattedUpdates = updates.map((update) => ({
+        ...update,
+        body: update.body.replace(/\\n/g, "\n"),
+      }));
+
+      setMoratiaUpdates(formattedUpdates);
     };
     getUpdates();
   }, []);
@@ -20,6 +28,16 @@ const UpdatesTextBox = () => {
   const moratiaUpdatesSorted = [...moratiaUpdates].sort(
     (a, b) => b.time - a.time
   );
+
+  const renderBodyText = (body) => {
+    const lines = body.split("\n");
+    return lines.map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ));
+  };
 
   return (
     <div id="updates--text-box">
@@ -38,7 +56,13 @@ const UpdatesTextBox = () => {
               </div>
             </div>
             <div className="body-text" id="updates--text-box--entry--body">
-              {moratiaUpdatesSorted.body}
+              {moratiaUpdatesSorted.body.split("\n").map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
+              {/* {moratiaUpdatesSorted.body} */}
             </div>
           </div>
         );
