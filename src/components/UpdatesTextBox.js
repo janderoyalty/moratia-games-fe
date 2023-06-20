@@ -15,9 +15,10 @@ const UpdatesTextBox = () => {
       const updates = updatesData.docs.map((doc) => ({ ...doc.data() }));
 
       // Replace "\\n" sequences with newline characters
+      // Remove backslashes before quotation marks
       const formattedUpdates = updates.map((update) => ({
         ...update,
-        body: update.body.replace(/\\n/g, "\n"),
+        body: update.body.replace(/\\n/g, "\n").replace(/\\"/g, '"'),
       }));
 
       setMoratiaUpdates(formattedUpdates);
@@ -29,44 +30,54 @@ const UpdatesTextBox = () => {
     (a, b) => b.time - a.time
   );
 
-  const renderBodyText = (body) => {
-    const lines = body.split("\n");
-    return lines.map((line, index) => (
-      <React.Fragment key={index}>
-        {line}
-        <br />
-      </React.Fragment>
+  const addLinkToBodyText = (text) => {
+    const urls = {
+      "Pre-Launch Kickstarter page":
+        "https://www.kickstarter.com/projects/moratiagames/moratia-card-quest-game",
+    };
+
+    let wrappedText = text;
+    for (const word in urls) {
+      const regex = new RegExp(`\\b${word}\\b`, "g");
+      const url = urls[word];
+      wrappedText = wrappedText.replace(
+        regex,
+        `<a href="${url}" target="_blank" rel="noopener noreferrer">${word}</a>`
+      );
+    }
+
+    return wrappedText;
+  };
+
+  const renderBodyText = (text) => {
+    const bodyTextWithLink = addLinkToBodyText(text);
+    const paragraphs = bodyTextWithLink.split("\n");
+
+    return paragraphs.map((paragraph, index) => (
+      <p key={index} dangerouslySetInnerHTML={{ __html: paragraph }} />
     ));
   };
 
   return (
     <div id="updates--text-box">
-      {moratiaUpdatesSorted.map((moratiaUpdatesSorted, index) => {
-        return (
-          <div id="updates--text-box--entry" key={index}>
-            <div id="updates--text-box--entry--header">
-              <div
-                className="body-title"
-                id="updates--text-box--entry--header--title"
-              >
-                {moratiaUpdatesSorted.title}
-              </div>
-              <div id="updates--text-box--entry--header--date">
-                {moratiaUpdatesSorted.date}
-              </div>
+      {moratiaUpdatesSorted.map((moratiaUpdatesSorted, index) => (
+        <div id="updates--text-box--entry" key={index}>
+          <div id="updates--text-box--entry--header">
+            <div
+              className="body-title"
+              id="updates--text-box--entry--header--title"
+            >
+              {moratiaUpdatesSorted.title}
             </div>
-            <div className="body-text" id="updates--text-box--entry--body">
-              {moratiaUpdatesSorted.body.split("\n").map((line, i) => (
-                <React.Fragment key={i}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
-              {/* {moratiaUpdatesSorted.body} */}
+            <div id="updates--text-box--entry--header--date">
+              {moratiaUpdatesSorted.date}
             </div>
           </div>
-        );
-      })}
+          <div className="body-text" id="updates--text-box--entry--body">
+            {renderBodyText(moratiaUpdatesSorted.body)}
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
