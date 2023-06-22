@@ -8,11 +8,18 @@ import { db } from "../firebase-config";
 const UpdatesTextBox = () => {
   const [moratiaUpdates, setMoratiaUpdates] = useState([]);
   const updatesCollectionRef = collection(db, "updates");
+  const [urls, setUrls] = useState({});
+  const urlsCollectionRef = collection(db, "URLs");
 
+  // console.log("urlsCollectionRef")
+  // console.log({urlsCollectionRef})
+  
   useEffect(() => {
     const getUpdates = async () => {
       const updatesData = await getDocs(updatesCollectionRef);
       const updates = updatesData.docs.map((doc) => ({ ...doc.data() }));
+      console.log("updatesData")
+      console.log({updatesData})
 
       // Replace "\\n" sequences with newline characters
       // Remove backslashes before quotation marks
