@@ -37,22 +37,15 @@ const UpdatesTextBox = () => {
     fetchUrls();
   }, []);
 
-  // console.log(moratiaUpdates);
   const moratiaUpdatesSorted = [...moratiaUpdates].sort(
     (a, b) => b.time - a.time
   );
 
   const addLinkToBodyText = (text) => {
-    // const urls = {
-    //   "Pre-Launch Kickstarter page":
-    //     "https://www.kickstarter.com/projects/moratiagames/moratia-card-quest-game",
-    // };
-
     let wrappedText = text;
 
-    // console.log(urls);
     for (const indexUrl in urls) {
-      const word = urls[indexUrl].name
+      const word = urls[indexUrl].name;
       const regex = new RegExp(`\\b${word}\\b`, "g");
       const url = urls[indexUrl].url;
       wrappedText = wrappedText.replace(
