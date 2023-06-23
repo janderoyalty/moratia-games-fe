@@ -4,6 +4,7 @@ import "../App.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
+import Countdown from "./Countdown";
 
 const Kickstarter = () => {
   return (
@@ -25,18 +26,19 @@ const Kickstarter = () => {
       </Col>
       <Col id="kickstarter-right" sm={12} md={12} lg={5}>
         <Row className="sub-headers" id="kickstarter-right--title">
-          The project goes live:
+          Our project goes live August 3, 2023
+        {/* </Row>
+        <Row id="countdown-container"> */}
+          <Countdown id="countdown-timer"></Countdown>
         </Row>
-        <Row id="kickstarter-right--date">August 3, 2023</Row>
         <Row id="kickstarter-left--bottom">
-          <div>
-            Head to our Kickstarter preview page to be the first to know when it
+            Head to our  Kickstarter Pre-Launch page to be the first to know when it
             goes live.
-          </div>
           <a
             href="https://www.kickstarter.com/projects/moratiagames/moratia-card-quest-game"
             target="_blank"
             rel="noopener noreferrer"
+            id="kickstarter-logo-image-container"
           >
             <Image
               src={
