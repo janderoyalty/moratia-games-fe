@@ -7,18 +7,19 @@ import { db } from "../firebase-config";
 
 
 const Countdown = () => {
-    const [moratiaCountdownDate, setMoratiaCountdownDate] = useState([]);
-const countdownDateCollectionRef = collection(db, "countdown-date");
+//     const [moratiaCountdownDate, setMoratiaCountdownDate] = useState([]);
+// const countdownDateCollectionRef = collection(db, "countdown-date");
 
-const fetchCountdownDate = async () => {
-    const countdownDate = await getDocs(countdownDateCollectionRef);
-    const countdownDateData = countdownDate.docs.map((doc) => ({ ...doc.data() }));
-    setMoratiaCountdownDate(countdownDateData);
-};
+// const fetchCountdownDate = async () => {
+//     const countdownDate = await getDocs(countdownDateCollectionRef);
+//     const countdownDateData = countdownDate.docs.map((doc) => ({ ...doc.data() }));
+//     setMoratiaCountdownDate(countdownDateData);
+// };
 
-fetchCountdownDate();
+// fetchCountdownDate();
+// console.log(moratiaCountdownDate[0].date)
 
-const COUNTDOWN_TARGET = new Date(moratiaCountdownDate[0].date);
+const COUNTDOWN_TARGET = new Date("2023-08-03T00:00:01");
 
 const getTimeLeft = () => {
 	const totalTimeLeft = COUNTDOWN_TARGET - new Date();
