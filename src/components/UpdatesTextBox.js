@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./UpdatesTextBox.css";
+import DOMPurify from "dompurify";
 
 // imports to access Firebase database
 import { getDocs, collection } from "firebase/firestore";
@@ -9,17 +10,12 @@ const UpdatesTextBox = () => {
   const [moratiaUpdates, setMoratiaUpdates] = useState([]);
   const updatesCollectionRef = collection(db, "updates");
   const [urls, setUrls] = useState({});
-  const urlsCollectionRef = collection(db, "URLs");
+  const urlsCollectionRef = collection(db, "urls");
 
-  // console.log("urlsCollectionRef")
-  // console.log({urlsCollectionRef})
-  
   useEffect(() => {
-    const getUpdates = async () => {
+    const fetchUpdates = async () => {
       const updatesData = await getDocs(updatesCollectionRef);
       const updates = updatesData.docs.map((doc) => ({ ...doc.data() }));
-      console.log("updatesData")
-      console.log({updatesData})
 
       // Replace "\\n" sequences with newline characters
       // Remove backslashes before quotation marks
@@ -30,23 +26,35 @@ const UpdatesTextBox = () => {
 
       setMoratiaUpdates(formattedUpdates);
     };
-    getUpdates();
+
+    const fetchUrls = async () => {
+      const urlsData = await getDocs(urlsCollectionRef);
+      const urlData = urlsData.docs.map((doc) => ({ ...doc.data() }));
+      setUrls(urlData);
+    };
+
+    fetchUpdates();
+    fetchUrls();
   }, []);
 
+  // console.log(moratiaUpdates);
   const moratiaUpdatesSorted = [...moratiaUpdates].sort(
     (a, b) => b.time - a.time
   );
 
   const addLinkToBodyText = (text) => {
-    const urls = {
-      "Pre-Launch Kickstarter page":
-        "https://www.kickstarter.com/projects/moratiagames/moratia-card-quest-game",
-    };
+    // const urls = {
+    //   "Pre-Launch Kickstarter page":
+    //     "https://www.kickstarter.com/projects/moratiagames/moratia-card-quest-game",
+    // };
 
     let wrappedText = text;
-    for (const word in urls) {
+
+    // console.log(urls);
+    for (const indexUrl in urls) {
+      const word = urls[indexUrl].name
       const regex = new RegExp(`\\b${word}\\b`, "g");
-      const url = urls[word];
+      const url = urls[indexUrl].url;
       wrappedText = wrappedText.replace(
         regex,
         `<a href="${url}" target="_blank" rel="noopener noreferrer">${word}</a>`
@@ -58,7 +66,10 @@ const UpdatesTextBox = () => {
 
   const renderBodyText = (text) => {
     const bodyTextWithLink = addLinkToBodyText(text);
-    const paragraphs = bodyTextWithLink.split("\n");
+    const sanitizedHTML = DOMPurify.sanitize(bodyTextWithLink, {
+      ADD_ATTR: ["target"],
+    });
+    const paragraphs = sanitizedHTML.split("\n");
 
     return paragraphs.map((paragraph, index) => (
       <p key={index} dangerouslySetInnerHTML={{ __html: paragraph }} />
