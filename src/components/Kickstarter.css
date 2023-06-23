@@ -8,14 +8,11 @@
     font-weight: bold;
     font-family: Poppins;
     font-size: 25px;
-    padding-top: 5%;
-    /* text-align: left; */
 } 
 
 #kickstarter-left {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     padding: 7% 5%;
     text-align: center;
 }
@@ -23,15 +20,6 @@
 #kickstarter-left--bottom {
     display: flex;
     justify-content: center;
-}
-
-#kickstarter-right--date {
-    font-weight:bold; 
-    font-family: Poppins;
-    font-size:60px;
-    text-align: center;
-    /* background: linear-gradient(to bottom, #f9f9f9 50%, #05ce78 50%) */
-    background-color: #05ce78;
 }
 
 #kickstarter-right {
@@ -54,3 +42,24 @@
     background-color: #222222;
 }
 
+#countdown-container {
+    width: 80%;
+}
+
+#countdown-timer {
+    display: flex;
+    justify-content: center;
+
+}
+
+#kickstarter-right--title {
+    text-align: center;
+}
+
+#kickstarter-right--date {
+    text-align: center;
+}
+
+#kickstarter-logo-image-container {
+    padding-top: 25px;
+}

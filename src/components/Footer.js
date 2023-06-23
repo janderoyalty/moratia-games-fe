@@ -33,7 +33,7 @@ const Footer = () => {
           <div>© COPYRIGHT 2023. ALL RIGHTS RESERVED.</div>
           <div>Moratia Games</div>
           <div>
-            Created by{" "}
+            Website by{" "}
             <a
               className="footer-link"
               href="https://www.linkedin.com/in/janderoyalty/"
