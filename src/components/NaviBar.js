@@ -27,6 +27,7 @@ const NaviBar = () => {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="ms-auto my-2 my-lg-0" navbarScroll>
+              <Nav.Link href="#home">Video</Nav.Link>
               <Nav.Link href="#updates">Updates</Nav.Link>
               <Nav.Link id="kickstarter-menu" href="#kickstarter">Kickstarter</Nav.Link>
               {/* <Nav.Link href="#events">Events</Nav.Link> */}
@@ -35,6 +36,7 @@ const NaviBar = () => {
               <Nav.Link href="#races">Races</Nav.Link>
               <Nav.Link href="#classes">Classes</Nav.Link>
               <Nav.Link href="#products">Products</Nav.Link>
+              <Nav.Link href="#about-us">About Us</Nav.Link>
               <Nav.Link href="#testimonials">Testimonials</Nav.Link>
             </Nav>
           </Navbar.Collapse>

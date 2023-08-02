@@ -7,11 +7,16 @@
 
 #logo-container{
     height: 100vmin;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
 }
 
 #landing-logo{
-    height: 90%;
+    height: 20%;
     padding-top: 25px;
+    margin-bottom: 25px;
 }
 
 

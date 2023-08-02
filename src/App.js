@@ -13,6 +13,7 @@ import Kickstarter from "./components/Kickstarter";
 import Products from "./components/Products";
 import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
+import AboutUs from "./components/AboutUs";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       <Races></Races>
       <Classes></Classes>
       <Products></Products>
+      <AboutUs></AboutUs>
       <Testimonials></Testimonials>
       <Footer
       // showModal={showModal}

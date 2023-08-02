@@ -44,7 +44,6 @@ const Footer = () => {
             </a>
           </div>
 
-
           {/* LOGIN + MODAL */}
           <div>
             {/* <div className="footer-link" onClick={props.handleShowModal}> */}

@@ -16,6 +16,11 @@ function UpdatesForm() {
     last: "",
     email: "",
   });
+
+  const [thankYouMessage, setThankYouMessage] = useState({
+    message: "",
+  });
+
   const [submitted, setSubmitted] = useState(false);
   const mailingListCollectionRef = collection(db, "mailing-list");
 
@@ -46,6 +51,10 @@ function UpdatesForm() {
         first: "",
         last: "",
         email: "",
+      });
+      setThankYouMessage({
+        message:
+          "You have been added to our email list. Thank you for your support.",
       });
       setSubmitted(false);
     }
@@ -90,7 +99,11 @@ function UpdatesForm() {
           onChange={handleInputChange}
         />
       </Form.Group>
-
+      <Row>
+        <Form.Text className="text-success">
+          {thankYouMessage.message}
+        </Form.Text>
+      </Row>
       <Button variant="light" type="submit">
         Submit
       </Button>
