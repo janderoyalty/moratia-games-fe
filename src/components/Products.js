@@ -33,7 +33,7 @@ const Products = () => {
                 alt={moratiaProduct.product}
                 rounded
                 id="product-image"
-                className="image-size"
+                // className="image-size"
               ></Image>
             </Col>
             <Col id="product-right" sm={12} md={12} lg={7}>
