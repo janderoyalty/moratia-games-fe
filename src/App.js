@@ -26,8 +26,8 @@ function App() {
     <div className="App">
       <NaviBar></NaviBar>
       <LogoPage></LogoPage>
-      <Updates></Updates>
       <Kickstarter></Kickstarter>
+      <Updates></Updates>
       <Gallery></Gallery>
       <World></World>
       <Races></Races>

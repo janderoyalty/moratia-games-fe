@@ -25,15 +25,10 @@ const Kickstarter = () => {
         ></Image>
       </Col>
       <Col id="kickstarter-right" sm={12} md={12} lg={5}>
-        <Row className="sub-headers" id="kickstarter-right--title">
-          Our project goes live August 3, 2023
-        {/* </Row>
-        <Row id="countdown-container"> */}
-          <Countdown id="countdown-timer"></Countdown>
-        </Row>
-        <Row id="kickstarter-left--bottom">
-            Head to our  Kickstarter Pre-Launch page to be the first to know when it
-            goes live.
+        <Row id="kickstarter-right--top">
+          <p className="sub-headers" id="kickstarter-right--top--text">
+            100% funded in the first 48 hours!
+          </p>
           <a
             href="https://www.kickstarter.com/projects/moratiagames/moratia-card-quest-game"
             target="_blank"
@@ -49,6 +44,12 @@ const Kickstarter = () => {
               id="kickstarter-logo-image"
             ></Image>
           </a>
+        </Row>
+        <Row>
+          <p id="kickstarter-right--title">You can still back us for another</p>
+          {/* </Row>
+        <Row id="countdown-container"> */}
+          <Countdown id="countdown-timer"></Countdown>
         </Row>
       </Col>
     </Row>
