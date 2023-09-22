@@ -19,6 +19,7 @@
 /* width */
 #updates--text-box::-webkit-scrollbar {
     width: 10px;
+    /* background-color: red; */
 }
 
 /* Track */

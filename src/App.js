@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import NaviBar from "./components/NaviBar";
 import LogoPage from "./components/LogoPage";
@@ -17,17 +17,12 @@ import AboutUs from "./components/AboutUs";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  // const [showModal, setShowModal] = useState(false);
-
-  // const handleCloseModal = () => setShowModal(false);
-  // const handleShowModal = () => setShowModal(true);
-
   return (
     <div className="App">
       <NaviBar></NaviBar>
       <LogoPage></LogoPage>
-      <Kickstarter></Kickstarter>
       <Updates></Updates>
+      <Kickstarter></Kickstarter>
       <Gallery></Gallery>
       <World></World>
       <Races></Races>

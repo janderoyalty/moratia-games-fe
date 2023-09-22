@@ -3,12 +3,7 @@
     background-color: #f9f9f9;
 }
 
-#kickstarter-menu {
-    background-color: #05ce78;
-    font-weight: bolder;
-    color: #f9f9f9;
-    border-radius: 10px;
-}
+
 
 #kickstarter-menu.active, #kickstarter-menu:hover{
     color: #222222;

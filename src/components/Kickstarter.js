@@ -4,7 +4,6 @@ import "../App.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
-import Countdown from "./Countdown";
 
 const Kickstarter = () => {
   return (
@@ -44,12 +43,6 @@ const Kickstarter = () => {
               id="kickstarter-logo-image"
             ></Image>
           </a>
-        </Row>
-        <Row>
-          <p id="kickstarter-right--title">You can still back us for another</p>
-          {/* </Row>
-        <Row id="countdown-container"> */}
-          <Countdown id="countdown-timer"></Countdown>
         </Row>
       </Col>
     </Row>
