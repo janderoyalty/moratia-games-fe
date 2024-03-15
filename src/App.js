@@ -4,7 +4,7 @@ import NaviBar from "./components/NaviBar";
 import LogoPage from "./components/LogoPage";
 import Updates from "./components/Updates";
 
-// import Events from "./components/Events";
+import EmbeddedVideo from "./components/EmbeddedVideo";
 import Gallery from "./components/Gallery";
 import World from "./components/World";
 import Races from "./components/Races";
@@ -18,27 +18,28 @@ import AboutUs from "./components/AboutUs";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  return (
-    <div className="App">
-      <NaviBar></NaviBar>
-      <LogoPage></LogoPage>
-      <PreOrder></PreOrder>
-      <Updates></Updates>
-      <Kickstarter></Kickstarter>
-      <Gallery></Gallery>
-      <World></World>
-      <Races></Races>
-      <Classes></Classes>
-      <Products></Products>
-      <AboutUs></AboutUs>
-      <Testimonials></Testimonials>
-      <Footer
-      // showModal={showModal}
-      // handleCloseModal={handleCloseModal}
-      // handleShowModal={handleShowModal}
-      ></Footer>
-    </div>
-  );
+	return (
+		<div className="App">
+			<NaviBar></NaviBar>
+			<LogoPage></LogoPage>
+			<PreOrder></PreOrder>
+			<Updates></Updates>
+			<Kickstarter></Kickstarter>
+			<Gallery></Gallery>
+			<World></World>
+			<Races></Races>
+			<Classes></Classes>
+			<Products></Products>
+			<EmbeddedVideo></EmbeddedVideo>
+			<AboutUs></AboutUs>
+			<Testimonials></Testimonials>
+			<Footer
+			// showModal={showModal}
+			// handleCloseModal={handleCloseModal}
+			// handleShowModal={handleShowModal}
+			></Footer>
+		</div>
+	);
 }
 
 export default App;
