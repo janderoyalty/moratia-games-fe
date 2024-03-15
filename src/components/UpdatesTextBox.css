@@ -1,25 +1,25 @@
-#updates--text-box{
-    overflow-y: scroll;
-    height: 50vmin;
-    padding-right: 10px;
+#updates--text-box {
+	overflow-y: scroll;
+	height: 50vmin;
+	padding-right: 10px;
 }
 
 #updates--text-box--entry {
-    display: flex;
-    flex-direction: column;
-    grid-template-rows: 25px 1fr;
-    margin-bottom: 50px;
+	display: flex;
+	flex-direction: column;
+	grid-template-rows: 25px 1fr;
+	margin-bottom: 50px;
 }
 
-#updates--text-box--entry--header{
-    display: flex;
-    justify-content:space-between;
+#updates--text-box--entry--header {
+	display: flex;
+	justify-content: space-between;
 }
 
 /* width */
 #updates--text-box::-webkit-scrollbar {
-    width: 10px;
-    /* background-color: red; */
+	width: 10px;
+	/* background-color: red; */
 }
 
 /* Track */
@@ -30,16 +30,17 @@
 
 /* Handle */
 #updates--text-box::-webkit-scrollbar-thumb {
-    background: #f9f9f9; 
-    border-radius: 10px;
+	background: #f9f9f9;
+	border-radius: 10px;
 }
 
 /* Handle on hover */
 #updates--text-box::-webkit-scrollbar-thumb:hover {
-    background: #bababa; 
+	background: #bababa;
 }
 
 #updates--text-box--entry--body a {
-    color: #05ce78;
-    text-decoration: none;
+	color: #78be6e;
+	text-decoration: none;
+	font-weight: bold;
 }
