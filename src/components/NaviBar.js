@@ -1,8 +1,7 @@
 import React from "react";
 import "./NaviBar.css";
 
-import Container from "react-bootstrap/Container";
-import { Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar, Container } from "react-bootstrap";
 
 const NaviBar = () => {
 	return (
@@ -27,8 +26,9 @@ const NaviBar = () => {
 					<Navbar.Toggle aria-controls="navbarScroll" />
 					<Navbar.Collapse id="navbarScroll">
 						<Nav className="ms-auto my-2 my-lg-0" navbarScroll>
+							<Nav.Link href="#preorder" id="preorder-menu">Pre Order</Nav.Link>
 							<Nav.Link href="#updates">Updates</Nav.Link>
-							<Nav.Link href="#kickstarter">Kickstarter</Nav.Link>
+							{/* <Nav.Link href="#kickstarter">Kickstarter</Nav.Link> */}
 							<Nav.Link href="#gallery">Gallery</Nav.Link>
 							<Nav.Link href="#world">World</Nav.Link>
 							<Nav.Link href="#races">Races</Nav.Link>

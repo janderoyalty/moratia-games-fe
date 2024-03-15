@@ -1,10 +1,16 @@
-#navi-bar{
-    padding: 1% 5%;
-    background-color: #f9f9f9;
+#navi-bar {
+	padding: 1% 5%;
+	background-color: #f9f9f9;
 }
 
+#preorder-menu {
+	background-color: #010203;
+	color: #f9f9f9;
+	border-radius: 2rem;
+}
 
-
-#kickstarter-menu.active, #kickstarter-menu:hover{
-    color: #222222;
+#preorder-menu.active,
+#preorder-menu:hover {
+	background-color: #bababa;
+	color: #010203;
 }

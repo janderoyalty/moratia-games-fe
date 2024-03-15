@@ -10,48 +10,60 @@ import { getDocs, collection } from "firebase/firestore";
 import { db } from "../firebase-config";
 
 const Classes = () => {
-  const [moratiaClasses, setMoratiaClasses] = useState([]);
-  const classesCollectionRef = collection(db, "classes");
+	const [moratiaClasses, setMoratiaClasses] = useState([]);
+	const classesCollectionRef = collection(db, "classes");
 
-  useEffect(() => {
-    const getClasses = async () => {
-      const classesData = await getDocs(classesCollectionRef);
-      setMoratiaClasses(classesData.docs.map((doc) => ({ ...doc.data() })));
-    };
-    console.log();
-    getClasses();
-  }, []);
+	useEffect(() => {
+		const getClasses = async () => {
+			const classesData = await getDocs(classesCollectionRef);
+			setMoratiaClasses(classesData.docs.map((doc) => ({ ...doc.data() })));
+		};
+		console.log();
+		getClasses();
+	}, []);
 
-  return (
-    <Carousel className="content" id="classes" variant="dark">
-      {moratiaClasses.map((moratiaClass, index) => {
-        return (
-          <Carousel.Item key={index}>
-            <Row>
-              <Col id="class-right" sm={12} md={12} lg={7}>
-                <div className="headers-text" id="class-right--top">
-                  {moratiaClass.class}
-                </div>
-                <div id="class--text-box--entry">
-                  <div className="body-text" id="class--text-box--entry--body">
-                    {moratiaClass.description}
-                  </div>
-                </div>
-              </Col>
-              <Col id="class-left" sm={12} md={12} lg={5}>
-                <Image
-                  src={moratiaClass.url}
-                  alt={moratiaClass.class}
-                  rounded
-                  id="class-image"
-                ></Image>
-              </Col>
-            </Row>
-          </Carousel.Item>
-        );
-      })}
-    </Carousel>
-  );
+	return (
+		<Carousel className="content" id="classes" variant="dark">
+			{moratiaClasses.map((moratiaClass, index) => {
+				return (
+					<Carousel.Item key={index}>
+						<Row>
+							<Col
+								id="class-right"
+								xs={{ span: 12, order: 2 }}
+								sm={{ span: 12, order: 2 }}
+								md={{ span: 12, order: 2 }}
+								lg={{ span: 7, order: 1 }}
+							>
+								<div className="headers-text" id="class-right--top">
+									{moratiaClass.class}
+								</div>
+								<div id="class--text-box--entry">
+									<div className="body-text" id="class--text-box--entry--body">
+										{moratiaClass.description}
+									</div>
+								</div>
+							</Col>
+							<Col
+								id="class-left"
+								xs={{ span: 12, order: 1 }}
+								sm={{ span: 12, order: 1 }}
+								md={{ span: 12, order: 1 }}
+								lg={{ span: 5, order: 2 }}
+							>
+								<Image
+									src={moratiaClass.url}
+									alt={moratiaClass.class}
+									rounded
+									id="class-image"
+								></Image>
+							</Col>
+						</Row>
+					</Carousel.Item>
+				);
+			})}
+		</Carousel>
+	);
 };
 
 export default Classes;
