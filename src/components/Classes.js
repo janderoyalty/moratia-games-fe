@@ -20,7 +20,7 @@ const Classes = () => {
 		};
 		console.log();
 		getClasses();
-	}, []);
+	}, [classesCollectionRef]);
 
 	return (
 		<Carousel className="content" id="classes" variant="dark">
