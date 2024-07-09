@@ -1,0 +1,19 @@
+#release {
+	background-color: #010203;
+	color: #f9f9ff;
+	display: flex;
+	justify-content: center;
+	align-self: center;
+	padding: 5% 5% 0;
+}
+
+#preorder-image {
+	max-height: 50vh;
+	width: auto;
+}
+
+#release-bottom,
+#preorder-top {
+	display: flex;
+	justify-content: center;
+}

@@ -19,7 +19,7 @@ const Races = () => {
 		};
 		// console.log("races");
 		getRaces();
-	}, [racesCollectionRef]);
+	}, []);
 
 	return (
 		<Carousel className="content" id="races">

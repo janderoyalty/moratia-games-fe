@@ -10,7 +10,7 @@ import World from "./components/World";
 import Races from "./components/Races";
 import Classes from "./components/Classes";
 import Kickstarter from "./components/Kickstarter";
-import PreOrder from "./components/PreOrder";
+import Release from "./components/Release";
 import Products from "./components/Products";
 import Testimonials from "./components/Testimonials";
 import Footer from "./components/Footer";
@@ -22,9 +22,8 @@ function App() {
 		<div className="App">
 			<NaviBar></NaviBar>
 			<LogoPage></LogoPage>
-			<PreOrder></PreOrder>
+			<Release></Release>
 			<Updates></Updates>
-			<Kickstarter></Kickstarter>
 			<Gallery></Gallery>
 			<World></World>
 			<Races></Races>
