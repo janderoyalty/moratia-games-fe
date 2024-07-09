@@ -6,7 +6,7 @@ const Release = () => {
 	return (
 		<Row className="content" id="release">
 			<Row className="headers-text" id="preorder-top">
-				Releasing July 15, 2024
+				Releasing July 15
 			</Row>
 			<Row id="release-bottom">
 				<Image
