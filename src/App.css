@@ -1,56 +1,55 @@
 .App {
-  padding: 0;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-
+	padding: 0;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
 }
 
 .headers-text {
-  font-weight:bolder;
-  font-family: Poppins;
-  font-size:70px;
-  text-align: left;
-  text-transform: uppercase;
+	font-weight: bolder;
+	font-family: Poppins;
+	font-size: 70px;
+	text-align: left;
+	text-transform: uppercase;
 }
 
 @media (max-width: 1024px) {
-  .headers-text {
-      font-size: 60px;
-  }
+	.headers-text {
+		font-size: 60px;
+	}
 }
 
 @media (max-width: 768px) {
-  .headers-text {
-      font-size: 50px;
-  }    
-}    
+	.headers-text {
+		font-size: 50px;
+	}
+}
 
 @media (max-width: 480px) {
-  .headers-text {
-      font-size: 2rem;
-  }        
-} 
+	.headers-text {
+		font-size: 2rem;
+	}
+}
 
 .content {
-  scroll-margin-top: 59px;
+	scroll-margin-top: 59px;
 }
 
-.body-title{
-  font-weight:bold; 
-  font-family: Poppins;
-  font-size:17px;
+.body-title {
+	font-weight: bold;
+	font-family: Poppins;
+	font-size: 17px;
 }
 
-.sub-headers{
-  font-weight:bold; 
-  font-family: Poppins;
-  font-size:40px;
-  text-align: left;
+.sub-headers {
+	font-weight: bold;
+	font-family: Poppins;
+	font-size: 40px;
+	text-align: left;
 }
 
-.body-text{
-  font-family: Poppins;
-  font-size:15px;
-  text-align: justify;
+.body-text {
+	font-family: Poppins;
+	font-size: 15px;
+	text-align: justify;
 }

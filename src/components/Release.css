@@ -2,14 +2,15 @@
 	background-color: #010203;
 	color: #f9f9ff;
 	display: flex;
-	justify-content: center;
+	/* justify-content: center;
 	align-self: center;
-	padding: 5% 5% 0;
+	padding: 5% 5% 0; */
 }
 
 #preorder-image {
 	max-height: 50vh;
 	width: auto;
+	cursor: pointer;
 }
 
 #release-bottom,
