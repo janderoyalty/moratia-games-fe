@@ -1,12 +1,8 @@
-#home {
-	background-image: url("https://firebasestorage.googleapis.com/v0/b/moratia-games.appspot.com/o/Moratia_Games_b.png?alt=media&token=e69cfbaf-3278-457c-a64d-73c5582b08c5");
-}
-
 #logo-container {
-	height: 100vmin;
-}
-
-#landing-logo {
-	height: 90%;
-	padding-top: 25px;
+	width: 100%;
+	aspect-ratio: 16 / 9; /* Assuming 16:9, adjust if needed */
+	background-image: url("https://firebasestorage.googleapis.com/v0/b/moratia-games.appspot.com/o/logo_page%2FIMG_2524.PNG?alt=media&token=b480302c-c8f0-47c7-940a-a9237868da49");
+	background-size: 100% auto; /* Scale to width, height auto */
+	background-position: center top; /* Align to top vertically */
+	background-repeat: no-repeat;
 }
