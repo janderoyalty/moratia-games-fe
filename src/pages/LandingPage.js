@@ -1,9 +1,9 @@
 import React from "react";
-import LogoPage from "../components/LogoPage";
-import Updates from "../components/Updates";
-import Release from "../components/Release";
-import Testimonials from "../components/Testimonials";
-import Footer from "../components/Footer";
+import LogoPage from "../components/layout/LogoPage";
+import Updates from "../components/updates/Updates";
+import Release from "../components/updates/Release";
+import Testimonials from "../components/marketing/Testimonials";
+import Footer from "../components/layout/Footer";
 
 const LandingPage = () => {
 	return (

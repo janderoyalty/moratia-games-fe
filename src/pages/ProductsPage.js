@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Products from "../components/Products";
-import EmbeddedVideo from "../components/EmbeddedVideo";
+import Products from "../components/features/Products";
+import EmbeddedVideo from "../components/common/EmbeddedVideo";
 import { Modal } from "react-bootstrap";
 
 const InDevelopment = () => {

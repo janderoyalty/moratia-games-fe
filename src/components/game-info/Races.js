@@ -6,7 +6,7 @@ import { Carousel, Row, Col, Image } from "react-bootstrap";
 
 // imports to access Firebase database
 import { getDocs, collection } from "firebase/firestore";
-import { db } from "../firebase-config";
+import { db } from "../../firebase-config";
 
 const Races = () => {
 	const [moratiaRaces, setMoratiaRaces] = useState([]);

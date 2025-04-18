@@ -1,6 +1,6 @@
 import React from "react";
-import World from "../components/World";
-import Races from "../components/Races";
+import World from "../components/features/World";
+import Races from "../components/game-info/Races";
 
 const WorldPage = () => {
 	return (

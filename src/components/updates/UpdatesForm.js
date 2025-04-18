@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col";
 
 // imports to access Firebase database
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "../firebase-config";
+import { db } from "../../firebase-config";
 
 function UpdatesForm() {
 	const [formValues, setFormValues] = useState({

@@ -1,6 +1,6 @@
 import React from "react";
 import "./World.css";
-import WorldText from "./WorldText";
+import WorldText from "../game-info/WorldText";
 
 const World = () => {
   return (
