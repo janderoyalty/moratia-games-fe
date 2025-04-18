@@ -1,43 +1,28 @@
 import React from "react";
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NaviBar from "./components/NaviBar";
-import LogoPage from "./components/LogoPage";
-import Updates from "./components/Updates";
-
-import EmbeddedVideo from "./components/EmbeddedVideo";
-import Gallery from "./components/Gallery";
-import World from "./components/World";
-import Races from "./components/Races";
-import Classes from "./components/Classes";
-import Kickstarter from "./components/Kickstarter";
-import Release from "./components/Release";
-import Products from "./components/Products";
-import Testimonials from "./components/Testimonials";
-import Footer from "./components/Footer";
-import AboutUs from "./components/AboutUs";
+import LandingPage from "./pages/LandingPage";
+import ProductsPage from "./pages/ProductsPage";
+import WorldPage from "./pages/WorldPage";
+import GalleryPage from "./pages/GalleryPage";
+import AboutPage from "./pages/AboutPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
 	return (
-		<div className="App">
-			<NaviBar></NaviBar>
-			<LogoPage></LogoPage>
-			<Release></Release>
-			<Updates></Updates>
-			<Gallery></Gallery>
-			<World></World>
-			<Races></Races>
-			<Classes></Classes>
-			<Products></Products>
-			<EmbeddedVideo></EmbeddedVideo>
-			<AboutUs></AboutUs>
-			<Testimonials></Testimonials>
-			<Footer
-			// showModal={showModal}
-			// handleCloseModal={handleCloseModal}
-			// handleShowModal={handleShowModal}
-			></Footer>
-		</div>
+		<BrowserRouter>
+			<div className="App">
+				<NaviBar />
+				<Routes>
+					<Route path="/" element={<LandingPage />} />
+					<Route path="/products" element={<ProductsPage />} />
+					<Route path="/world" element={<WorldPage />} />
+					<Route path="/gallery" element={<GalleryPage />} />
+					<Route path="/about" element={<AboutPage />} />
+				</Routes>
+			</div>
+		</BrowserRouter>
 	);
 }
 

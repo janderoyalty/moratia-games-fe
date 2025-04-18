@@ -1,5 +1,4 @@
 import React from "react";
-import "./EmbeddedVideo.css";
 import "../App.css";
 import { Container } from "react-bootstrap";
 

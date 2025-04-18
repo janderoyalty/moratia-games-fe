@@ -1,11 +1,14 @@
 import React from "react";
+import "./_Template.css";
 
-const TemplateJR = () => {
-  return (
-    <div className="content" id="templateJR">
-      TEMPLATE
-    </div>
-  );
+const Template = () => {
+	return (
+		<div className="content" id="template">
+			<div className="template-container">
+				{/* Your component content here */}
+			</div>
+		</div>
+	);
 };
 
-export default TemplateJR;
+export default Template;

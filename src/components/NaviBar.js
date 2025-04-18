@@ -1,8 +1,8 @@
 import { React, useState } from "react";
 import "./NaviBar.css";
 import { Modal, Button } from "react-bootstrap";
-
 import { Nav, Navbar, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const NaviBar = () => {
 	const [showModal, setShowModal] = useState(false);
@@ -22,6 +22,7 @@ const NaviBar = () => {
 	const handleClose = () => {
 		setShowModal(false);
 	};
+
 	return (
 		<>
 			<Navbar
@@ -34,7 +35,7 @@ const NaviBar = () => {
 				role="navigation"
 			>
 				<Container fluid>
-					<Navbar.Brand href="#home">
+					<Navbar.Brand as={Link} to="/">
 						<img
 							src="https://firebasestorage.googleapis.com/v0/b/moratia-games.appspot.com/o/logos%2FMoratia_Games_logo_black.png?alt=media&token=359efc0c-c776-4ae7-868a-fde70b4581d1"
 							alt="Moratia Games logo black"
@@ -46,23 +47,27 @@ const NaviBar = () => {
 						<Nav className="ms-auto my-2 my-lg-0" navbarScroll>
 							<Nav.Link
 								id="shopify-button"
-								target="_blank"
-								rel="noopener noreferrer "
 								onClick={(e) =>
 									handleLinkClick(e, "https://moratiagames.myshopify.com/")
 								}
 							>
 								Shop
 							</Nav.Link>
-							<Nav.Link href="#updates">Updates</Nav.Link>
-							<Nav.Link href="#gallery">Gallery</Nav.Link>
-							<Nav.Link href="#world">World</Nav.Link>
-							<Nav.Link href="#races">Races</Nav.Link>
-							<Nav.Link href="#classes">Classes</Nav.Link>
-							<Nav.Link href="#products">Products</Nav.Link>
-							<Nav.Link href="#video">Video</Nav.Link>
-							<Nav.Link href="#about-us">About Us</Nav.Link>
-							<Nav.Link href="#testimonials">Testimonials</Nav.Link>
+							<Nav.Link as={Link} to="/">
+								Home
+							</Nav.Link>
+							<Nav.Link as={Link} to="/products">
+								Products
+							</Nav.Link>
+							<Nav.Link as={Link} to="/world">
+								World
+							</Nav.Link>
+							<Nav.Link as={Link} to="/gallery">
+								Gallery
+							</Nav.Link>
+							<Nav.Link as={Link} to="/about">
+								About
+							</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
 				</Container>

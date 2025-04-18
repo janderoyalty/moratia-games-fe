@@ -1,0 +1,46 @@
+.template-container {
+	padding: 2rem;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.template-item {
+	margin: 1rem 0;
+	padding: 1rem;
+	border-radius: 8px;
+	background-color: #f8f9fa;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.loading {
+	text-align: center;
+	padding: 2rem;
+	font-size: 1.2rem;
+	color: #666;
+}
+
+.error {
+	text-align: center;
+	padding: 2rem;
+	color: #dc3545;
+	font-size: 1.2rem;
+}
+
+.no-data {
+	text-align: center;
+	padding: 2rem;
+	color: #666;
+	font-size: 1.2rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+	.template-container {
+		padding: 1rem;
+	}
+
+	.template-item {
+		margin: 0.5rem 0;
+		padding: 0.8rem;
+	}
+}
