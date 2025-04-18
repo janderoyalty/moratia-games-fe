@@ -1,43 +1,37 @@
-/* Default styles for the form wrapper/container if needed */
 .updates-forms {
-	/* Base styles - any specific layout needed? */
-	font-family: Poppins; /* Keep consistent font */
+	font-family: Poppins;
 }
 
 /* Default (Mobile-first) styles for form elements */
 .updates-forms label,
 .updates-forms .form-label {
-	/* Target bootstrap labels too */
-	font-size: 1rem; /* Base size ~16px */
+	font-size: 1rem;
 	font-weight: bold;
-	margin-bottom: 0.5rem; /* Add spacing below labels */
-	display: block; /* Ensure labels take full width */
+	margin-bottom: 0.5rem;
+	display: block;
 }
 
 .updates-forms input[type="text"],
 .updates-forms input[type="email"],
 .updates-forms .form-control {
-	/* Target bootstrap inputs */
 	font-size: 1rem;
-	padding: 0.5rem 0.75rem; /* Adjust padding for better touch targets */
-	margin-bottom: 1rem; /* Space below inputs */
+	padding: 0.5rem 0.75rem;
+	margin-bottom: 1rem;
 }
 
 .updates-forms button[type="submit"],
 .updates-forms .btn {
-	/* Target bootstrap buttons */
 	font-size: 1rem;
 	font-weight: bold;
-	padding: 0.6rem 1.2rem; /* Adjust padding */
+	padding: 0.6rem 1.2rem;
 }
 
 /* --- Responsive Adjustments --- */
-
-/* Medium screens (e.g., tablets) */
+/* Medium screens */
 @media (min-width: 768px) {
 	.updates-forms label,
 	.updates-forms .form-label {
-		font-size: 1.125rem; /* ~18px */
+		font-size: 1.125rem;
 	}
 
 	.updates-forms input[type="text"],
@@ -45,16 +39,6 @@
 	.updates-forms .form-control,
 	.updates-forms button[type="submit"],
 	.updates-forms .btn {
-		font-size: 1.125rem; /* Increase input/button text slightly */
+		font-size: 1.125rem;
 	}
 }
-
-/* Large screens (optional further adjustment) */
-/*
-@media (min-width: 1024px) {
-    .updates-forms label,
-    .updates-forms .form-label {
-		font-size: 1.25rem; // ~20px
-	}
-}
-*/
