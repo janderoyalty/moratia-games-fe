@@ -2,18 +2,96 @@
 	background-color: #010203;
 	color: #f9f9ff;
 	display: flex;
+	/* Consider adding flex-wrap: wrap; if columns should stack */
+	/* flex-wrap: wrap; */
 }
 
 #updates-left {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: 0 5%;
+	padding: 5% 5%; /* Added top/bottom padding */
+	/* Define width for column layout */
+	/* Example: flex-basis: 40%; */
+}
+
+/* Default (Mobile-first approach) */
+#updates-left--top {
+	font-size: 2rem; /* Base size (from previous 480px) */
+	font-family: Poppins;
+	font-weight: bolder;
+	text-align: left;
+	text-transform: uppercase;
+	line-height: 1.1;
+	margin-bottom: 1rem;
+}
+
+#updates-left--middle {
+	font-size: 1.2rem; /* Base size (from previous 480px) */
+	font-family: Poppins;
+	font-weight: bold;
+	text-align: left;
+	line-height: 1.2;
+	margin-bottom: 1.5rem;
 }
 
 #updates-right {
-	padding: 10% 9%;
+	padding: 5% 9%; /* Adjusted padding */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	/* Define width for column layout */
+	/* Example: flex-basis: 60%; */
+}
+
+/* --- Font Styles (Mobile First) --- */
+#updates-left--top {
+	font-size: 2rem; /* Base size (from previous 480px) */
+	font-family: Poppins;
+	font-weight: bolder;
+	text-align: left;
+	text-transform: uppercase;
+	line-height: 1.1;
+	margin-bottom: 1rem;
+}
+
+#updates-left--middle {
+	font-size: 1.2rem; /* Base size (from previous 480px) */
+	font-family: Poppins;
+	font-weight: bold;
+	text-align: left;
+	line-height: 1.2;
+	margin-bottom: 1.5rem;
+}
+
+/* --- Responsive Font Size Adjustments --- */
+
+/* Small devices (tablets, etc.) */
+@media (min-width: 481px) {
+	#updates-left--top {
+		font-size: 3.125rem; /* ~50px */
+	}
+	#updates-left--middle {
+		font-size: 1.875rem; /* ~30px */
+	}
+}
+
+/* Medium devices (small laptops, etc) */
+@media (min-width: 769px) {
+	#updates-left--top {
+		font-size: 3.75rem; /* ~60px */
+	}
+	#updates-left--middle {
+		font-size: 2.1875rem; /* ~35px */
+	}
+}
+
+/* Large devices (desktops) */
+@media (min-width: 1025px) {
+	#updates-left--top {
+		font-size: 4.375rem; /* ~70px */
+	}
+	#updates-left--middle {
+		font-size: 2.5rem; /* ~40px */
+	}
 }
