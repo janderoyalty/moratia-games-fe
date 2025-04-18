@@ -2,18 +2,120 @@
 	background-color: #010203;
 	color: #f9f9ff;
 	display: flex;
+	font-family: Poppins;
 }
 
 #updates-left {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: 0 5%;
+	padding: 5% 5%;
+}
+
+/* Default (Mobile-first approach) */
+#updates-left--top {
+	font-size: 2rem;
+	font-family: Poppins;
+	font-weight: bolder;
+	text-align: left;
+	text-transform: uppercase;
+	line-height: 1.1;
+	margin-bottom: 1rem;
+}
+
+#updates-left--middle {
+	font-size: 1.2rem;
+	font-family: Poppins;
+	font-weight: bold;
+	text-align: left;
+	line-height: 1.2;
+	margin-bottom: 1.5rem;
 }
 
 #updates-right {
-	padding: 10% 9%;
+	padding: 5% 9%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+}
+
+/* --- Font Styles (Mobile First) --- */
+#updates-left--top {
+	font-size: 2rem;
+	font-family: Poppins;
+	font-weight: bolder;
+	text-align: left;
+	text-transform: uppercase;
+	line-height: 1.1;
+	margin-bottom: 1rem;
+}
+
+#updates-left--middle {
+	font-size: 1.2rem;
+	font-family: Poppins;
+	font-weight: bold;
+	text-align: left;
+	line-height: 1.2;
+	margin-bottom: 1.5rem;
+}
+
+/* --- Responsive Font Size Adjustments --- */
+/* Small devices (tablets, etc.) */
+@media (min-width: 481px) {
+	#updates-left--top {
+		font-size: 3.125rem;
+	}
+	#updates-left--middle {
+		font-size: 1.875rem;
+	}
+	#updates--text-box--entry--header {
+		font-size: 1.2rem;
+	}
+	#updates--text-box--entry--body {
+		font-size: 1.1rem;
+	}
+}
+
+/* Medium devices (small laptops, etc) */
+@media (min-width: 769px) {
+	#updates-left--top {
+		font-size: 3.75rem;
+	}
+	#updates-left--middle {
+		font-size: 2.1875rem;
+	}
+	#updates--text-box--entry--header {
+		font-size: 1.3rem;
+	}
+	#updates--text-box--entry--body {
+		font-size: 1.15rem;
+	}
+}
+
+/* Large devices (desktops) */
+@media (min-width: 1025px) {
+	#updates-left--top {
+		font-size: 4.375rem;
+	}
+	#updates-left--middle {
+		font-size: 2.5rem;
+	}
+	#updates--text-box--entry--header {
+		font-size: 1.4rem;
+	}
+	#updates--text-box--entry--body {
+		font-size: 1.2rem;
+	}
+}
+
+/* Text Box Entry Styles */
+#updates--text-box--entry--header {
+	font-size: 1.1rem;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+}
+
+#updates--text-box--entry--body {
+	font-size: 1rem;
+	line-height: 1.4;
 }

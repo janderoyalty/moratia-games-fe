@@ -6,7 +6,6 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-// imports to access Firebase database
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebase-config";
 
@@ -30,7 +29,6 @@ function UpdatesForm() {
 		});
 	};
 
-	// HANDLES CHANGES
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
 		setFormValues((prevValues) => ({
@@ -44,14 +42,12 @@ function UpdatesForm() {
 		setSubmitted(true);
 		addPerson();
 
-		// Submit the data to Mailchimp
-		const mailchimpUrl =
-			"https://moratiagames.us13.list-manage.com/subscribe/post?u=55c445b81f715ee416ea573c4&id=4cae9f164b&f_id=00c920eaf0";
+		const mailchimpUrl = process.env.REACT_APP_MAILCHIMP_URL;
 		const mailchimpData = new URLSearchParams();
 		mailchimpData.append("EMAIL", formValues.email);
 		mailchimpData.append("FNAME", formValues.first);
 		mailchimpData.append("LNAME", formValues.last);
-		mailchimpData.append("tags", "6685660");
+		mailchimpData.append("tags", process.env.REACT_APP_MAILCHIMP_TAG);
 
 		try {
 			await fetch(mailchimpUrl, {
@@ -60,7 +56,7 @@ function UpdatesForm() {
 				headers: {
 					"Content-Type": "application/x-www-form-urlencoded",
 				},
-				mode: "no-cors", // This prevents CORS errors but suppresses response handling
+				mode: "no-cors",
 			});
 		} catch (error) {
 			console.error("Error submitting to Mailchimp", error);

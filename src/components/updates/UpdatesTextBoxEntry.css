@@ -1,11 +1,21 @@
 #updates--text-box--entry {
-    display: flex;
-    flex-direction: column;
-    grid-template-rows: 25px 1fr;
-    margin-bottom: 50px;
+	display: flex;
+	flex-direction: column;
+	grid-template-rows: 25px 1fr;
+	margin-bottom: 50px;
 }
 
-#updates--text-box--entry--header{
-    display: flex;
-    justify-content:space-between;
+#updates--text-box--entry--header {
+	display: flex;
+	justify-content: space-between;
+}
+
+#updates--text-box--entry--body {
+	color: inherit;
+}
+
+#updates--text-box--entry--body a {
+	color: #78be6e;
+	text-decoration: none;
+	font-weight: bold;
 }

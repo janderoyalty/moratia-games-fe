@@ -1,12 +1,44 @@
 .updates-forms {
-    font-weight: bold;
-    font-family: Poppins;
-    font-size: 20px;
+	font-family: Poppins;
 }
 
-@media only screen and (max-width: 768px) {
-    .updates-forms {
-        font-size: 18px;
-        /* Adjust the font size as per your preference for mobile devices */
-    }
+/* Default (Mobile-first) styles for form elements */
+.updates-forms label,
+.updates-forms .form-label {
+	font-size: 1rem;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+	display: block;
+}
+
+.updates-forms input[type="text"],
+.updates-forms input[type="email"],
+.updates-forms .form-control {
+	font-size: 1rem;
+	padding: 0.5rem 0.75rem;
+	margin-bottom: 1rem;
+}
+
+.updates-forms button[type="submit"],
+.updates-forms .btn {
+	font-size: 1rem;
+	font-weight: bold;
+	padding: 0.6rem 1.2rem;
+}
+
+/* --- Responsive Adjustments --- */
+/* Medium screens */
+@media (min-width: 768px) {
+	.updates-forms label,
+	.updates-forms .form-label {
+		font-size: 1.125rem;
+	}
+
+	.updates-forms input[type="text"],
+	.updates-forms input[type="email"],
+	.updates-forms .form-control,
+	.updates-forms button[type="submit"],
+	.updates-forms .btn {
+		font-size: 1.125rem;
+	}
 }
