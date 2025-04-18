@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from "react";
 import Gallery from "react-photo-gallery";
-import Carousel, { Modal, ModalGateway } from "react-images";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import "./GalleryDisplay.css";
 import { photos } from "./Photos";
 
 const GalleryDisplay = () => {
@@ -18,22 +20,27 @@ const GalleryDisplay = () => {
 	};
 
 	return (
-		<div>
+		<div className="gallery-container">
 			<Gallery photos={photos} onClick={openLightbox} direction="row" />
-			<ModalGateway>
-				{viewerIsOpen ? (
-					<Modal onClose={closeLightbox}>
-						<Carousel
-							currentIndex={currentImage}
-							views={photos.map((x) => ({
-								...x,
-								srcset: x.srcSet,
-								caption: x.title,
-							}))}
-						/>
-					</Modal>
-				) : null}
-			</ModalGateway>
+			<Lightbox
+				open={viewerIsOpen}
+				close={closeLightbox}
+				index={currentImage}
+				slides={photos.map((x) => ({
+					...x,
+					src: x.src,
+					width: 3840,
+					height: 2160,
+					srcSet: [
+						{ src: x.src, width: 3840, height: 2160 },
+						{ src: x.src, width: 1920, height: 1080 },
+						{ src: x.src, width: 1280, height: 720 },
+					],
+				}))}
+				styles={{ container: { backgroundColor: "rgba(0, 0, 0, 0.9)" } }}
+				animation={{ fade: 300 }}
+				carousel={{ finite: false }}
+			/>
 		</div>
 	);
 };
