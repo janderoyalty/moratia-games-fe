@@ -7,7 +7,7 @@ const EmbeddedVideo = () => {
 		<div className="content" id="video">
 			<div className="headers-text">How to Play</div>
 			<Container>
-				<div class="ratio ratio-16x9">
+				<div className="ratio ratio-16x9">
 					<iframe
 						src="https://www.youtube.com/embed/eT-IBcP8uoM?si=LZWH3PjHmiSZIJuJ"
 						title="How to play Moratia CQG"

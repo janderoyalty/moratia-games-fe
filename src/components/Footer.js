@@ -1,18 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Footer.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 
 const Footer = () => {
-	const [showModal, setShowModal] = useState(false);
-
-	const handleCloseModal = () => setShowModal(false);
-	const handleShowModal = () => setShowModal(true);
-
 	return (
 		<div className="content" id="footer">
 			<Row>
