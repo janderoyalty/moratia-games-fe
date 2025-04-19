@@ -1,19 +1,10 @@
 import { useEffect, useState } from "react";
 import { getDocs, collection, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase-config";
+import { ERROR_MESSAGES, VALIDATION, API } from "../constants/updatesConstants";
 
 // Basic email validation regex
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-// Error messages
-const ERROR_MESSAGES = {
-	REQUIRED_FIELD: "This field is required.",
-	INVALID_EMAIL: "Please enter a valid email address.",
-	FIREBASE_ERROR: "Failed to save your information. Please try again.",
-	MAILCHIMP_ERROR: "Failed to subscribe to our mailing list. Please try again.",
-	NETWORK_ERROR: "Network error. Please check your connection and try again.",
-	UNKNOWN_ERROR: "An unexpected error occurred. Please try again later.",
-};
 
 export const useUpdates = () => {
 	// State for fetching updates list
@@ -78,7 +69,7 @@ export const useUpdates = () => {
 		if (!formValues.last.trim()) errors.last = ERROR_MESSAGES.REQUIRED_FIELD;
 		if (!formValues.email.trim()) {
 			errors.email = ERROR_MESSAGES.REQUIRED_FIELD;
-		} else if (!emailRegex.test(formValues.email)) {
+		} else if (!VALIDATION.EMAIL_REGEX.test(formValues.email)) {
 			errors.email = ERROR_MESSAGES.INVALID_EMAIL;
 		}
 		setFormErrors(errors);
