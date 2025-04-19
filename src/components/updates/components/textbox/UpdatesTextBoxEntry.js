@@ -1,6 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./UpdatesTextBoxEntry.css";
 import { addLinksToText, sanitizeAndSplitText } from "../../utils/textUtils";
+import { UpdateType, UrlType } from "../../types/updatesTypes";
 
 const UpdatesTextBoxEntry = ({ update, urls }) => {
 	const renderBodyText = (text) => {
@@ -28,6 +30,11 @@ const UpdatesTextBoxEntry = ({ update, urls }) => {
 			</div>
 		</div>
 	);
+};
+
+UpdatesTextBoxEntry.propTypes = {
+	update: UpdateType.isRequired,
+	urls: PropTypes.arrayOf(UrlType).isRequired,
 };
 
 export default UpdatesTextBoxEntry;

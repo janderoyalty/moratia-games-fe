@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./UpdatesForm.css";
 
 import Button from "react-bootstrap/Button";
@@ -9,6 +10,7 @@ import Spinner from "react-bootstrap/Spinner";
 import Alert from "react-bootstrap/Alert";
 
 import { useUpdates } from "../../hooks/useUpdates";
+import { FormValuesType, FormErrorsType } from "../../types/updatesTypes";
 
 function UpdatesForm() {
 	const {
@@ -140,6 +142,23 @@ function UpdatesForm() {
 			</Button>
 		</Form>
 	);
+}
+
+// Add PropTypes for development
+if (process.env.NODE_ENV === "development") {
+	UpdatesForm.propTypes = {
+		formValues: FormValuesType,
+		formErrors: FormErrorsType,
+		thankYouMessage: PropTypes.string,
+		isSubmitting: PropTypes.bool,
+		submitError: PropTypes.string,
+		errorType: PropTypes.string,
+		handleInputChange: PropTypes.func.isRequired,
+		handleSubmit: PropTypes.func.isRequired,
+		retrySubmission: PropTypes.func.isRequired,
+		setSubmitError: PropTypes.func.isRequired,
+		setErrorType: PropTypes.func.isRequired,
+	};
 }
 
 export default UpdatesForm;
