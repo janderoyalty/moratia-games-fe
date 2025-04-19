@@ -8,6 +8,16 @@
 #updates--text-box--entry--header {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+}
+
+#updates--text-box--entry--header--title {
+	font-size: 17px;
+}
+
+#updates--text-box--entry--header--date {
+	font-weight: normal;
+	font-size: 17px;
 }
 
 #updates--text-box--entry--body {
