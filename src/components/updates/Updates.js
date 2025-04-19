@@ -1,8 +1,8 @@
 import React from "react";
 import "../../App.css";
 import "./Updates.css";
-import UpdatesForms from "./UpdatesForm";
-import UpdatesTextBox from "./UpdatesTextBox";
+import UpdatesForm from "./components/form/UpdatesForm";
+import UpdatesTextBox from "./components/textbox/UpdatesTextBox";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
@@ -17,11 +17,11 @@ const Updates = () => {
 					Get the latest news
 				</div>
 				<div id="updates-left--bottom">
-					<UpdatesForms></UpdatesForms>
+					<UpdatesForm />
 				</div>
 			</Col>
 			<Col id="updates-right" sm={12} md={12} lg={7}>
-				<UpdatesTextBox></UpdatesTextBox>
+				<UpdatesTextBox />
 			</Col>
 		</Row>
 	);
