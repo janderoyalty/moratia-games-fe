@@ -3,6 +3,7 @@
 	color: #f9f9ff;
 	display: flex;
 	font-family: Poppins;
+	min-height: 100vh;
 }
 
 #updates-left {

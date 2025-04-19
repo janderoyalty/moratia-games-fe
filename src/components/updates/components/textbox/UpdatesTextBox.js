@@ -1,7 +1,7 @@
 import React from "react";
 import "./UpdatesTextBox.css";
 import UpdatesTextBoxEntry from "./UpdatesTextBoxEntry";
-import { useUpdates } from "./hooks/useUpdates";
+import { useUpdates } from "../../hooks/useUpdates";
 
 const UpdatesTextBox = () => {
 	const { updates, urls, isLoading, error } = useUpdates();

@@ -1,6 +1,6 @@
 import React from "react";
 import "./UpdatesTextBoxEntry.css";
-import { addLinksToText, sanitizeAndSplitText } from "./utils/textUtils";
+import { addLinksToText, sanitizeAndSplitText } from "../../utils/textUtils";
 
 const UpdatesTextBoxEntry = ({ update, urls }) => {
 	const renderBodyText = (text) => {
