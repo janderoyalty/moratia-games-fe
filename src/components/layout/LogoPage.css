@@ -1,8 +1,8 @@
 #logo-container {
 	width: 100%;
-	aspect-ratio: 16 / 9; /* Assuming 16:9, adjust if needed */
+	aspect-ratio: 16 / 9;
 	background-image: url("https://firebasestorage.googleapis.com/v0/b/moratia-games.appspot.com/o/logo_page%2FIMG_2524.PNG?alt=media&token=b480302c-c8f0-47c7-940a-a9237868da49");
-	background-size: 100% auto; /* Scale to width, height auto */
-	background-position: center top; /* Align to top vertically */
+	background-size: 100% auto;
+	background-position: center top;
 	background-repeat: no-repeat;
 }
