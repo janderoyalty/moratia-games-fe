@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { getDocs, collection, addDoc } from "firebase/firestore";
 import { db } from "../../../firebase-config";
-import { ERROR_MESSAGES, VALIDATION, API } from "../constants/updatesConstants";
-
-// Basic email validation regex
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+import { ERROR_MESSAGES, VALIDATION } from "../constants/updatesConstants";
 
 export const useUpdates = () => {
 	// State for fetching updates list

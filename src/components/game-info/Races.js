@@ -10,14 +10,13 @@ import { db } from "../../firebase-config";
 
 const Races = () => {
 	const [moratiaRaces, setMoratiaRaces] = useState([]);
-	const racesCollectionRef = collection(db, "races");
 
 	useEffect(() => {
 		const getRaces = async () => {
+			const racesCollectionRef = collection(db, "races");
 			const racesData = await getDocs(racesCollectionRef);
 			setMoratiaRaces(racesData.docs.map((doc) => ({ ...doc.data() })));
 		};
-		// console.log("races");
 		getRaces();
 	}, []);
 

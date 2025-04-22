@@ -12,10 +12,10 @@ import { db } from "../../firebase-config";
 
 const TestimonialsTextBox = () => {
 	const [moratiaTestimonials, setMoratiaTestimonials] = useState([]);
-	const testimonialsCollectionRef = collection(db, "testimonials");
 
 	useEffect(() => {
 		const getTestimonials = async () => {
+			const testimonialsCollectionRef = collection(db, "testimonials");
 			const testimonialsData = await getDocs(testimonialsCollectionRef);
 			setMoratiaTestimonials(
 				testimonialsData.docs.map((doc) => ({ ...doc.data() }))

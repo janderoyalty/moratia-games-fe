@@ -12,10 +12,10 @@ import { db } from "../../firebase-config";
 
 const Products = () => {
 	const [moratiaProducts, setMoratiaProducts] = useState([]);
-	const productsCollectionRef = collection(db, "products");
 
 	useEffect(() => {
 		const getProducts = async () => {
+			const productsCollectionRef = collection(db, "products");
 			const productsData = await getDocs(productsCollectionRef);
 			setMoratiaProducts(productsData.docs.map((doc) => ({ ...doc.data() })));
 		};

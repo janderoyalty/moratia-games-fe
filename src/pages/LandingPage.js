@@ -8,10 +8,18 @@ import Footer from "../components/layout/Footer";
 const LandingPage = () => {
 	return (
 		<>
-			<LogoPage />
-			<Updates />
-			<FeaturedProduct />
-			<Testimonials />
+			<div id="welcome">
+				<LogoPage />
+			</div>
+			<div id="updates">
+				<Updates />
+			</div>
+			<div id="featured">
+				<FeaturedProduct />
+			</div>
+			<div id="testimonials">
+				<Testimonials />
+			</div>
 			<Footer />
 		</>
 	);
