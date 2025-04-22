@@ -53,3 +53,7 @@
 	font-size: 15px;
 	text-align: justify;
 }
+
+html {
+	scroll-behavior: smooth;
+}
