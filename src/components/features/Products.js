@@ -30,7 +30,7 @@ const Products = () => {
 					color: isImageLeft ? "#f9f9f9" : "#010203",
 				};
 				const isAvailable = product.availability;
-				const isHowToVideo = product.how_to_video;
+				const isHowToVideo = product.is_how_to_video;
 
 				return (
 					<div
@@ -53,15 +53,17 @@ const Products = () => {
 								<p className="product-description">{product.description}</p>
 
 								{isAvailable ? (
-									<div className="available-now-product-buttons">
-										<Button
-											variant="primary"
-											href="#video"
-											size="xl"
-											id="product-how-to-play-button"
-										>
-											How to Play
-										</Button>
+									<div className="in-development-product-buttons">
+										{isHowToVideo && (
+											<Button
+												variant="primary"
+												href="#video"
+												size="xl"
+												id="product-how-to-play-button"
+											>
+												How to Play
+											</Button>
+										)}
 										<Button
 											variant="success"
 											href={product.shopping_url}
