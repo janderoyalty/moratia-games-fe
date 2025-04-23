@@ -115,12 +115,14 @@
 	background-color: #25c115;
 	border: none;
 	width: 60%;
+	cursor: pointer !important;
 }
 
 #product-how-to-play-button {
 	background-color: #1586e1;
 	border: none;
 	width: 35%;
+	cursor: pointer !important;
 }
 
 #product-in-development-button {
@@ -128,4 +130,17 @@
 	color: #f9f9f9;
 	border: none;
 	width: 60%;
+	cursor: pointer !important;
+}
+
+#product-availability-button:hover {
+	background-color: #1e9f12; /* darker green for contrast */
+}
+
+#product-how-to-play-button:hover {
+	background-color: #116db7; /* darker blue for contrast */
+}
+
+#product-in-development-button:hover {
+	background-color: #d89f00; /* darker golden yellow */
 }
