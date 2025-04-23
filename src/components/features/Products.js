@@ -72,6 +72,8 @@ const Products = () => {
 												<VideoModal
 													showVideo={showVideo}
 													handleCloseVideo={handleCloseVideo}
+													name={product.name}
+													how_to_video_url={product.how_to_video_url}
 												/>
 											</>
 										)}
