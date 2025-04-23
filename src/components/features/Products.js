@@ -1,55 +1,104 @@
 import React, { useEffect, useState } from "react";
 import "./Products.css";
-
-// imports to make carousel with rows and columns
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Image from "react-bootstrap/Image";
-
-// imports to access Firebase database
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../firebase-config";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 const Products = () => {
 	const [moratiaProducts, setMoratiaProducts] = useState([]);
+	const productsCollectionRef = collection(db, "products_updated");
 
 	useEffect(() => {
 		const getProducts = async () => {
-			const productsCollectionRef = collection(db, "products");
 			const productsData = await getDocs(productsCollectionRef);
-			setMoratiaProducts(productsData.docs.map((doc) => ({ ...doc.data() })));
+			const sortedProducts = productsData.docs
+				.map((doc) => ({ ...doc.data(), id: doc.id }))
+				.sort((a, b) => a.order - b.order);
+			setMoratiaProducts(sortedProducts);
 		};
 		getProducts();
 	}, []);
 
 	return (
-		<div className="content" id="products">
-			{moratiaProducts.map((moratiaProduct) => {
+		<div id="products">
+			{moratiaProducts.map((product, index) => {
+				const isImageLeft = product.image_left;
+				const sectionStyle = {
+					backgroundColor: isImageLeft ? "#010203" : "#f9f9f9",
+					color: isImageLeft ? "#f9f9f9" : "#010203",
+				};
+				const isAvailable = product.availability;
+				const isHowToVideo = product.how_to_video;
+
 				return (
-					<Row key={moratiaProduct.product}>
-						<Col id="product-left" sm={12} md={12} lg={5}>
-							<Image
-								src={moratiaProduct.url}
-								alt={moratiaProduct.product}
-								rounded
-								id="product-image"
-								className="image-size"
-							></Image>
-						</Col>
-						<Col id="product-right" sm={12} md={12} lg={7}>
-							<div className="headers-text" id="product-right--top">
-								{moratiaProduct.product}
-							</div>
-							<div id="product--text-box--entry">
-								<div className="body-text" id="product--text-box--entry--body">
-									{moratiaProduct.description1}
-								</div>
-								<div className="body-text" id="product--text-box--entry--body">
-									{moratiaProduct.description2}
-								</div>
-							</div>
-						</Col>
-					</Row>
+					<div
+						className="product-section"
+						style={sectionStyle}
+						key={product.id}
+					>
+						<Row className="product-row">
+							{isImageLeft && (
+								<Col md={6} className="product-image-col">
+									<img
+										src={product.image_url}
+										alt={product.name}
+										className="product-image"
+									/>
+								</Col>
+							)}
+							<Col md={6} className="product-text-col">
+								<h2 className="product-title">{product.name?.toUpperCase()}</h2>
+								<p className="product-description">{product.description}</p>
+
+								{isAvailable ? (
+									<div className="available-now-product-buttons">
+										<Button
+											variant="primary"
+											href="#video"
+											size="xl"
+											id="product-how-to-play-button"
+										>
+											How to Play
+										</Button>
+										<Button
+											variant="success"
+											href={product.shopping_url}
+											target="_blank"
+											rel="noopener noreferrer"
+											size="xl"
+											id="product-availability-button"
+										>
+											Available Now
+										</Button>
+									</div>
+								) : (
+									<div className="in-development-product-buttons">
+										<Button
+											variant="success"
+											href={product.shopping_url}
+											target="_blank"
+											rel="noopener noreferrer"
+											size="xl"
+											id="product-in-development-button"
+										>
+											In Development
+										</Button>
+									</div>
+								)}
+							</Col>
+							{!isImageLeft && (
+								<Col md={6} className="product-image-col">
+									<img
+										src={product.image_url}
+										alt={product.name}
+										className="product-image"
+									/>
+								</Col>
+							)}
+						</Row>
+					</div>
 				);
 			})}
 		</div>
