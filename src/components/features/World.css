@@ -1,51 +1,70 @@
-#world{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #8adae9;
-    /* width: 90vmax; */
-    
-    /* background-image: url(../images/IMG_4098.PNG); */
-    /* color: #f9f9ff; */
+#world {
+	background-image: url("https://firebasestorage.googleapis.com/v0/b/moratia-games.appspot.com/o/world%2FIMG_2589.PNG?alt=media&token=3045dfff-2fed-4631-9b80-93cc230ce417");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
-/* #world:hover{
-    background-color: rgb(243, 251, 253);
-    opacity: 10%;
-} */
-
-#world--map{
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* padding: 20% 10% 20% 5%; */
+#world--map {
+	position: relative;
+	height: 90vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-#world--map img{
-    max-width:100%;
-    max-height:100%;
+#world--map img {
+	max-width: 100%;
+	max-height: 100%;
 }
 
-/* #world--map-image:hover{
-    opacity: 10%;
-} */
-
-#world--map--text{
-    position: absolute;
-    /* right: 50%;
-    left: 50%;
-    bottom: 15%; */
-    width: 75%;
-    height: 100%;
-    opacity: 0%;
+#world--map--text {
+	position: absolute;
+	width: 75%;
+	height: 100%;
+	opacity: 0%;
 }
 
-#world--map--text:hover{
-    background-color: rgba(243, 251, 253, .9);
-    opacity: 100%;
-    /* width: 1000px; */
-    /* height: 90%; */
-    /* border-radius: 10px; */
+#world--map--text:hover {
+	background-color: rgba(243, 251, 253, 0.9);
+	opacity: 100%;
+}
+
+.world--map--button {
+	position: absolute;
+	top: 100px;
+	left: 100px;
+	z-index: 10;
+}
+
+.world--map--button:hover {
+	background-color: #000;
+	color: #fff;
+}
+
+/* Ensure modal body scrolls if content is long */
+.modal-body {
+	max-height: 75vh;
+	overflow-y: auto;
+}
+
+/* On mobile, give it more breathing room */
+@media (max-width: 768px) {
+	.modal-body {
+		max-height: 85vh;
+	}
+	.world--map--button {
+		top: 100px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+.world-modal-title {
+	font-size: 3.6rem !important;
+	font-weight: 700 !important;
+	text-transform: uppercase !important;
+	text-align: left !important;
+	font-family: "Poppins", sans-serif !important;
+	margin-bottom: 1rem !important;
 }
