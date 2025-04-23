@@ -155,7 +155,7 @@ const NaviBar = () => {
 					<Button variant="secondary" onClick={handleClose}>
 						Cancel
 					</Button>
-					<Button variant="success" onClick={handleConfirm}>
+					<Button id="" variant="success" onClick={handleConfirm}>
 						Shopify
 					</Button>
 				</Modal.Footer>

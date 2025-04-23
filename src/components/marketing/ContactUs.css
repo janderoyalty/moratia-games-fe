@@ -1,0 +1,11 @@
+#contact-us {
+	background-image: url("https://firebasestorage.googleapis.com/v0/b/moratia-games.appspot.com/o/Moratia%20CQG%20Moratia%20Card%20Quest%20Game%20preorder%20image.png?alt=media&token=a2cbfce9-9702-4e7a-8e2d-17c4fbaba444");
+	background-size: cover;
+	background-position: top;
+	background-repeat: no-repeat;
+	color: #f9f9ff;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
