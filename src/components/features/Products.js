@@ -5,10 +5,14 @@ import { db } from "../../firebase-config";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import VideoModal from "../common/VideoModal";
 
 const Products = () => {
 	const [moratiaProducts, setMoratiaProducts] = useState([]);
 	const productsCollectionRef = collection(db, "products_updated");
+	const [showVideo, setShowVideo] = useState(false);
+	const handleCloseVideo = () => setShowVideo(false);
+	const handleShowVideo = () => setShowVideo(true);
 
 	useEffect(() => {
 		const getProducts = async () => {
@@ -55,14 +59,21 @@ const Products = () => {
 								{isAvailable ? (
 									<div className="in-development-product-buttons">
 										{isHowToVideo && (
-											<Button
-												variant="primary"
-												href="#video"
-												size="xl"
-												id="product-how-to-play-button"
-											>
-												How to Play
-											</Button>
+											<>
+												<Button
+													variant="primary"
+													href="#video"
+													size="xl"
+													id="product-how-to-play-button"
+													onClick={handleShowVideo}
+												>
+													How to Play
+												</Button>
+												<VideoModal
+													showVideo={showVideo}
+													handleCloseVideo={handleCloseVideo}
+												/>
+											</>
 										)}
 										<Button
 											variant="success"
