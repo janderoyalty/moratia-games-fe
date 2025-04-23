@@ -1,28 +1,38 @@
-#races{
-    background-color: #010203;
-    color: #f9f9ff;
+#races {
+	background-color: #010203;
+	color: #f9f9ff;
 }
 
 #race--text-box--entry {
-    display: flex;
-    flex-direction: column;
-    grid-template-rows: 25px 1fr;
-    margin-bottom: 50px;
+	display: flex;
+	flex-direction: column;
+	grid-template-rows: 25px 1fr;
+	margin-bottom: 50px;
 }
 
 #race-right {
-    padding: 5% 15% 5% 9%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+	padding: 5% 15% 5% 9%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 #race-left {
-    padding: 5% 15% 5% 20%;
-    display: flex;
-    justify-content: center;
+	padding: 5% 15% 5% 20%;
+	display: flex;
+	justify-content: center;
 }
 
 #race-image {
-    height: 75vmin;
+	height: 75vmin;
 }
+
+#races-title {
+	font-size: 3.6rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-align: center;
+	font-family: "Poppins", sans-serif;
+	margin-top: 1rem;
+}
+
