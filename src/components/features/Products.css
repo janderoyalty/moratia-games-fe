@@ -108,7 +108,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	max-width: 600px; /* or adjust as needed */
+	max-width: 600px;
 }
 
 #product-availability-button {
