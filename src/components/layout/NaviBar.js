@@ -1,16 +1,29 @@
 import { React, useState } from "react";
 import "./NaviBar.css";
-import { Modal, Button } from "react-bootstrap";
-import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import {
+	Modal,
+	Button,
+	Nav,
+	Navbar,
+	Container,
+	NavDropdown,
+} from "react-bootstrap";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const NaviBar = () => {
 	const [showModal, setShowModal] = useState(false);
 	const [linkToOpen, setLinkToOpen] = useState("");
-	const navigate = useNavigate();
 	const location = useLocation();
+	const navigate = useNavigate();
 
-	const handleLinkClick = (e, link) => {
+	const handleLinkClick = (e, path) => {
+		if (location.pathname === path) {
+			e.preventDefault();
+			window.scrollTo({ top: 0, behavior: "smooth" });
+		}
+	};
+
+	const handleShopClick = (e, link) => {
 		e.preventDefault();
 		setLinkToOpen(link);
 		setShowModal(true);
@@ -27,19 +40,18 @@ const NaviBar = () => {
 
 	const handleScrollToSection = (sectionId) => {
 		if (location.pathname !== "/") {
-			navigate("/", { replace: false });
-
-			// Delay to ensure LandingPage renders before scrolling
+			navigate("/");
+			// Wait for page navigation to complete
 			setTimeout(() => {
-				const section = document.getElementById(sectionId);
-				if (section) {
-					section.scrollIntoView({ behavior: "smooth" });
+				const element = document.getElementById(sectionId);
+				if (element) {
+					element.scrollIntoView({ behavior: "smooth" });
 				}
-			}, 100);
+			}, 300); // Adjust as needed
 		} else {
-			const section = document.getElementById(sectionId);
-			if (section) {
-				section.scrollIntoView({ behavior: "smooth" });
+			const element = document.getElementById(sectionId);
+			if (element) {
+				element.scrollIntoView({ behavior: "smooth" });
 			}
 		}
 	};
@@ -56,7 +68,11 @@ const NaviBar = () => {
 				role="navigation"
 			>
 				<Container fluid>
-					<Navbar.Brand href="#welcome">
+					<Navbar.Brand
+						as={Link}
+						to="/"
+						onClick={(e) => handleLinkClick(e, "/")}
+					>
 						<img
 							src="https://firebasestorage.googleapis.com/v0/b/moratia-games.appspot.com/o/logos%2FMoratia_Games_logo_black.png?alt=media&token=359efc0c-c776-4ae7-868a-fde70b4581d1"
 							alt="Moratia Games logo black"
@@ -69,7 +85,7 @@ const NaviBar = () => {
 							<Nav.Link
 								id="shopify-button"
 								onClick={(e) =>
-									handleLinkClick(e, "https://moratiagames.myshopify.com/")
+									handleShopClick(e, "https://moratiagames.myshopify.com/")
 								}
 							>
 								Shop
@@ -78,7 +94,6 @@ const NaviBar = () => {
 								<NavDropdown.Item onClick={() => handleScrollToSection("home")}>
 									Home
 								</NavDropdown.Item>
-
 								<NavDropdown.Item
 									onClick={() => handleScrollToSection("updates")}
 								>
@@ -95,22 +110,39 @@ const NaviBar = () => {
 									Testimonials
 								</NavDropdown.Item>
 							</NavDropdown>
-							<Nav.Link as={Link} to="/products">
+							<Nav.Link
+								as={Link}
+								to="/products"
+								onClick={(e) => handleLinkClick(e, "/products")}
+							>
 								Products
 							</Nav.Link>
-							<Nav.Link as={Link} to="/world">
+							<Nav.Link
+								as={Link}
+								to="/world"
+								onClick={(e) => handleLinkClick(e, "/world")}
+							>
 								World
 							</Nav.Link>
-							<Nav.Link as={Link} to="/gallery">
+							<Nav.Link
+								as={Link}
+								to="/gallery"
+								onClick={(e) => handleLinkClick(e, "/gallery")}
+							>
 								Gallery
 							</Nav.Link>
-							<Nav.Link as={Link} to="/about">
+							<Nav.Link
+								as={Link}
+								to="/about"
+								onClick={(e) => handleLinkClick(e, "/about")}
+							>
 								About
 							</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>
+
 			<Modal show={showModal} onHide={handleClose}>
 				<Modal.Header closeButton>
 					<Modal.Title>Leaving Our Website</Modal.Title>
