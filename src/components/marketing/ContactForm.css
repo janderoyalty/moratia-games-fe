@@ -1,0 +1,59 @@
+/* src/components/features/ContactForm.css */
+.contact-form {
+	background-color: rgba(249, 249, 249, 0.95);
+	color: #333;
+	padding: 2rem;
+	border-radius: 12px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	margin: 2rem auto;
+	width: 80vw;
+	max-width: 800px;
+}
+
+.contact-form .form-control {
+	background-color: #f9f9f9;
+	color: #333;
+	border: none;
+	border-radius: 8px;
+	margin-bottom: 1rem;
+	padding: 1rem;
+	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .form-control:focus {
+	outline: none;
+	box-shadow: 0 0 0 2px #1586e1;
+}
+
+.contact-form .btn-primary {
+	background-color: #25c115;
+	border: none;
+	border-radius: 8px;
+	padding: 0.75rem 1.5rem;
+	transition: background-color 0.3s ease;
+	width: 100%;
+}
+
+.contact-form .btn-primary:hover {
+	background-color: #1e9f12;
+}
+
+.contact-form .form-label {
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+	font-family: "Poppins", sans-serif;
+}
+
+#contact-form-title {
+	font-size: 3.6rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-align: center;
+	font-family: "Poppins", sans-serif;
+	margin-bottom: 1rem;
+}
+
+.form-group {
+	font-size: 1.6rem;
+	text-align: left;
+}
