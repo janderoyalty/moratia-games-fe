@@ -7,6 +7,11 @@ import ProductsPage from "./pages/ProductsPage";
 import WorldPage from "./pages/WorldPage";
 import GalleryPage from "./pages/GalleryPage";
 import AboutPage from "./pages/AboutPage";
+import SignIn from "./admin/SignIn";
+import UpdateForm from "./admin/UpdateForm";
+import ProtectedRoute from "./admin/ProtectedRoute";
+import SignOutButton from "./admin/SignOutButton";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -20,6 +25,16 @@ function App() {
 					<Route path="/world" element={<WorldPage />} />
 					<Route path="/gallery" element={<GalleryPage />} />
 					<Route path="/about" element={<AboutPage />} />
+
+					<Route path="/signin" element={<SignIn />} />
+					<Route
+						path="/update"
+						element={
+							<ProtectedRoute>
+								<UpdateForm />
+							</ProtectedRoute>
+						}
+					/>
 				</Routes>
 			</div>
 		</BrowserRouter>
