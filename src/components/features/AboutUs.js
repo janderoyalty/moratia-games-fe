@@ -1,10 +1,8 @@
 import React from "react";
 import "./AboutUs.css";
-
-// imports to make carousel with rows and columns
+import CachedImage from "../common/CachedImage";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Image from "react-bootstrap/Image";
 
 const AboutUs = () => {
 	return (
@@ -44,13 +42,13 @@ const AboutUs = () => {
 					</div>
 				</Col>
 				<Col id="about-us--left" sm={12} md={12} lg={5}>
-					<Image
+					<CachedImage
 						src="https://firebasestorage.googleapis.com/v0/b/moratia-games.appspot.com/o/Moratia%20Card%20Quest%20Games%20co-owners%20Jande%20and%20Thomas%20Royalty.jpeg?alt=media&token=ae395cbc-e376-4e04-920e-8c606096f21f"
 						alt="Jande and Thomas Royalty in Moratia Games black shirts"
 						rounded
 						id="about-us--image"
 						className="image-size"
-					></Image>
+					/>
 				</Col>
 			</Row>
 		</div>
