@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import VideoModal from "../common/VideoModal";
+import CachedImage from "../common/CachedImage";
 
 const Products = () => {
 	const [moratiaProducts, setMoratiaProducts] = useState([]);
@@ -45,7 +46,7 @@ const Products = () => {
 						<Row className="product-row">
 							{isImageLeft && (
 								<Col md={6} className="product-image-col">
-									<img
+									<CachedImage
 										src={product.image_url}
 										alt={product.name}
 										className="product-image"
@@ -105,7 +106,7 @@ const Products = () => {
 							</Col>
 							{!isImageLeft && (
 								<Col md={6} className="product-image-col">
-									<img
+									<CachedImage
 										src={product.image_url}
 										alt={product.name}
 										className="product-image"

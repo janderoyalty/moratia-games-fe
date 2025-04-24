@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Row, Col, Image, Modal, Button } from "react-bootstrap";
+import { Row, Col, Modal, Button } from "react-bootstrap";
 import "./FeaturedProduct.css";
+import CachedImage from "../common/CachedImage";
 
 const FeaturedProduct = () => {
 	const [showModal, setShowModal] = useState(false);
@@ -25,7 +26,7 @@ const FeaturedProduct = () => {
 		<div className="featured-product">
 			<Row className="featured-product__container">
 				<Col lg={6} className="featured-product__image-container">
-					<Image
+					<CachedImage
 						src="https://firebasestorage.googleapis.com/v0/b/moratia-games.appspot.com/o/featured_product%2FIMG_2552.PNG?alt=media&token=665f9429-11f1-4102-8411-319a280d2e11"
 						alt="Moratia Card Quest Game box cover"
 						className="featured-product__image"

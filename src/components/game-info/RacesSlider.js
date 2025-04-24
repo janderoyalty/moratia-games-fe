@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../../firebase-config"; // Adjust path if needed
+import { db } from "../../firebase-config";
 import { collection, getDocs } from "firebase/firestore";
-
+import CachedImage from "../common/CachedImage";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -47,7 +47,7 @@ const RacesSlider = () => {
 		>
 			{races.map((race, index) => (
 				<SwiperSlide key={index}>
-					<img src={race.url} alt={race.name || `Race ${index + 1}`} />
+					<CachedImage src={race.url} alt={race.name || `Race ${index + 1}`} />
 				</SwiperSlide>
 			))}
 		</Swiper>

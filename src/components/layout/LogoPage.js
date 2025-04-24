@@ -4,7 +4,7 @@ import "./LogoPage.css";
 const LogoPage = () => {
 	return (
 		<div className="content" id="home">
-			<div id="logo-container"></div>
+			<div id="logo-container" />
 		</div>
 	);
 };
