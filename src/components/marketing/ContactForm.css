@@ -57,3 +57,8 @@
 	font-size: 1.6rem;
 	text-align: left;
 }
+
+#captcha {
+	margin-bottom: 1rem;
+	justify-self: center;
+}
