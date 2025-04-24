@@ -1,107 +1,147 @@
 import React, { useState, useRef } from "react";
-import "./ContactForm.css";
-import { Form, Button } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import ReCAPTCHA from "react-google-recaptcha";
 import emailjs from "@emailjs/browser";
+import "./ContactForm.css";
+
+const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+const RECAPTCHA_SITE_KEY = process.env.REACT_APP_RECAPTCHA_SITE_KEY;
 
 const ContactForm = () => {
+	const formRef = useRef();
+	const recaptchaRef = useRef(null);
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
 		message: "",
 	});
-	const [captchaValue, setCaptchaValue] = useState(null);
-
-	// ✅ Add ref to track the form DOM
-	const formRef = useRef();
+	const [recaptchaVerified, setRecaptchaVerified] = useState(false);
+	const [submissionStatus, setSubmissionStatus] = useState("idle"); // 'idle' | 'success' | 'error'
 
 	const handleChange = (e) => {
-		const { name, value } = e.target;
-		setFormData({ ...formData, [name]: value });
+		setFormData((prev) => ({
+			...prev,
+			[e.target.name]: e.target.value,
+		}));
 	};
 
-	const handleCaptchaChange = (value) => {
-		setCaptchaValue(value);
+	const handleRecaptchaChange = (value) => {
+		setRecaptchaVerified(!!value);
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-
-		if (!captchaValue) {
-			alert("Please complete the CAPTCHA.");
-			return;
-		}
+		if (!recaptchaVerified) return;
 
 		emailjs
-			.sendForm(
-				process.env.REACT_APP_EMAILJS_SERVICE_ID,
-				process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-				formRef.current,
-				process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-			)
-			.then((result) => {
-				console.log("Message sent!", result.text);
-				alert("Message sent!");
+			.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+			.then(() => {
+				setSubmissionStatus("success");
+				setFormData({ name: "", email: "", message: "" });
 			})
-			.catch((error) => {
-				console.error("Error sending message:", error.text);
-				alert("Failed to send message. Please try again.");
+			.catch(() => {
+				setSubmissionStatus("error");
 			});
+	};
 
-		// Reset form fields
-		setFormData({ name: "", email: "", message: "" });
+	const handleResetForm = () => {
+		setSubmissionStatus("idle");
+		setRecaptchaVerified(false);
+		if (recaptchaRef.current) {
+			recaptchaRef.current.reset();
+		}
 	};
 
 	return (
 		<Form ref={formRef} onSubmit={handleSubmit} className="contact-form">
-			<h2 id="contact-form-title">Send us a message</h2>
+			{submissionStatus === "success" && (
+				<div className="submission-message-container">
+					<h3 className="submission-message success">
+						Thank you for contacting us. We will respond promptly.
+					</h3>
+					<Button
+						className="reset-button"
+						variant="primary"
+						onClick={handleResetForm}
+					>
+						Okay
+					</Button>
+				</div>
+			)}
 
-			<Form.Group controlId="formName" className="form-group">
-				<Form.Label>Name</Form.Label>
-				<Form.Control
-					type="text"
-					placeholder="Enter your name"
-					name="name"
-					value={formData.name}
-					onChange={handleChange}
-					required
-				/>
-			</Form.Group>
+			{submissionStatus === "error" && (
+				<div className="submission-message-container">
+					<h3 className="submission-message error">
+						An error occurred while sending your message. Please try again.
+					</h3>
+					<Button
+						className="reset-button"
+						variant="primary"
+						onClick={handleResetForm}
+					>
+						Try Again
+					</Button>
+				</div>
+			)}
 
-			<Form.Group controlId="formEmail" className="form-group">
-				<Form.Label>Email</Form.Label>
-				<Form.Control
-					type="email"
-					placeholder="Enter your email"
-					name="email"
-					value={formData.email}
-					onChange={handleChange}
-					required
-				/>
-			</Form.Group>
-
-			<Form.Group controlId="formMessage" className="form-group">
-				<Form.Label>Message</Form.Label>
-				<Form.Control
-					as="textarea"
-					rows={3}
-					placeholder="Enter your message"
-					name="message"
-					value={formData.message}
-					onChange={handleChange}
-					required
-				/>
-			</Form.Group>
-
-			<ReCAPTCHA
-				sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
-				onChange={handleCaptchaChange}
-				id="captcha"
-			/>
-
-			<Button variant="primary" type="submit">
-				Send Message
-			</Button>
+			{submissionStatus === "idle" && (
+				<>
+					<h2 id="contact-form-title">Send us a message</h2>
+					<Form.Group className="form-group">
+						<Form.Label controlId="formName">Name</Form.Label>
+						<Form.Control
+							type="text"
+							name="name"
+							value={formData.name}
+							onChange={handleChange}
+							placeholder="Enter your name"
+							required
+						/>
+					</Form.Group>
+					<Form.Group className="form-group">
+						<Form.Label controlId="formEmail">Email</Form.Label>
+						<Form.Control
+							type="email"
+							name="email"
+							value={formData.email}
+							onChange={handleChange}
+							placeholder="Enter your email"
+							required
+						/>
+					</Form.Group>
+					<Form.Group className="form-group">
+						<Form.Label controlId="formMessage">Message</Form.Label>
+						<Form.Control
+							as="textarea"
+							name="message"
+							rows={5}
+							value={formData.message}
+							placeholder="Enter your message"
+							onChange={handleChange}
+							required
+						/>
+					</Form.Group>
+					<div className="recaptcha-container">
+						<ReCAPTCHA
+							ref={recaptchaRef}
+							sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY}
+							onChange={handleRecaptchaChange}
+							id="captcha"
+						/>
+					</div>
+					<Button
+						variant="primary"
+						type="submit"
+						disabled={!recaptchaVerified}
+						className="contact-form-button"
+					>
+						Send Message
+					</Button>
+				</>
+			)}
 		</Form>
 	);
 };
