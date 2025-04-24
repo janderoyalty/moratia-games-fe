@@ -62,3 +62,7 @@
 	margin-bottom: 1rem;
 	justify-self: center;
 }
+
+.reset-button {
+	width: 20vw;
+}
