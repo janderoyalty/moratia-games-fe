@@ -8,10 +8,9 @@ import WorldPage from "./pages/WorldPage";
 import GalleryPage from "./pages/GalleryPage";
 import AboutPage from "./pages/AboutPage";
 import SignIn from "./admin/SignIn";
-import UpdateForm from "./admin/UpdateForm";
 import ProtectedRoute from "./admin/ProtectedRoute";
 import UpdateEntriesList from "./admin/UpdateEntriesList";
-
+import UpdateForm from "./admin/UpdateForm";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {

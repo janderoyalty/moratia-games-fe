@@ -3,3 +3,16 @@
 	flex-direction: column;
 	align-items: center;
 }
+
+.update-title {
+	text-align: left;
+	font-weight: bold;
+}
+
+.update-body {
+	text-align: left;
+}
+
+#update-table {
+	width: 80%;
+}

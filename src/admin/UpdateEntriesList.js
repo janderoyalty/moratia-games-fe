@@ -34,7 +34,7 @@ const UpdateEntriesList = () => {
 		<div className="update-entries-list">
 			<h2>All Updates</h2>
 			<Button
-				variant="secondary"
+				variant="warning"
 				onClick={() => navigate("/update")}
 				style={{ marginTop: "1rem" }}
 			>
@@ -46,22 +46,25 @@ const UpdateEntriesList = () => {
 			>
 				Sort by Date ({sortOrder === "asc" ? "Oldest First" : "Newest First"})
 			</Button>
-			<Table>
+			<Table striped bordered hover id="update-table">
 				<thead>
 					<tr>
 						<th>Title</th>
+						<th>Body</th>
 						<th>Date</th>
-						<th>Exit</th>
+						<th>Edit</th>
 					</tr>
 				</thead>
 				<tbody>
 					{sortedUpdates.map((update) => (
 						<tr key={update.id} className="update-entry">
-							<td>
-								<strong>{update.title}</strong>
+							<td className="update-title">
+								{update.title}
 							</td>
-							<td>{update.body.substring(0, 40)}...</td>
-							<td>{update.date}</td>
+							<td className="update-body">{update.body.substring(0, 40)}...</td>
+							<td className="update-date">
+								{update.time.toDate().toLocaleDateString()}
+							</td>
 							<td>
 								<Button
 									variant="warning"

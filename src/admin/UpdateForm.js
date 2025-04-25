@@ -42,6 +42,13 @@ const UpdateForm = () => {
 		}
 	};
 
+	const clearForm = () => {
+		setTitle("");
+		setBody("");
+		setUrl("");
+		setDateInput("");
+	};
+
 	// Preview object for UpdatesTextBoxEntry
 	const update = {
 		id: "preview-id",
@@ -64,6 +71,13 @@ const UpdateForm = () => {
 	return (
 		<div style={{ maxWidth: "600px", margin: "0 auto", padding: "1rem" }}>
 			<h2>Submit Update</h2>
+			<Button
+				variant="warning"
+				onClick={() => navigate("/update_list")}
+				style={{ marginTop: "1rem" }}
+			>
+				View Updates List
+			</Button>
 			<form onSubmit={handleSubmit}>
 				<label>Title</label>
 				<input
@@ -100,25 +114,27 @@ const UpdateForm = () => {
 					style={{ width: "100%", padding: "0.5rem", marginBottom: "1rem" }}
 				/>
 
-				<button type="submit" style={{ padding: "0.75rem 1.5rem" }}>
+				<Button type="submit" style={{ padding: "0.75rem 1.5rem" }}>
 					Submit Update
-				</button>
+				</Button>
 
 				{error && <p style={{ color: "red" }}>{error}</p>}
 				{success && (
 					<div>
 						<p style={{ color: "green" }}>{success}</p>
 						<UpdatesTextBoxEntry update={update} urls={urls} />
+						<Button
+							variant="danger"
+							onClick={() => {
+								clearForm();
+								setSuccess("");
+							}}
+						>
+							Clear Form
+						</Button>
 					</div>
 				)}
 			</form>
-			<Button
-				variant="secondary"
-				onClick={() => navigate("/update_list")}
-				style={{ marginTop: "1rem" }}
-			>
-				View Updates List
-			</Button>
 		</div>
 	);
 };
