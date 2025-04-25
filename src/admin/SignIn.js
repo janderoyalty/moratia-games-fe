@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import { auth } from "../firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, useLocation } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 const SignIn = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
 	const navigate = useNavigate();
+	const location = useLocation();
+	const from = location.state?.from?.pathname || "/update";
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
 			console.log("Attempting to sign in with:", email);
 			await signInWithEmailAndPassword(auth, email, password);
-			navigate("/update");
+			navigate(from, { replace: true });
 		} catch (err) {
 			console.error("Sign in error:", err);
 			setError("Invalid email or password");
@@ -37,7 +39,7 @@ const SignIn = () => {
 				onChange={(e) => setPassword(e.target.value)}
 				required
 			/>
-			<button type="submit">Sign In</button>
+			<Button type="submit">Sign In</Button>
 			{error && <p>{error}</p>}
 		</form>
 	);

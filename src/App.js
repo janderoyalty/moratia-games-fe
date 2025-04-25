@@ -10,7 +10,7 @@ import AboutPage from "./pages/AboutPage";
 import SignIn from "./admin/SignIn";
 import UpdateForm from "./admin/UpdateForm";
 import ProtectedRoute from "./admin/ProtectedRoute";
-import SignOutButton from "./admin/SignOutButton";
+import UpdateEntriesList from "./admin/UpdateEntriesList";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -32,6 +32,14 @@ function App() {
 						element={
 							<ProtectedRoute>
 								<UpdateForm />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/update_list"
+						element={
+							<ProtectedRoute>
+								<UpdateEntriesList />
 							</ProtectedRoute>
 						}
 					/>
