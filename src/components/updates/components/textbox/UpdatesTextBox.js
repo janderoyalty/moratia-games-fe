@@ -5,6 +5,7 @@ import { useUpdates } from "../../hooks/useUpdates";
 
 const UpdatesTextBox = () => {
 	const { updates, urls, isLoading, error } = useUpdates();
+	console.log("updates", updates);
 
 	if (isLoading) {
 		return <div>Loading updates...</div>;
