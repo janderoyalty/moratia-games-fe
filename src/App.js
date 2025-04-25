@@ -24,24 +24,28 @@ function App() {
 					<Route path="/world" element={<WorldPage />} />
 					<Route path="/gallery" element={<GalleryPage />} />
 					<Route path="/about" element={<AboutPage />} />
-
-					<Route path="/signin" element={<SignIn />} />
-					<Route
-						path="/update"
-						element={
-							<ProtectedRoute>
-								<UpdateForm />
-							</ProtectedRoute>
-						}
-					/>
-					<Route
-						path="/update_list"
-						element={
-							<ProtectedRoute>
-								<UpdateEntriesList />
-							</ProtectedRoute>
-						}
-					/>
+					{/* Conditionally include admin routes */}
+					{process.env.REACT_APP_ADMIN_ENABLED === "true" && (
+						<>
+							<Route path="/signin" element={<SignIn />} />
+							<Route
+								path="/update"
+								element={
+									<ProtectedRoute>
+										<UpdateForm />
+									</ProtectedRoute>
+								}
+							/>
+							<Route
+								path="/update_list"
+								element={
+									<ProtectedRoute>
+										<UpdateEntriesList />
+									</ProtectedRoute>
+								}
+							/>
+						</>
+					)}
 				</Routes>
 			</div>
 		</BrowserRouter>
