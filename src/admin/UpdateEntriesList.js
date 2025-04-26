@@ -1,77 +1,119 @@
-import React, { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import React, { useState, useEffect } from "react";
 import { db } from "../firebase-config";
-import { useNavigate } from "react-router-dom";
-import { Table, Button } from "react-bootstrap";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { Button, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { FaSort, FaSortUp, FaSortDown } from "react-icons/fa";
+import { TbPencilPlus, TbPencil } from "react-icons/tb";
 import "./UpdateEntriesList.css";
+import { useNavigate } from "react-router-dom";
 
 const UpdateEntriesList = () => {
 	const [updates, setUpdates] = useState([]);
+	const [sortField, setSortField] = useState("date");
 	const [sortOrder, setSortOrder] = useState("desc");
 	const navigate = useNavigate();
-
 	useEffect(() => {
 		const fetchUpdates = async () => {
-			const snapshot = await getDocs(collection(db, "updates"));
-			const updatesData = snapshot.docs.map((doc) => ({
+			const updatesCollection = collection(db, "updates");
+			const updatesSnapshot = await getDocs(updatesCollection);
+			const updatesList = updatesSnapshot.docs.map((doc) => ({
 				id: doc.id,
 				...doc.data(),
 			}));
-			setUpdates(updatesData);
+			setUpdates(updatesList);
 		};
+
 		fetchUpdates();
 	}, []);
 
-	const sortedUpdates = [...updates].sort((a, b) => {
-		if (sortOrder === "asc") {
-			return new Date(a.time.seconds * 1000) - new Date(b.time.seconds * 1000);
+	const handleDelete = async (id) => {
+		await deleteDoc(doc(db, "updates", id));
+		setUpdates(updates.filter((update) => update.id !== id));
+	};
+
+	const handleSort = (field) => {
+		if (field === sortField) {
+			setSortOrder(sortOrder === "asc" ? "desc" : "asc");
 		} else {
-			return new Date(b.time.seconds * 1000) - new Date(a.time.seconds * 1000);
+			setSortField(field);
+			setSortOrder("asc");
+		}
+	};
+
+	const sortedUpdates = [...updates].sort((a, b) => {
+		if (!a[sortField] || !b[sortField]) return 0;
+		if (sortOrder === "asc") {
+			return a[sortField].localeCompare(b[sortField]);
+		} else {
+			return b[sortField].localeCompare(a[sortField]);
 		}
 	});
 
+	const renderSortIcon = (field) => {
+		if (sortField === field) {
+			return sortOrder === "asc" ? (
+				<FaSortUp style={{ color: "#010203" }} />
+			) : (
+				<FaSortDown style={{ color: "#010203" }} />
+			);
+		} else {
+			return <FaSort style={{ color: "#ececec" }} />;
+		}
+	};
+
 	return (
 		<div className="update-entries-list">
-			<h2>All Updates</h2>
+			<h1>Update Entries</h1>
 			<Button
 				variant="warning"
 				onClick={() => navigate("/update")}
-				style={{ marginTop: "1rem" }}
+				id="add-updates-button"
 			>
-				Add Updates
-			</Button>
-			<Button
-				variant="secondary"
-				onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
-			>
-				Sort by Date ({sortOrder === "asc" ? "Oldest First" : "Newest First"})
+				<TbPencilPlus /> Add Updates
 			</Button>
 			<Table striped bordered hover id="update-table">
 				<thead>
 					<tr>
-						<th>Title</th>
-						<th>Body</th>
-						<th>Date</th>
-						<th>Edit</th>
+						<th onClick={() => handleSort("title")}>
+							Title {renderSortIcon("title")}
+						</th>
+						<th onClick={() => handleSort("body")}>
+							Body {renderSortIcon("body")}
+						</th>
+						<th onClick={() => handleSort("date")}>
+							Date {renderSortIcon("date")}
+						</th>
+						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
 					{sortedUpdates.map((update) => (
-						<tr key={update.id} className="update-entry">
+						<tr key={update.id}>
 							<td className="update-title">
-								{update.title}
+								{update.title.length > 50
+									? update.title.substring(0, 40) + "..."
+									: update.title}
 							</td>
-							<td className="update-body">{update.body.substring(0, 40)}...</td>
-							<td className="update-date">
-								{update.time.toDate().toLocaleDateString()}
+							<td className="update-body">
+								{update.body.length > 40
+									? update.body.substring(0, 40) + "..."
+									: update.body}
 							</td>
+							<td className="update-date">{update.date}</td>
 							<td>
-								<Button
-									variant="warning"
-									onClick={() => navigate(`/edit/${update.id}`)}
-									className="edit-button"
+								<Link
+									to={`/edit_update/${update.id}`}
+									className="btn btn-primary btn-sm me-2"
 								>
-									Edit
+									<TbPencil /> Edit
+								</Link>
+								<Button
+									variant="danger"
+									size="sm"
+									onClick={() => handleDelete(update.id)}
+								>
+									Delete
 								</Button>
 							</td>
 						</tr>
