@@ -3,6 +3,7 @@ import { db } from "../firebase-config";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import UpdatesTextBoxEntry from "../components/updates/components/textbox/UpdatesTextBoxEntry";
 import Button from "react-bootstrap/Button";
+import { FaTable } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const UpdateForm = () => {
@@ -76,7 +77,7 @@ const UpdateForm = () => {
 				onClick={() => navigate("/update_list")}
 				style={{ marginTop: "1rem" }}
 			>
-				View Updates List
+				<FaTable /> Updates List
 			</Button>
 			<form onSubmit={handleSubmit}>
 				<label>Title</label>

@@ -41,7 +41,7 @@ const RacesSlider = () => {
 				modifier: 1,
 				slideShadows: true,
 			}}
-			pagination={true}
+			pagination={{ clickable: true }}
 			modules={[EffectCoverflow, Pagination]}
 			className="mySwiper"
 		>
