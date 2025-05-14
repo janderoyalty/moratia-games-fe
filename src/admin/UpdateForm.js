@@ -5,17 +5,19 @@ import UpdatesTextBoxEntry from "../components/updates/components/textbox/Update
 import Button from "react-bootstrap/Button";
 import { FaTable } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const UpdateForm = () => {
 	const [title, setTitle] = useState("");
 	const [body, setBody] = useState("");
 	const [url, setUrl] = useState("");
-	const [dateInput, setDateInput] = useState("");
+	const [dateInput, setDateInput] = useState(null);
 	const [error, setError] = useState("");
 	const [success, setSuccess] = useState("");
 
 	const formatDateString = (dateStr) => {
-		const date = new Date(dateStr);
+		const date = dateStr instanceof Date ? dateStr : new Date(dateStr);
 		return date.toLocaleDateString("en-US", {
 			month: "short",
 			day: "numeric",
@@ -29,7 +31,7 @@ const UpdateForm = () => {
 		setSuccess("");
 
 		try {
-			const selectedDate = new Date(dateInput);
+			const selectedDate = dateInput;
 			await addDoc(collection(db, "updates"), {
 				title,
 				body,
@@ -90,15 +92,17 @@ const UpdateForm = () => {
 				/>
 
 				<label>Date</label>
-				<input
-					type="date"
-					value={dateInput}
-					onChange={(e) => setDateInput(e.target.value)}
-					required
+				<DatePicker
+					selected={dateInput}
+					onChange={(date) => setDateInput(date)}
+					showTimeSelect
+					dateFormat="MMMM d, yyyy h:mm aa"
+					placeholderText="Pick date & time"
+					className="form-control"
 					style={{ width: "100%", padding: "0.5rem", marginBottom: "1rem" }}
 				/>
 
-				<label>Body</label>
+				<label>Announcement</label>
 				<textarea
 					value={body}
 					onChange={(e) => setBody(e.target.value)}
