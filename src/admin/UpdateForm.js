@@ -76,14 +76,14 @@ const UpdateForm = () => {
 		  ]
 		: [];
 
-	const handleAddUrl = async () => {
+	const handleAddUrl = async (shouldClose) => {
 		try {
 			await addDoc(collection(db, "urls"), {
 				name: urlName,
 				url: urlLink,
 				createdAt: Timestamp.now(),
 			});
-			setShowModal(false);
+			if (shouldClose) setShowModal(false);
 			setUrlName("");
 			setUrlLink("");
 			alert("URL added successfully!");
@@ -130,8 +130,21 @@ const UpdateForm = () => {
 					<Button variant="secondary" onClick={() => setShowModal(false)}>
 						Close
 					</Button>
-					<Button variant="success" onClick={handleAddUrl}>
-						Save URL
+					<Button
+						variant="outline-success"
+						onClick={async () => {
+							await handleAddUrl(false);
+						}}
+					>
+						Save & Add Another
+					</Button>
+					<Button
+						variant="success"
+						onClick={async () => {
+							await handleAddUrl(true);
+						}}
+					>
+						Save & Close
 					</Button>
 				</Modal.Footer>
 			</Modal>
