@@ -129,7 +129,7 @@ const UpdateEntriesList = () => {
 				id="add-updates-button"
 			>
 				<TbPencilPlus /> Add Updates
-			</Button>{" "}
+			</Button>
 			<Table striped bordered hover id="update-table">
 				<thead>
 					<tr>
