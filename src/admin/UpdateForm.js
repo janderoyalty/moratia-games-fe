@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./UpdateForm.css";
-import Modal from "react-bootstrap/Modal";
 const UpdateForm = () => {
 	const [title, setTitle] = useState("");
 	const [body, setBody] = useState("");
@@ -16,9 +15,6 @@ const UpdateForm = () => {
 	const [error, setError] = useState("");
 	const [success, setSuccess] = useState("");
 	const [startDate, setStartDate] = useState(new Date());
-	const [showModal, setShowModal] = useState(false);
-	const [urlName, setUrlName] = useState("");
-	const [urlLink, setUrlLink] = useState("");
 
 	const formatDateString = (dateStr) => {
 		console.log("dateStr", dateStr);
@@ -76,79 +72,9 @@ const UpdateForm = () => {
 		  ]
 		: [];
 
-	const handleAddUrl = async (shouldClose) => {
-		try {
-			await addDoc(collection(db, "urls"), {
-				name: urlName,
-				url: urlLink,
-				createdAt: Timestamp.now(),
-			});
-			if (shouldClose) setShowModal(false);
-			setUrlName("");
-			setUrlLink("");
-			alert("URL added successfully!");
-		} catch (err) {
-			console.error("Error adding URL:", err);
-			alert("Failed to add URL.");
-		}
-	};
-
 	return (
 		<div style={{ maxWidth: "600px", margin: "0 auto", padding: "1rem" }}>
 			<h2>Submit Update</h2>
-			<Button
-				variant="primary"
-				onClick={() => setShowModal(true)}
-				style={{ marginBottom: "1rem" }}
-			>
-				Add URL
-			</Button>
-
-			<Modal show={showModal} onHide={() => setShowModal(false)}>
-				<Modal.Header closeButton>
-					<Modal.Title>Add a New URL</Modal.Title>
-				</Modal.Header>
-				<Modal.Body>
-					<div className="form-group">
-						<label>Name</label>
-						<input
-							type="text"
-							value={urlName}
-							onChange={(e) => setUrlName(e.target.value)}
-						/>
-					</div>
-					<div className="form-group">
-						<label>URL</label>
-						<input
-							type="text"
-							value={urlLink}
-							onChange={(e) => setUrlLink(e.target.value)}
-						/>
-					</div>
-				</Modal.Body>
-				<Modal.Footer>
-					<Button variant="secondary" onClick={() => setShowModal(false)}>
-						Close
-					</Button>
-					<Button
-						variant="outline-success"
-						onClick={async () => {
-							await handleAddUrl(false);
-						}}
-					>
-						Save & Add Another
-					</Button>
-					<Button
-						variant="success"
-						onClick={async () => {
-							await handleAddUrl(true);
-						}}
-					>
-						Save & Close
-					</Button>
-				</Modal.Footer>
-			</Modal>
-
 			<Button
 				variant="warning"
 				onClick={() => navigate("/update_list")}

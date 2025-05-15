@@ -1,52 +1,60 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import AdminDataTable from "./components/AdminDataTable";
 import { Button, Modal, Form } from "react-bootstrap";
 import {
 	collection,
 	addDoc,
-	Timestamp,
 	updateDoc,
 	doc,
-	getDocs,
+	Timestamp,
 } from "firebase/firestore";
 import { db } from "../firebase-config";
-import "./UpdateForm.css";
 import { TbPencilPlus } from "react-icons/tb";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./Updates.css";
 
-const URLs = () => {
+const Updates = () => {
 	const [showAddModal, setShowAddModal] = useState(false);
-	const [urlName, setUrlName] = useState("");
-	const [urlLink, setUrlLink] = useState("");
-	const [items, setItems] = useState([]);
+	const [title, setTitle] = useState("");
+	const [body, setBody] = useState("");
+	const [url, setUrl] = useState("");
+	const [startDate, setStartDate] = useState(new Date());
+	const [error, setError] = useState("");
+	const [success, setSuccess] = useState("");
+
 	const [showEditModal, setShowEditModal] = useState(false);
 	const [editData, setEditData] = useState({});
 	const [editId, setEditId] = useState("");
 	const [refreshFlag, setRefreshFlag] = useState(0);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			const colRef = collection(db, "urls");
-			const snapshot = await getDocs(colRef);
-			const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-			setItems(data);
-		};
-		fetchData();
-	}, []);
+	const formatDateString = (date) =>
+		new Date(date).toLocaleDateString("en-US", {
+			month: "short",
+			day: "numeric",
+			year: "numeric",
+		});
 
-	const handleAddUrl = async (shouldClose) => {
+	const handleAddUpdate = async () => {
 		try {
-			await addDoc(collection(db, "urls"), {
-				name: urlName,
-				url: urlLink,
+			await addDoc(collection(db, "updates"), {
+				title,
+				body,
+				url,
+				date: formatDateString(startDate),
+				time: Timestamp.fromDate(startDate),
 				createdAt: Timestamp.now(),
 			});
-			if (shouldClose) setShowAddModal(false);
-			setUrlName("");
-			setUrlLink("");
-			alert("URL added successfully!");
+			setSuccess("Update submitted!");
+			setTitle("");
+			setBody("");
+			setUrl("");
+			setStartDate(new Date());
+			setShowAddModal(false);
+			setRefreshFlag((prev) => prev + 1);
 		} catch (err) {
-			console.error("Error adding URL:", err);
-			alert("Failed to add URL.");
+			console.error("Add update error:", err);
+			setError("Failed to submit update.");
 		}
 	};
 
@@ -63,16 +71,15 @@ const URLs = () => {
 
 	const handleSaveEdit = async () => {
 		try {
-			const itemRef = doc(db, "urls", editId);
+			const itemRef = doc(db, "updates", editId);
 			await updateDoc(itemRef, {
 				...editData,
 				updatedAt: Timestamp.now(),
 			});
-			alert("Document updated.");
 			setShowEditModal(false);
 			setRefreshFlag((prev) => prev + 1);
 		} catch (err) {
-			console.error("Edit error:", err);
+			console.error("Update error:", err);
 			alert("Failed to update.");
 		}
 	};
@@ -81,20 +88,18 @@ const URLs = () => {
 		if (type === "header") {
 			return (
 				<>
-					<th>Name</th>
-					<th>URL</th>
+					<th>Title</th>
+					<th>Body</th>
+					<th>Date</th>
 					<th>Actions</th>
 				</>
 			);
 		}
 		return (
 			<>
-				<td>{item.name}</td>
-				<td>
-					<a href={item.url} target="_blank" rel="noopener noreferrer">
-						{item.url?.substring(0, 40)}...
-					</a>
-				</td>
+				<td>{item.title}</td>
+				<td>{item.body?.substring(0, 40)}...</td>
+				<td>{item.date}</td>
 				<td>
 					<Button
 						variant="primary"
@@ -110,61 +115,79 @@ const URLs = () => {
 
 	return (
 		<div className="update-entries-list">
-			<h2>Manage URLs</h2>
+			<h1>Update Entries</h1>
 			<Button
 				variant="warning"
 				onClick={() => setShowAddModal(true)}
 				id="add-updates-button"
 			>
-				<TbPencilPlus />
-				Add New URL
+				<TbPencilPlus /> Add Update
 			</Button>
 
 			<Modal show={showAddModal} onHide={() => setShowAddModal(false)}>
 				<Modal.Header closeButton>
-					<Modal.Title>Add a New URL</Modal.Title>
+					<Modal.Title>Add a New Update</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<div className="form-group">
-						<label>Name</label>
-						<input
-							type="text"
-							value={urlName}
-							onChange={(e) => setUrlName(e.target.value)}
-						/>
-					</div>
-					<div className="form-group">
-						<label>URL</label>
-						<input
-							type="text"
-							value={urlLink}
-							onChange={(e) => setUrlLink(e.target.value)}
-						/>
-					</div>
+					<Form>
+						<Form.Group className="form-group">
+							<Form.Label>Title</Form.Label>
+							<Form.Control
+								type="text"
+								value={title}
+								onChange={(e) => setTitle(e.target.value)}
+								required
+							/>
+						</Form.Group>
+						<Form.Group className="form-group">
+							<Form.Label>Date</Form.Label>
+							<div>
+								<DatePicker
+									selected={startDate}
+									onChange={(date) => setStartDate(date)}
+									showTimeSelect
+									dateFormat="MMMM d, yyyy h:mm aa"
+									placeholderText="Pick date & time"
+									inline
+								/>
+							</div>
+						</Form.Group>
+						<Form.Group className="form-group">
+							<Form.Label>Body</Form.Label>
+							<Form.Control
+								as="textarea"
+								rows={6}
+								value={body}
+								onChange={(e) => setBody(e.target.value)}
+								required
+							/>
+						</Form.Group>
+					</Form>
 				</Modal.Body>
 				<Modal.Footer>
 					<Button variant="secondary" onClick={() => setShowAddModal(false)}>
-						Close
+						Cancel
 					</Button>
-					<Button variant="outline-success" onClick={() => handleAddUrl(false)}>
-						Save & Add Another
-					</Button>
-					<Button variant="success" onClick={() => handleAddUrl(true)}>
-						Save & Close
+					<Button variant="success" onClick={handleAddUpdate}>
+						Submit Update
 					</Button>
 				</Modal.Footer>
 			</Modal>
 
+			<AdminDataTable
+				collectionName="updates"
+				renderRow={renderRow}
+				refreshTrigger={refreshFlag}
+			/>
+
 			<Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
 				<Modal.Header closeButton>
-					<Modal.Title>Edit URL</Modal.Title>
+					<Modal.Title>Edit Update</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<Form>
 						{Object.entries(editData).map(([key, value]) =>
-							key === "id" ||
-							key === "createdAt" ||
-							key === "updatedAt" ? null : (
+							["id", "createdAt", "updatedAt"].includes(key) ? null : (
 								<Form.Group className="mb-3" key={key}>
 									<Form.Label>{key}</Form.Label>
 									<Form.Control
@@ -187,14 +210,8 @@ const URLs = () => {
 					</Button>
 				</Modal.Footer>
 			</Modal>
-
-			<AdminDataTable
-				collectionName="urls"
-				renderRow={renderRow}
-				refreshTrigger={refreshFlag}
-			/>
 		</div>
 	);
 };
 
-export default URLs;
+export default Updates;
