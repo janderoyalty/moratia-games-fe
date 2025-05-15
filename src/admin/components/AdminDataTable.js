@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { Table } from "react-bootstrap";
 import { db } from "../../firebase-config";
+import "../Updates.css";
 
 const AdminDataTable = ({ collectionName, renderRow, refreshTrigger }) => {
 	const [items, setItems] = useState([]);
@@ -17,7 +18,7 @@ const AdminDataTable = ({ collectionName, renderRow, refreshTrigger }) => {
 	}, [collectionName, refreshTrigger]);
 
 	return (
-		<Table striped bordered hover responsive>
+		<Table id="update-table" striped bordered hover responsive>
 			<thead>
 				<tr>{renderRow("header")}</tr>
 			</thead>

@@ -13,7 +13,7 @@ import AboutPage from "./pages/AboutPage";
 import SignIn from "./admin/SignIn";
 import ProtectedRoute from "./admin/ProtectedRoute";
 import UpdateForm from "./admin/UpdateForm";
-import UpdateEntriesList from "./admin/UpdateEntriesList";
+import Updates from "./admin/Updates";
 import URLs from "./admin/URLs";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -55,10 +55,10 @@ function ContentRouter() {
 							}
 						/>
 						<Route
-							path="/update_list"
+							path="/admin/updates"
 							element={
 								<ProtectedRoute>
-									<UpdateEntriesList />
+									<Updates />
 								</ProtectedRoute>
 							}
 						/>
