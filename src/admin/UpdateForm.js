@@ -5,16 +5,19 @@ import UpdatesTextBoxEntry from "../components/updates/components/textbox/Update
 import Button from "react-bootstrap/Button";
 import { FaTable } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./UpdateForm.css";
 const UpdateForm = () => {
 	const [title, setTitle] = useState("");
 	const [body, setBody] = useState("");
 	const [url, setUrl] = useState("");
-	const [dateInput, setDateInput] = useState("");
 	const [error, setError] = useState("");
 	const [success, setSuccess] = useState("");
+	const [startDate, setStartDate] = useState(new Date());
 
 	const formatDateString = (dateStr) => {
+		console.log("dateStr", dateStr);
 		const date = new Date(dateStr);
 		return date.toLocaleDateString("en-US", {
 			month: "short",
@@ -29,7 +32,7 @@ const UpdateForm = () => {
 		setSuccess("");
 
 		try {
-			const selectedDate = new Date(dateInput);
+			const selectedDate = startDate;
 			await addDoc(collection(db, "updates"), {
 				title,
 				body,
@@ -47,7 +50,7 @@ const UpdateForm = () => {
 		setTitle("");
 		setBody("");
 		setUrl("");
-		setDateInput("");
+		setStartDate(new Date());
 	};
 
 	// Preview object for UpdatesTextBoxEntry
@@ -55,7 +58,7 @@ const UpdateForm = () => {
 		id: "preview-id",
 		title,
 		body,
-		date: formatDateString(dateInput || new Date()),
+		date: formatDateString(startDate),
 	};
 
 	const navigate = useNavigate();
@@ -80,40 +83,50 @@ const UpdateForm = () => {
 				<FaTable /> Updates List
 			</Button>
 			<form onSubmit={handleSubmit}>
-				<label>Title</label>
-				<input
-					type="text"
-					value={title}
-					onChange={(e) => setTitle(e.target.value)}
-					required
-					style={{ width: "100%", padding: "0.5rem", marginBottom: "1rem" }}
-				/>
+				<div className="form-group" id="title-container">
+					<label>Title</label>
+					<input
+						type="text"
+						value={title}
+						onChange={(e) => setTitle(e.target.value)}
+						required
+					/>
+				</div>
 
-				<label>Date</label>
-				<input
-					type="date"
-					value={dateInput}
-					onChange={(e) => setDateInput(e.target.value)}
-					required
-					style={{ width: "100%", padding: "0.5rem", marginBottom: "1rem" }}
-				/>
+				<div className="form-group" id="date-picker-container">
+					<label>Date</label>
+					<DatePicker
+						selected={startDate}
+						onChange={(date) => {
+							console.log("JANDE", date);
+							setStartDate(date);
+						}}
+						showTimeSelect
+						dateFormat="MMMM d, yyyy h:mm aa"
+						placeholderText="Pick date & time"
+						className="form-control"
+						inline
+						isClearable
+					/>
+				</div>
 
-				<label>Body</label>
-				<textarea
-					value={body}
-					onChange={(e) => setBody(e.target.value)}
-					required
-					rows={6}
-					style={{ width: "100%", padding: "0.5rem", marginBottom: "1rem" }}
-				/>
-
-				<label>URL (optional)</label>
-				<input
-					type="text"
-					value={url}
-					onChange={(e) => setUrl(e.target.value)}
-					style={{ width: "100%", padding: "0.5rem", marginBottom: "1rem" }}
-				/>
+				<div className="form-group" id="body-container">
+					<label>Body</label>
+					<textarea
+						value={body}
+						onChange={(e) => setBody(e.target.value)}
+						required
+						rows={6}
+					/>
+				</div>
+				<div className="form-group" id="url-container">
+					<label>URL (optional)</label>
+					<input
+						type="text"
+						value={url}
+						onChange={(e) => setUrl(e.target.value)}
+					/>
+				</div>
 
 				<Button type="submit" style={{ padding: "0.75rem 1.5rem" }}>
 					Submit Update
