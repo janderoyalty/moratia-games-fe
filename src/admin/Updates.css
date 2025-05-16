@@ -45,3 +45,17 @@
 .react-datepicker__time-box {
 	width: auto;
 }
+
+#error {
+	color: white;
+	background-color: red;
+	width: 100%;
+	font-weight: bold;
+}
+
+#success {
+	color: white;
+	background-color: green;
+	width: 100%;
+	font-weight: bold;
+}
