@@ -36,6 +36,14 @@ const Updates = () => {
 		});
 
 	const handleAddUpdate = async () => {
+		setError("");
+		setSuccess("");
+
+		if (!title || !body || !startDate) {
+			setError("Please fill in all required fields.");
+			return;
+		}
+
 		try {
 			await addDoc(collection(db, "updates"), {
 				title,
@@ -50,8 +58,8 @@ const Updates = () => {
 			setBody("");
 			setUrl("");
 			setStartDate(new Date());
-			setShowAddModal(false);
 			setRefreshFlag((prev) => prev + 1);
+			setShowAddModal(false);
 		} catch (err) {
 			console.error("Add update error:", err);
 			setError("Failed to submit update.");
@@ -124,7 +132,14 @@ const Updates = () => {
 				<TbPencilPlus /> Add Update
 			</Button>
 
-			<Modal show={showAddModal} onHide={() => setShowAddModal(false)}>
+			<Modal
+				show={showAddModal}
+				onHide={() => {
+					setShowAddModal(false);
+					setError("");
+					setSuccess("");
+				}}
+			>
 				<Modal.Header closeButton>
 					<Modal.Title>Add a New Update</Modal.Title>
 				</Modal.Header>
@@ -141,7 +156,7 @@ const Updates = () => {
 						</Form.Group>
 						<Form.Group className="form-group">
 							<Form.Label>Date</Form.Label>
-							<div>
+							<div className="datepicker-wrapper">
 								<DatePicker
 									selected={startDate}
 									onChange={(date) => setStartDate(date)}
@@ -165,9 +180,19 @@ const Updates = () => {
 					</Form>
 				</Modal.Body>
 				<Modal.Footer>
-					<Button variant="secondary" onClick={() => setShowAddModal(false)}>
+					{error && <p style={{ color: "red" }}>{error}</p>}
+					{success && <p style={{ color: "green" }}>{success}</p>}
+					<Button
+						variant="secondary"
+						onClick={() => {
+							setShowAddModal(false);
+							setError("");
+							setSuccess("");
+						}}
+					>
 						Cancel
 					</Button>
+
 					<Button variant="success" onClick={handleAddUpdate}>
 						Submit Update
 					</Button>
@@ -191,7 +216,7 @@ const Updates = () => {
 								<Form.Group className="mb-3" key={key}>
 									<Form.Label>{key}</Form.Label>
 									<Form.Control
-										type="text"
+										type={key === "body" ? "textarea" : "text"}
 										name={key}
 										value={value}
 										onChange={handleEditChange}
