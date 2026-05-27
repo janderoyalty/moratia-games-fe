@@ -26,7 +26,7 @@ const URLs = () => {
 		if (type === "header") {
 			return (
 				<>
-					<th>Name</th>
+					<th>URL Text</th>
 					<th>URL</th>
 					<th>Actions</th>
 				</>
@@ -134,7 +134,7 @@ const URLs = () => {
 				<Modal.Body>
 					<Form>
 						<Form.Group className="form-group">
-							<Form.Label>Name</Form.Label>
+							<Form.Label>URL Text</Form.Label>
 							<Form.Control
 								type="text"
 								value={urlName}
@@ -154,31 +154,23 @@ const URLs = () => {
 					</Form>
 				</Modal.Body>
 				<Modal.Footer>
-					<div>
-						<Button
-							variant="secondary"
-							onClick={() => {
-								setShowModal(false);
-								setUrlName("");
-								setUrlLink("");
-								setError("");
-								setSuccess("");
-							}}
-						>
-							Close
-						</Button>
-						<Button
-							variant="outline-success"
-							onClick={() => handleAddUrl(false)}
-						>
-							Save & Add Another
-						</Button>
-						<Button variant="success" onClick={() => handleAddUrl(true)}>
-							Save & Close
-						</Button>
-					</div>
 					{error && <p id="error">{error}</p>}
 					{success && <p id="success">{success}</p>}
+					<Button
+						variant="secondary"
+						onClick={() => {
+							setShowModal(false);
+							setUrlName("");
+							setUrlLink("");
+							setError("");
+							setSuccess("");
+						}}
+					>
+						Cancel
+					</Button>
+					<Button variant="success" onClick={() => handleAddUrl(true)}>
+						Submit
+					</Button>
 				</Modal.Footer>
 			</Modal>
 
@@ -189,7 +181,7 @@ const URLs = () => {
 			/>
 			<Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
 				<Modal.Header closeButton>
-					<Modal.Title>Edit Update</Modal.Title>
+					<Modal.Title>Edit URL</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<Form>

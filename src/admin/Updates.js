@@ -5,6 +5,7 @@ import {
 	collection,
 	addDoc,
 	updateDoc,
+	deleteDoc,
 	doc,
 	Timestamp,
 } from "firebase/firestore";
@@ -26,6 +27,7 @@ const Updates = () => {
 	const [showEditModal, setShowEditModal] = useState(false);
 	const [editData, setEditData] = useState({});
 	const [editId, setEditId] = useState("");
+	const [editDate, setEditDate] = useState(new Date());
 	const [refreshFlag, setRefreshFlag] = useState(0);
 
 	const formatDateString = (date) =>
@@ -69,7 +71,19 @@ const Updates = () => {
 	const handleEditClick = (item) => {
 		setEditId(item.id);
 		setEditData({ ...item });
+		setEditDate(item.time?.toDate ? item.time.toDate() : new Date());
 		setShowEditModal(true);
+	};
+
+	const handleDeleteClick = async (item) => {
+		if (!window.confirm("Delete this update? This cannot be undone.")) return;
+		try {
+			await deleteDoc(doc(db, "updates", item.id));
+			setRefreshFlag((prev) => prev + 1);
+		} catch (err) {
+			console.error("Delete error:", err);
+			alert("Failed to delete update.");
+		}
 	};
 
 	const handleEditChange = (e) => {
@@ -81,7 +95,10 @@ const Updates = () => {
 		try {
 			const itemRef = doc(db, "updates", editId);
 			await updateDoc(itemRef, {
-				...editData,
+				title: editData.title,
+				body: editData.body,
+				date: formatDateString(editDate),
+				time: Timestamp.fromDate(editDate),
 				updatedAt: Timestamp.now(),
 			});
 			setShowEditModal(false);
@@ -112,9 +129,17 @@ const Updates = () => {
 					<Button
 						variant="primary"
 						size="sm"
+						className="me-2"
 						onClick={() => handleEditClick(item)}
 					>
 						Edit
+					</Button>
+					<Button
+						variant="danger"
+						size="sm"
+						onClick={() => handleDeleteClick(item)}
+					>
+						Delete
 					</Button>
 				</td>
 			</>
@@ -211,19 +236,37 @@ const Updates = () => {
 				</Modal.Header>
 				<Modal.Body>
 					<Form>
-						{Object.entries(editData).map(([key, value]) =>
-							["id", "createdAt", "updatedAt"].includes(key) ? null : (
-								<Form.Group className="mb-3" key={key}>
-									<Form.Label>{key}</Form.Label>
-									<Form.Control
-										type={key === "body" ? "textarea" : "text"}
-										name={key}
-										value={value}
-										onChange={handleEditChange}
-									/>
-								</Form.Group>
-							)
-						)}
+						<Form.Group className="mb-3">
+							<Form.Label>Title</Form.Label>
+							<Form.Control
+								type="text"
+								name="title"
+								value={editData.title || ""}
+								onChange={handleEditChange}
+							/>
+						</Form.Group>
+						<Form.Group className="mb-3">
+							<Form.Label>Body</Form.Label>
+							<Form.Control
+								as="textarea"
+								rows={6}
+								name="body"
+								value={editData.body || ""}
+								onChange={handleEditChange}
+							/>
+						</Form.Group>
+						<Form.Group className="mb-3">
+							<Form.Label>Date &amp; Time</Form.Label>
+							<div className="datepicker-wrapper">
+								<DatePicker
+									selected={editDate}
+									onChange={(date) => setEditDate(date)}
+									showTimeSelect
+									dateFormat="MMMM d, yyyy h:mm aa"
+									inline
+								/>
+							</div>
+						</Form.Group>
 					</Form>
 				</Modal.Body>
 				<Modal.Footer>

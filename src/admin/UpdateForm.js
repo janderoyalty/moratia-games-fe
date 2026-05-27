@@ -11,7 +11,6 @@ import "./UpdateForm.css";
 const UpdateForm = () => {
 	const [title, setTitle] = useState("");
 	const [body, setBody] = useState("");
-	const [url, setUrl] = useState("");
 	const [error, setError] = useState("");
 	const [success, setSuccess] = useState("");
 	const [startDate, setStartDate] = useState(new Date());
@@ -49,7 +48,6 @@ const UpdateForm = () => {
 	const clearForm = () => {
 		setTitle("");
 		setBody("");
-		setUrl("");
 		setStartDate(new Date());
 	};
 
@@ -63,15 +61,6 @@ const UpdateForm = () => {
 
 	const navigate = useNavigate();
 	const navigateToUpdates = () => navigate("/admin/updates");
-
-	const urls = url
-		? [
-				{
-					name: "Preview Link",
-					url: url,
-				},
-		  ]
-		: [];
 
 	return (
 		<div style={{ maxWidth: "600px", margin: "0 auto", padding: "1rem" }}>
@@ -120,14 +109,7 @@ const UpdateForm = () => {
 						rows={6}
 					/>
 				</div>
-				<div className="form-group" id="url-container">
-					<label>URL (optional)</label>
-					<input
-						type="text"
-						value={url}
-						onChange={(e) => setUrl(e.target.value)}
-					/>
-				</div>
+
 
 				<Button type="submit" style={{ padding: "0.75rem 1.5rem" }}>
 					Submit Update
@@ -137,7 +119,6 @@ const UpdateForm = () => {
 				{success && (
 					<div>
 						<p style={{ color: "green" }}>{success}</p>
-						<UpdatesTextBoxEntry update={update} urls={urls} />
 						<Button
 							variant="danger"
 							onClick={() => {
