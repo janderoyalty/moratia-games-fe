@@ -39,12 +39,12 @@ export const useUpdates = () => {
 					body: doc.data().body.replace(/\\n/g, "\n").replace(/\\"/g, '"'),
 				}));
 				const sortedUpdates = updatesData.sort((a, b) => b.time - a.time);
-				setUpdates(sortedUpdates);
+				setUpdates(sortedUpdates.filter((u) => !u.isArchived));
 
 				// Fetch URLs
 				const urlsSnapshot = await getDocs(collection(db, "urls"));
 				const urlsData = urlsSnapshot.docs.map((doc) => ({ ...doc.data() }));
-				setUrls(urlsData);
+				setUrls(urlsData.filter((u) => !u.isArchived));
 				setRetryCount(0); // Reset retry count on success
 			} catch (err) {
 				console.error("Error fetching updates:", err);
