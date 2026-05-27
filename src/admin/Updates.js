@@ -444,8 +444,8 @@ const Updates = () => {
 											>
 												<span className="archive-hover-text">
 													{item.title
-														? item.title.length > 14
-															? item.title.substring(0, 14) + "…"
+														? item.title.length > 22
+															? item.title.substring(0, 22) + "…"
 															: item.title
 														: "—"}
 												</span>
@@ -464,8 +464,8 @@ const Updates = () => {
 											>
 												<span className="archive-hover-text">
 													{item.body
-														? item.body.length > 28
-															? item.body.substring(0, 28) + "…"
+														? item.body.length > 50
+															? item.body.substring(0, 50) + "…"
 															: item.body
 														: "—"}
 												</span>

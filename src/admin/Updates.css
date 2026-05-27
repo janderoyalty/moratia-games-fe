@@ -106,7 +106,6 @@
 
 /* Archive body preview cell — single line, truncate with ellipsis */
 .archive-preview {
-	max-width: 120px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
