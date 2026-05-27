@@ -1,6 +1,7 @@
 import React from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, Button } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
+import { auth } from "../../firebase-config";
 import "../../components/layout/NaviBar.css";
 
 const AdminNavBar = () => {
@@ -38,21 +39,20 @@ const AdminNavBar = () => {
 				<Navbar.Toggle aria-controls="navbarScroll" />
 				<Navbar.Collapse id="navbarScroll">
 					<Nav className="ms-auto my-2 my-lg-0" navbarScroll>
-						<Nav.Link as={Link} to="/admin/testimonials">
-							Testimonials
+						<Nav.Link as={Link} to="/admin/updates">
+							Updates
 						</Nav.Link>
 						<Nav.Link as={Link} to="/admin/urls">
 							URLs
 						</Nav.Link>
-						<Nav.Link as={Link} to="/admin/updates">
-							Updates
-						</Nav.Link>
-						<Nav.Link as={Link} to="/admin/photos">
-							Photos
-						</Nav.Link>
-						<Nav.Link as={Link} to="/admin/races">
-							Races
-						</Nav.Link>
+						<Button
+							variant="outline-secondary"
+							size="sm"
+							className="ms-2"
+							onClick={() => auth.signOut()}
+						>
+							Sign Out
+						</Button>
 					</Nav>
 				</Navbar.Collapse>
 			</Container>

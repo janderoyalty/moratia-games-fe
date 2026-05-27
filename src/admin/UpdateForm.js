@@ -62,6 +62,7 @@ const UpdateForm = () => {
 	};
 
 	const navigate = useNavigate();
+	const navigateToUpdates = () => navigate("/admin/updates");
 
 	const urls = url
 		? [
@@ -77,7 +78,7 @@ const UpdateForm = () => {
 			<h2>Submit Update</h2>
 			<Button
 				variant="warning"
-				onClick={() => navigate("/update_list")}
+				onClick={navigateToUpdates}
 				style={{ marginTop: "1rem" }}
 			>
 				<FaTable /> Updates List
