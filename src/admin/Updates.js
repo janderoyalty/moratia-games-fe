@@ -432,44 +432,29 @@ const Updates = () => {
 								{archivedItems.map((item) => (
 									<tr key={item.id}>
 										<td className="archive-preview">
-											<OverlayTrigger
-												placement="top"
-												trigger={["hover", "click"]}
-												rootClose
-												overlay={
-													<Tooltip className="archive-tooltip">
-														{item.title}
-													</Tooltip>
-												}
-											>
-												<span className="archive-hover-text">
-													{item.title
-														? item.title.length > 22
-															? item.title.substring(0, 22) + "…"
-															: item.title
-														: "—"}
-												</span>
-											</OverlayTrigger>
+											{item.title || "—"}
 										</td>
 										<td className="archive-preview text-muted small">
-											<OverlayTrigger
-												placement="top"
-												trigger={["hover", "click"]}
-												rootClose
-												overlay={
-													<Tooltip className="archive-tooltip">
-														{item.body || "—"}
-													</Tooltip>
-												}
-											>
-												<span className="archive-hover-text">
-													{item.body
-														? item.body.length > 50
-															? item.body.substring(0, 50) + "…"
-															: item.body
-														: "—"}
-												</span>
-											</OverlayTrigger>
+											{item.body
+												? item.body.length > 120
+													? (
+														<OverlayTrigger
+															placement="top"
+															trigger={["hover", "click"]}
+															rootClose
+															overlay={
+																<Tooltip className="archive-tooltip">
+																	{item.body}
+																</Tooltip>
+															}
+														>
+															<span className="archive-hover-text">
+																{item.body.substring(0, 120) + "…"}
+															</span>
+														</OverlayTrigger>
+													)
+													: item.body
+												: "—"}
 										</td>
 										<td style={{ whiteSpace: "nowrap" }}>{item.date}</td>
 										<td>

@@ -104,11 +104,10 @@
 	font-weight: bold;
 }
 
-/* Archive body preview cell — single line, truncate with ellipsis */
+/* Archive preview cells — wrap text to fill the row height set by stacked buttons */
 .archive-preview {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	word-break: break-word;
+	vertical-align: top;
 }
 
 /* Hover underline cue on archive cells with tooltips */
