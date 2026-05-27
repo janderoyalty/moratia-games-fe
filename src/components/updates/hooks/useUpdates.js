@@ -132,9 +132,9 @@ export const useUpdates = () => {
 				mode: "no-cors",
 			});
 
-			if (!mailchimpResponse.ok) {
-				throw new Error(ERROR_MESSAGES.MAILCHIMP_ERROR);
-			}
+			// With no-cors mode, we can't check response.ok or response.status
+			// The request will either succeed or fail at the network level
+			// If we reach this point, the request was successful
 
 			// 3. Reset form and show success message
 			setFormValues({
@@ -151,13 +151,14 @@ export const useUpdates = () => {
 			let errorMessage = ERROR_MESSAGES.UNKNOWN_ERROR;
 			let errorType = "unknown";
 
-			if (error.message.includes("Firebase")) {
+			// Check for specific error types
+			if (error.name === "FirebaseError" || error.message.includes("Firebase")) {
 				errorMessage = ERROR_MESSAGES.FIREBASE_ERROR;
 				errorType = "firebase";
-			} else if (error.message.includes("Mailchimp")) {
-				errorMessage = ERROR_MESSAGES.MAILCHIMP_ERROR;
-				errorType = "mailchimp";
-			} else if (error.message.includes("Network")) {
+			} else if (error.name === "TypeError" && error.message.includes("fetch")) {
+				errorMessage = ERROR_MESSAGES.NETWORK_ERROR;
+				errorType = "network";
+			} else if (error.message.includes("Network") || error.message.includes("fetch")) {
 				errorMessage = ERROR_MESSAGES.NETWORK_ERROR;
 				errorType = "network";
 			}

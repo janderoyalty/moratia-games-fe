@@ -50,7 +50,9 @@ const FeaturedProduct = () => {
 					</div>
 					<Button
 						className="featured-product__cta"
-						onClick={(e) => handleLinkClick(e, "https://shop.moratiagames.com")}
+						onClick={(e) =>
+							handleLinkClick(e, "https://moratiagames.myshopify.com")
+						}
 					>
 						Shop Now
 					</Button>
