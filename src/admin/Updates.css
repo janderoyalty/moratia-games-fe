@@ -140,9 +140,13 @@
 /* Archive table action cell — stack buttons if narrow */
 .archive-actions {
 	display: flex;
+	flex-direction: column;
 	gap: 0.4rem;
-	flex-wrap: wrap;
-	align-items: center;
+	align-items: stretch;
+}
+
+.archive-actions .btn {
+	width: 100%;
 }
 
 /* ── Mobile-first ── */
