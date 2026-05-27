@@ -20,7 +20,7 @@ const Footer = () => {
 				</Col>
 				{/* MIDDLE - legal, created by, login */}
 				<Col id="footer-center">
-					<div>© COPYRIGHT 2023. ALL RIGHTS RESERVED.</div>
+					<div>© COPYRIGHT {new Date().getFullYear()}. ALL RIGHTS RESERVED.</div>
 					<div>Moratia Games</div>
 					<div>
 						Website by{" "}

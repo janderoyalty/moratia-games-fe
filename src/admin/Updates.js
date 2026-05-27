@@ -191,13 +191,6 @@ const Updates = () => {
 					>
 						Edit
 					</Button>
-					<Button
-						variant="warning"
-						size="sm"
-						onClick={() => handleArchiveClick(item)}
-					>
-						Archive
-					</Button>
 				</td>
 			</>
 		);

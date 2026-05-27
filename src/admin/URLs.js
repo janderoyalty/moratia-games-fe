@@ -115,14 +115,7 @@ const URLs = () => {
 					>
 						Edit
 					</Button>
-					<Button
-						variant="warning"
-						size="sm"
-						className="ms-2"
-						onClick={() => handleArchiveClick(item)}
-					>
-						Archive
-					</Button>
+
 				</td>
 			</>
 		);
