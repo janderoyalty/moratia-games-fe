@@ -431,7 +431,7 @@ const Updates = () => {
 							<tbody>
 								{archivedItems.map((item) => (
 									<tr key={item.id}>
-										<td style={{ whiteSpace: "nowrap" }}>
+										<td className="archive-preview">
 											<OverlayTrigger
 												placement="top"
 												overlay={
@@ -440,7 +440,13 @@ const Updates = () => {
 													</Tooltip>
 												}
 											>
-												<span className="archive-hover-text">{item.title}</span>
+												<span className="archive-hover-text">
+													{item.title
+														? item.title.length > 14
+															? item.title.substring(0, 14) + "…"
+															: item.title
+														: "—"}
+												</span>
 											</OverlayTrigger>
 										</td>
 										<td className="archive-preview text-muted small">
@@ -454,8 +460,8 @@ const Updates = () => {
 											>
 												<span className="archive-hover-text">
 													{item.body
-														? item.body.length > 80
-															? item.body.substring(0, 80) + "…"
+														? item.body.length > 28
+															? item.body.substring(0, 28) + "…"
 															: item.body
 														: "—"}
 												</span>
