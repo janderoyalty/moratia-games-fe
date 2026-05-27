@@ -1,21 +1,16 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Moratia Games",
+  "name": "Moratia Games",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "https://firebasestorage.googleapis.com/v0/b/moratia-games.appspot.com/o/logos%2Fmoratia_logo_image_qQs_icon.ico?alt=media&token=602ca8e6-4411-40a4-8669-0595d73bc20f",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "https://firebasestorage.googleapis.com/v0/b/moratia-games.appspot.com/o/logos%2FMoratia_Games_logo_black.png?alt=media&token=359efc0c-c776-4ae7-868a-fde70b4581d1",
       "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "any"
     }
   ],
   "start_url": ".",
