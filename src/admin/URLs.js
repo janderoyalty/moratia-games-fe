@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import AdminDataTable from "./components/AdminDataTable";
-import { Button, Modal, Form, Table } from "react-bootstrap";
+import { Button, Modal, Form, Table, OverlayTrigger, Tooltip } from "react-bootstrap";
 import {
 	collection,
 	addDoc,
@@ -362,7 +362,24 @@ const URLs = () => {
 							<tbody>
 								{archivedItems.map(item => (
 									<tr key={item.id}>
-										<td>{item.name}</td>
+										<td>
+											<OverlayTrigger
+												placement="top"
+												overlay={
+													<Tooltip className="archive-tooltip">
+														{item.url}
+													</Tooltip>
+												}
+											>
+												<a
+													href={item.url}
+													target="_blank"
+													rel="noopener noreferrer"
+												>
+													{item.name}
+												</a>
+											</OverlayTrigger>
+										</td>
 										<td>
 											<div className="archive-actions">
 												<Button
