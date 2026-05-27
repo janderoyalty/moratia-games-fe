@@ -355,8 +355,7 @@ const URLs = () => {
 						<Table striped bordered hover responsive>
 							<thead>
 								<tr>
-									<th>Name</th>
-									<th>URL</th>
+									<th>URL Text</th>
 									<th>Actions</th>
 								</tr>
 							</thead>
@@ -364,11 +363,6 @@ const URLs = () => {
 								{archivedItems.map(item => (
 									<tr key={item.id}>
 										<td>{item.name}</td>
-										<td>
-											<a href={item.url} target="_blank" rel="noopener noreferrer">
-												{item.url}
-											</a>
-										</td>
 										<td>
 											<div className="archive-actions">
 												<Button

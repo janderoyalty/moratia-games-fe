@@ -31,6 +31,7 @@
 /* Action buttons row (Add + View Archive) */
 .admin-actions {
 	display: flex;
+	justify-content: center;
 	gap: 0.5rem;
 	align-items: center;
 	flex-wrap: wrap;
@@ -101,6 +102,14 @@
 	background-color: green;
 	width: 100%;
 	font-weight: bold;
+}
+
+/* Archive body preview cell — single line, truncate with ellipsis */
+.archive-preview {
+	max-width: 220px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 /* Archive table action cell — stack buttons if narrow */

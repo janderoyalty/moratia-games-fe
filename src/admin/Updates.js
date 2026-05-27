@@ -208,7 +208,13 @@ const Updates = () => {
 		return (
 			<>
 				<td>{item.title}</td>
-				<td>{item.body?.substring(0, 40)}...</td>
+				<td>
+					{item.body
+						? item.body.length > 40
+							? item.body.substring(0, 40) + "…"
+							: item.body
+						: ""}
+				</td>
 				<td>{item.date}</td>
 				<td>
 					<Button
@@ -426,8 +432,12 @@ const Updates = () => {
 								{archivedItems.map((item) => (
 									<tr key={item.id}>
 										<td style={{ whiteSpace: "nowrap" }}>{item.title}</td>
-										<td className="text-muted small">
-											{item.body ? item.body.substring(0, 80) + "…" : "—"}
+										<td className="archive-preview text-muted small">
+											{item.body
+												? item.body.length > 80
+													? item.body.substring(0, 80) + "…"
+													: item.body
+												: "—"}
 										</td>
 										<td style={{ whiteSpace: "nowrap" }}>{item.date}</td>
 										<td>
