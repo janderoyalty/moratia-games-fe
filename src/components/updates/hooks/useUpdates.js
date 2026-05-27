@@ -123,7 +123,7 @@ export const useUpdates = () => {
 			mailchimpData.append("LNAME", formValues.last);
 			mailchimpData.append("tags", process.env.REACT_APP_MAILCHIMP_TAG);
 
-			const mailchimpResponse = await fetch(mailchimpUrl, {
+			await fetch(mailchimpUrl, {
 				method: "POST",
 				body: mailchimpData,
 				headers: {

@@ -7,17 +7,17 @@
 		"@babel/plugin-syntax-flow": "^7.23.3",
 		"@babel/plugin-transform-react-jsx": "^7.23.4",
 		"@emailjs/browser": "^4.4.1",
-		"@firebase/auth": "^1.10.0",
+		"@firebase/auth": "^1.13.1",
 		"@popperjs/core": "^2.11.8",
 		"@testing-library/dom": "^9.3.4",
 		"@testing-library/jest-dom": "^5.17.0",
 		"@testing-library/react": "^14.1.2",
 		"@testing-library/user-event": "^14.5.2",
 		"bootstrap": "^5.3.2",
-		"dompurify": "^3.0.8",
+		"dompurify": "^3.4.0",
 		"dotenv": "^16.3.1",
-		"firebase": "^10.8.0",
-		"firebase-admin": "^13.3.0",
+		"firebase": "^12.13.0",
+		"firebase-admin": "^13.10.0",
 		"prop-types": "^15.8.1",
 		"react": "^18.2.0",
 		"react-bootstrap": "^2.9.1",
@@ -28,9 +28,9 @@
 		"react-google-recaptcha": "^3.1.0",
 		"react-icons": "^5.5.0",
 		"react-photo-gallery": "^8.0.0",
-		"react-router-dom": "^6.20.1",
+		"react-router-dom": "^6.30.2",
 		"react-scripts": "^5.0.1",
-		"swiper": "^11.2.6",
+		"swiper": "^12.1.2",
 		"typescript": "^5.3.3",
 		"web-vitals": "^3.5.1",
 		"yet-another-react-lightbox": "^3.22.0"
@@ -62,6 +62,16 @@
 	"devDependencies": {
 		"nth-check": "^2.1.1",
 		"postcss": "^8.4.31",
-		"undici": "^6.21.1"
+		"undici": "^6.24.0"
+	},
+	"resolutions": {
+		"**/protobufjs": "7.5.6",
+		"**/@protobufjs/utf8": "1.1.1",
+		"**/@types/request/form-data": "2.5.5",
+		"**/jsdom/form-data": "3.0.4",
+		"**/brace-expansion": "2.0.3",
+		"**/on-headers": "1.1.0",
+		"**/underscore": "1.13.8",
+		"**/@tootallnate/once": "2.0.1"
 	}
 }
