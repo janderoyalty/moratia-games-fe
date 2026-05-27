@@ -15,7 +15,7 @@ NODE_OPTIONS=--openssl-legacy-provider yarn build
 
 echo ""
 echo "🚀 Deploying to Bluehost..."
-rsync -avz --delete build/ bluehost:~/public_html/
+rsync -avz --delete --chmod=D755,F644 build/ bluehost:~/public_html/
 
 echo ""
 echo "✅ Done! Live at https://moratiagames.com"
