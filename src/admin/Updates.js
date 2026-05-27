@@ -434,6 +434,8 @@ const Updates = () => {
 										<td className="archive-preview">
 											<OverlayTrigger
 												placement="top"
+												trigger={["hover", "click"]}
+												rootClose
 												overlay={
 													<Tooltip className="archive-tooltip">
 														{item.title}
@@ -452,6 +454,8 @@ const Updates = () => {
 										<td className="archive-preview text-muted small">
 											<OverlayTrigger
 												placement="top"
+												trigger={["hover", "click"]}
+												rootClose
 												overlay={
 													<Tooltip className="archive-tooltip">
 														{item.body || "—"}

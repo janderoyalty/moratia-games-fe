@@ -114,8 +114,17 @@
 
 /* Hover underline cue on archive cells with tooltips */
 .archive-hover-text {
-	cursor: default;
+	cursor: pointer;
 	border-bottom: 1px dotted #888;
+}
+
+/* ⓘ icon next to URL links in archive modal */
+.archive-info-icon {
+	cursor: pointer;
+	color: #6c757d;
+	font-size: 0.85rem;
+	user-select: none;
+	-webkit-user-select: none;
 }
 
 /* Styled archive tooltip — wider, multi-line, readable */

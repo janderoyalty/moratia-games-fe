@@ -363,21 +363,31 @@ const URLs = () => {
 								{archivedItems.map(item => (
 									<tr key={item.id}>
 										<td>
+											<a
+												href={item.url}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												{item.name}
+											</a>
+											{" "}
 											<OverlayTrigger
 												placement="top"
+												trigger={["hover", "click"]}
+												rootClose
 												overlay={
 													<Tooltip className="archive-tooltip">
 														{item.url}
 													</Tooltip>
 												}
 											>
-												<a
-													href={item.url}
-													target="_blank"
-													rel="noopener noreferrer"
+												<span
+													className="archive-info-icon"
+													role="button"
+													aria-label="Show URL"
 												>
-													{item.name}
-												</a>
+													ⓘ
+												</span>
 											</OverlayTrigger>
 										</td>
 										<td>
