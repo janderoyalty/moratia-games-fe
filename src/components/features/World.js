@@ -6,7 +6,7 @@ import { Modal } from "react-bootstrap";
 import CachedImage from "../common/CachedImage";
 
 const World = () => {
-	const [showModal, setShowModal] = useState(false);
+	const [showModal, setShowModal] = useState(true);
 	const handleCloseModal = () => setShowModal(false);
 	const handleShowModal = () => setShowModal(true);
 
