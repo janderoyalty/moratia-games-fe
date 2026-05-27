@@ -16,3 +16,13 @@
 	color: #f9f9f9;
 	width: 100px;
 }
+
+/* Center the Shop pill when the navbar is collapsed (< lg = 992px) */
+@media (max-width: 991.98px) {
+	#shopify-button {
+		width: 100px;
+		display: block;
+		margin: 0 auto;
+		text-align: center;
+	}
+}
