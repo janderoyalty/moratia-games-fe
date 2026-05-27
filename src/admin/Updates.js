@@ -5,12 +5,12 @@ import {
 	collection,
 	addDoc,
 	updateDoc,
+	deleteDoc,
 	doc,
 	getDocs,
 	Timestamp,
 } from "firebase/firestore";
 import { db } from "../firebase-config";
-import { TbPencilPlus } from "react-icons/tb";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Updates.css";
@@ -33,6 +33,11 @@ const Updates = () => {
 	const [showArchiveModal, setShowArchiveModal] = useState(false);
 	const [archivedItems, setArchivedItems] = useState([]);
 	const [archiveLoading, setArchiveLoading] = useState(false);
+
+	// Delete-with-confirmation state
+	const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+	const [deleteTarget, setDeleteTarget] = useState(null);
+	const [deletePhrase, setDeletePhrase] = useState("");
 
 	const [searchTerm, setSearchTerm] = useState("");
 	const [sortOrder, setSortOrder] = useState("newest");
@@ -146,6 +151,29 @@ const Updates = () => {
 		}
 	};
 
+	const handleDeleteClick = (item) => {
+		setDeleteTarget(item);
+		setDeletePhrase("");
+		setShowDeleteConfirm(true);
+	};
+
+	const expectedDeletePhrase = deleteTarget
+		? `I want to delete ${(deleteTarget.title || "").substring(0, 5)}`
+		: "";
+
+	const handleConfirmDelete = async () => {
+		try {
+			await deleteDoc(doc(db, "updates", deleteTarget.id));
+			setArchivedItems((prev) => prev.filter((i) => i.id !== deleteTarget.id));
+			setRefreshFlag((prev) => prev + 1);
+			setShowDeleteConfirm(false);
+			setDeleteTarget(null);
+		} catch (err) {
+			console.error("Delete error:", err);
+			alert("Failed to delete update.");
+		}
+	};
+
 	const filterAndSort = useCallback(
 		(items) => {
 			let result = items.filter(
@@ -198,20 +226,43 @@ const Updates = () => {
 
 	return (
 		<div className="update-entries-list">
-			<h1>Update Entries</h1>
-			<div className="d-flex gap-2 mb-3">
+			<h1>Manage Entries</h1>
+
+			{/* Action buttons */}
+			<div className="admin-actions">
 				<Button
-					variant="warning"
+					variant="success"
 					onClick={() => setShowAddModal(true)}
 					id="add-updates-button"
 				>
-					<TbPencilPlus /> Add Update
+					Add Update
 				</Button>
 				<Button variant="secondary" onClick={handleOpenArchive}>
 					View Archive
 				</Button>
 			</div>
 
+			{/* Search / Sort toolbar */}
+			<div className="admin-toolbar">
+				<Form.Control
+					type="text"
+					placeholder="Search updates…"
+					value={searchTerm}
+					onChange={(e) => setSearchTerm(e.target.value)}
+					className="admin-search"
+				/>
+				<Form.Select
+					value={sortOrder}
+					onChange={(e) => setSortOrder(e.target.value)}
+					className="admin-sort"
+				>
+					<option value="newest">Newest first</option>
+					<option value="oldest">Oldest first</option>
+					<option value="az">A–Z (title)</option>
+				</Form.Select>
+			</div>
+
+			{/* ── Add Update Modal ── */}
 			<Modal
 				show={showAddModal}
 				onHide={() => {
@@ -272,31 +323,11 @@ const Updates = () => {
 					>
 						Cancel
 					</Button>
-
 					<Button variant="success" onClick={handleAddUpdate}>
 						Submit Update
 					</Button>
 				</Modal.Footer>
 			</Modal>
-
-			<div className="d-flex gap-2 my-3 align-items-center flex-wrap">
-				<Form.Control
-					type="text"
-					placeholder="Search updates…"
-					value={searchTerm}
-					onChange={(e) => setSearchTerm(e.target.value)}
-					style={{ maxWidth: 260 }}
-				/>
-				<Form.Select
-					value={sortOrder}
-					onChange={(e) => setSortOrder(e.target.value)}
-					style={{ maxWidth: 180 }}
-				>
-					<option value="newest">Newest first</option>
-					<option value="oldest">Oldest first</option>
-					<option value="az">A–Z (title)</option>
-				</Form.Select>
-			</div>
 
 			<AdminDataTable
 				collectionName="updates"
@@ -305,6 +336,7 @@ const Updates = () => {
 				processItems={filterAndSort}
 			/>
 
+			{/* ── Edit Modal ── */}
 			<Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
 				<Modal.Header closeButton>
 					<Modal.Title>Edit Update</Modal.Title>
@@ -366,7 +398,12 @@ const Updates = () => {
 				</Modal.Footer>
 			</Modal>
 
-			<Modal show={showArchiveModal} onHide={() => setShowArchiveModal(false)}>
+			{/* ── Archive Modal ── */}
+			<Modal
+				show={showArchiveModal}
+				onHide={() => setShowArchiveModal(false)}
+				size="lg"
+			>
 				<Modal.Header closeButton>
 					<Modal.Title>Archived Updates</Modal.Title>
 				</Modal.Header>
@@ -376,10 +413,11 @@ const Updates = () => {
 					) : archivedItems.length === 0 ? (
 						<p>No archived updates.</p>
 					) : (
-						<Table striped bordered hover size="sm">
+						<Table striped bordered hover size="sm" responsive>
 							<thead>
 								<tr>
 									<th>Title</th>
+									<th>Preview</th>
 									<th>Date</th>
 									<th>Actions</th>
 								</tr>
@@ -387,16 +425,28 @@ const Updates = () => {
 							<tbody>
 								{archivedItems.map((item) => (
 									<tr key={item.id}>
-										<td>{item.title}</td>
-										<td>{item.date}</td>
+										<td style={{ whiteSpace: "nowrap" }}>{item.title}</td>
+										<td className="text-muted small">
+											{item.body ? item.body.substring(0, 80) + "…" : "—"}
+										</td>
+										<td style={{ whiteSpace: "nowrap" }}>{item.date}</td>
 										<td>
-											<Button
-												variant="outline-success"
-												size="sm"
-												onClick={() => handleUnarchive(item)}
-											>
-												Unarchive
-											</Button>
+											<div className="archive-actions">
+												<Button
+													variant="outline-success"
+													size="sm"
+													onClick={() => handleUnarchive(item)}
+												>
+													Unarchive
+												</Button>
+												<Button
+													variant="outline-danger"
+													size="sm"
+													onClick={() => handleDeleteClick(item)}
+												>
+													Delete
+												</Button>
+											</div>
 										</td>
 									</tr>
 								))}
@@ -410,6 +460,49 @@ const Updates = () => {
 						onClick={() => setShowArchiveModal(false)}
 					>
 						Close
+					</Button>
+				</Modal.Footer>
+			</Modal>
+
+			{/* ── Delete Confirmation Modal ── */}
+			<Modal
+				show={showDeleteConfirm}
+				onHide={() => setShowDeleteConfirm(false)}
+				centered
+			>
+				<Modal.Header closeButton>
+					<Modal.Title>Permanently Delete?</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					<p className="mb-2">
+						This will <strong>permanently delete</strong> this update and cannot
+						be undone.
+					</p>
+					<p className="mb-1">To confirm, type exactly:</p>
+					<p className="mb-3">
+						<code>{expectedDeletePhrase}</code>
+					</p>
+					<Form.Control
+						type="text"
+						value={deletePhrase}
+						onChange={(e) => setDeletePhrase(e.target.value)}
+						placeholder="Type the phrase above…"
+						autoFocus
+					/>
+				</Modal.Body>
+				<Modal.Footer>
+					<Button
+						variant="secondary"
+						onClick={() => setShowDeleteConfirm(false)}
+					>
+						Cancel
+					</Button>
+					<Button
+						variant="danger"
+						disabled={deletePhrase !== expectedDeletePhrase}
+						onClick={handleConfirmDelete}
+					>
+						Delete Forever
 					</Button>
 				</Modal.Footer>
 			</Modal>

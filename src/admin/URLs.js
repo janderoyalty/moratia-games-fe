@@ -7,9 +7,11 @@ import {
 	Timestamp,
 	doc,
 	updateDoc,
+	deleteDoc,
 	getDocs,
 } from "firebase/firestore";
 import { db } from "../firebase-config";
+import "./Updates.css";
 import "./UpdateForm.css";
 
 const URLs = () => {
@@ -27,6 +29,11 @@ const URLs = () => {
 	const [showArchiveModal, setShowArchiveModal] = useState(false);
 	const [archivedItems, setArchivedItems] = useState([]);
 	const [archiveLoading, setArchiveLoading] = useState(false);
+
+	// Delete-with-confirmation state
+	const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+	const [deleteTarget, setDeleteTarget] = useState(null);
+	const [deletePhrase, setDeletePhrase] = useState("");
 
 	// Search and sort state
 	const [searchTerm, setSearchTerm] = useState("");
@@ -73,6 +80,29 @@ const URLs = () => {
 		}
 	};
 
+	const handleDeleteClick = (item) => {
+		setDeleteTarget(item);
+		setDeletePhrase("");
+		setShowDeleteConfirm(true);
+	};
+
+	const expectedDeletePhrase = deleteTarget
+		? `I want to delete ${(deleteTarget.name || "").substring(0, 5)}`
+		: "";
+
+	const handleConfirmDelete = async () => {
+		try {
+			await deleteDoc(doc(db, "urls", deleteTarget.id));
+			setArchivedItems(prev => prev.filter(i => i.id !== deleteTarget.id));
+			setRefreshFlag(prev => prev + 1);
+			setShowDeleteConfirm(false);
+			setDeleteTarget(null);
+		} catch (err) {
+			console.error("Delete error:", err);
+			alert("Failed to delete URL.");
+		}
+	};
+
 	const filterAndSort = useCallback(
 		(items) => {
 			let result = items.filter(i =>
@@ -115,7 +145,6 @@ const URLs = () => {
 					>
 						Edit
 					</Button>
-
 				</td>
 			</>
 		);
@@ -180,7 +209,9 @@ const URLs = () => {
 	return (
 		<div className="update-entries-list">
 			<h1>Manage URLs</h1>
-			<div className="d-flex gap-2 align-items-center">
+
+			{/* Action buttons */}
+			<div className="admin-actions">
 				<Button variant="success" onClick={() => setShowModal(true)}>
 					Add New URL
 				</Button>
@@ -189,25 +220,27 @@ const URLs = () => {
 				</Button>
 			</div>
 
-			<div className="d-flex gap-2 my-3 align-items-center flex-wrap">
+			{/* Search / Sort toolbar */}
+			<div className="admin-toolbar">
 				<Form.Control
 					type="text"
-					placeholder="Search URLs..."
+					placeholder="Search URLs…"
 					value={searchTerm}
 					onChange={e => setSearchTerm(e.target.value)}
-					style={{ maxWidth: 260 }}
+					className="admin-search"
 				/>
 				<Form.Select
 					value={sortOrder}
 					onChange={e => setSortOrder(e.target.value)}
-					style={{ maxWidth: 180 }}
+					className="admin-sort"
 				>
-					<option value="az">A-Z (name)</option>
-					<option value="za">Z-A (name)</option>
+					<option value="az">A–Z (name)</option>
+					<option value="za">Z–A (name)</option>
 					<option value="newest">Newest first</option>
 				</Form.Select>
 			</div>
 
+			{/* ── Add URL Modal ── */}
 			<Modal
 				show={showModal}
 				onHide={() => {
@@ -271,6 +304,7 @@ const URLs = () => {
 				processItems={filterAndSort}
 			/>
 
+			{/* ── Edit Modal ── */}
 			<Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
 				<Modal.Header closeButton>
 					<Modal.Title>Edit URL</Modal.Title>
@@ -307,6 +341,7 @@ const URLs = () => {
 				</Modal.Footer>
 			</Modal>
 
+			{/* ── Archive Modal ── */}
 			<Modal show={showArchiveModal} onHide={() => setShowArchiveModal(false)} size="lg">
 				<Modal.Header closeButton>
 					<Modal.Title>Archived URLs</Modal.Title>
@@ -335,13 +370,22 @@ const URLs = () => {
 											</a>
 										</td>
 										<td>
-											<Button
-												variant="outline-success"
-												size="sm"
-												onClick={() => handleUnarchive(item)}
-											>
-												Unarchive
-											</Button>
+											<div className="archive-actions">
+												<Button
+													variant="outline-success"
+													size="sm"
+													onClick={() => handleUnarchive(item)}
+												>
+													Unarchive
+												</Button>
+												<Button
+													variant="outline-danger"
+													size="sm"
+													onClick={() => handleDeleteClick(item)}
+												>
+													Delete
+												</Button>
+											</div>
 										</td>
 									</tr>
 								))}
@@ -352,6 +396,49 @@ const URLs = () => {
 				<Modal.Footer>
 					<Button variant="secondary" onClick={() => setShowArchiveModal(false)}>
 						Close
+					</Button>
+				</Modal.Footer>
+			</Modal>
+
+			{/* ── Delete Confirmation Modal ── */}
+			<Modal
+				show={showDeleteConfirm}
+				onHide={() => setShowDeleteConfirm(false)}
+				centered
+			>
+				<Modal.Header closeButton>
+					<Modal.Title>Permanently Delete?</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					<p className="mb-2">
+						This will <strong>permanently delete</strong> this URL and cannot be
+						undone.
+					</p>
+					<p className="mb-1">To confirm, type exactly:</p>
+					<p className="mb-3">
+						<code>{expectedDeletePhrase}</code>
+					</p>
+					<Form.Control
+						type="text"
+						value={deletePhrase}
+						onChange={(e) => setDeletePhrase(e.target.value)}
+						placeholder="Type the phrase above…"
+						autoFocus
+					/>
+				</Modal.Body>
+				<Modal.Footer>
+					<Button
+						variant="secondary"
+						onClick={() => setShowDeleteConfirm(false)}
+					>
+						Cancel
+					</Button>
+					<Button
+						variant="danger"
+						disabled={deletePhrase !== expectedDeletePhrase}
+						onClick={handleConfirmDelete}
+					>
+						Delete Forever
 					</Button>
 				</Modal.Footer>
 			</Modal>

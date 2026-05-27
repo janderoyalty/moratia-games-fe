@@ -3,6 +3,14 @@
 	flex-direction: column;
 	align-items: center;
 	text-align: start;
+	padding: 0 0.5rem;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.update-entries-list h1 {
+	font-size: 1.75rem;
+	margin-bottom: 0.75rem;
 }
 
 .update-title {
@@ -15,16 +23,51 @@
 }
 
 #update-table {
-	width: 80vw;
+	width: 100%;
+	max-width: 100%;
+	font-size: 0.9rem;
+}
+
+/* Action buttons row (Add + View Archive) */
+.admin-actions {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-bottom: 0.75rem;
+	width: 100%;
+}
+
+/* Search / sort toolbar — single line, search left, sort right */
+.admin-toolbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.75rem;
+	margin: 0.75rem 0 1rem;
+	width: 100%;
+	flex-wrap: nowrap;
+}
+
+.admin-toolbar .admin-search {
+	flex: 1;
+	min-width: 0;
+}
+
+.admin-toolbar .admin-sort {
+	flex-shrink: 0;
+	width: auto;
+	min-width: 135px;
 }
 
 #add-updates-button {
-	margin-bottom: 1rem;
+	margin-bottom: 0;
 }
 
 .table-responsive {
 	display: flex;
 	justify-content: center;
+	width: 100%;
 }
 
 /* Custom styling for inline DatePicker */
@@ -58,4 +101,37 @@
 	background-color: green;
 	width: 100%;
 	font-weight: bold;
+}
+
+/* Archive table action cell — stack buttons if narrow */
+.archive-actions {
+	display: flex;
+	gap: 0.4rem;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+/* ── Mobile-first ── */
+@media (max-width: 576px) {
+	.update-entries-list {
+		padding: 0 0.25rem;
+	}
+
+	.update-entries-list h1 {
+		font-size: 1.4rem;
+	}
+
+	#update-table {
+		font-size: 0.8rem;
+	}
+
+	.admin-toolbar .admin-sort {
+		min-width: 115px;
+	}
+
+	/* Keep archive action buttons stacked cleanly on small screens */
+	.archive-actions {
+		flex-direction: column;
+		align-items: flex-start;
+	}
 }

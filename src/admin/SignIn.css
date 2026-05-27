@@ -19,11 +19,15 @@
 .signin-logo-wrapper {
 	text-align: center;
 	margin-bottom: 1.5rem;
+	overflow: hidden;
 }
 
 .signin-logo {
-	height: 40px;
-	object-fit: contain;
+	max-width: 200px;
+	width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
 }
 
 .signin-heading {
