@@ -112,6 +112,31 @@
 	text-overflow: ellipsis;
 }
 
+/* Hover underline cue on archive cells with tooltips */
+.archive-hover-text {
+	cursor: default;
+	border-bottom: 1px dotted #888;
+}
+
+/* Styled archive tooltip — wider, multi-line, readable */
+.archive-tooltip .tooltip-inner {
+	max-width: 320px;
+	white-space: pre-wrap;
+	word-break: break-word;
+	text-align: left;
+	background-color: #1e1e2e;
+	color: #f0f0f0;
+	font-size: 0.82rem;
+	line-height: 1.5;
+	padding: 0.5rem 0.75rem;
+	border-radius: 6px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.archive-tooltip .tooltip-arrow::before {
+	border-top-color: #1e1e2e;
+}
+
 /* Archive table action cell — stack buttons if narrow */
 .archive-actions {
 	display: flex;

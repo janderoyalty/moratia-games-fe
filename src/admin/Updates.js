@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import AdminDataTable from "./components/AdminDataTable";
-import { Button, Modal, Form, Table } from "react-bootstrap";
+import { Button, Modal, Form, Table, OverlayTrigger, Tooltip } from "react-bootstrap";
 import {
 	collection,
 	addDoc,
@@ -423,7 +423,7 @@ const Updates = () => {
 							<thead>
 								<tr>
 									<th>Title</th>
-									<th>Preview</th>
+									<th>Body</th>
 									<th>Date</th>
 									<th>Actions</th>
 								</tr>
@@ -431,13 +431,35 @@ const Updates = () => {
 							<tbody>
 								{archivedItems.map((item) => (
 									<tr key={item.id}>
-										<td style={{ whiteSpace: "nowrap" }}>{item.title}</td>
+										<td style={{ whiteSpace: "nowrap" }}>
+											<OverlayTrigger
+												placement="top"
+												overlay={
+													<Tooltip className="archive-tooltip">
+														{item.title}
+													</Tooltip>
+												}
+											>
+												<span className="archive-hover-text">{item.title}</span>
+											</OverlayTrigger>
+										</td>
 										<td className="archive-preview text-muted small">
-											{item.body
-												? item.body.length > 80
-													? item.body.substring(0, 80) + "…"
-													: item.body
-												: "—"}
+											<OverlayTrigger
+												placement="top"
+												overlay={
+													<Tooltip className="archive-tooltip">
+														{item.body || "—"}
+													</Tooltip>
+												}
+											>
+												<span className="archive-hover-text">
+													{item.body
+														? item.body.length > 80
+															? item.body.substring(0, 80) + "…"
+															: item.body
+														: "—"}
+												</span>
+											</OverlayTrigger>
 										</td>
 										<td style={{ whiteSpace: "nowrap" }}>{item.date}</td>
 										<td>
