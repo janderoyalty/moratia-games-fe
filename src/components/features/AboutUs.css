@@ -6,21 +6,23 @@
 #about-us--text-box--entry {
     display: flex;
     flex-direction: column;
-    grid-template-rows: 25px 1fr;
-    margin-bottom: 50px;
+    margin-bottom: 1.5rem;
 }
 
 #about-us--title{
     text-transform: uppercase;
-
 }
+
+/* Constrain the name heading so it doesn't wrap on desktop */
+#about-us--right--top {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
 #about-us--right {
     padding: 5%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    overflow-y: scroll;
-    max-height: 60vh;
 }
 
 #about-us--left {
