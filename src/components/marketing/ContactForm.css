@@ -43,7 +43,7 @@
 }
 
 #contact-form-title {
-	font-size: 3.6rem;
+	font-size: clamp(1.5rem, 4vw, 3rem);
 	font-weight: 700;
 	text-transform: uppercase;
 	text-align: center;
