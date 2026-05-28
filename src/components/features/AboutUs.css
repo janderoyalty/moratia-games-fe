@@ -1,6 +1,8 @@
 #about-us{
     background-color: #010203;
     color: #f9f9ff;
+    /* Padding lives here so Bootstrap Row's -12px negative gutter doesn't eat it */
+    padding: 5%;
 }
 
 #about-us--text-box--entry {
@@ -19,14 +21,13 @@
 }
 
 #about-us--right {
-    padding: 5%;
+    /* No extra padding — #about-us provides section-level spacing */
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 #about-us--left {
-    padding: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
