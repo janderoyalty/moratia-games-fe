@@ -153,9 +153,21 @@
 		padding: 1rem;
 	}
 
+	/* Image always on top, text/buttons always on bottom — regardless of desktop alternation */
+	.product-image-col {
+		order: 1;
+	}
+
+	.product-text-col {
+		order: 2;
+	}
+
+	/* Constrain image so it doesn't feel oversized on small screens */
 	.product-image {
-		max-width: 100%;
+		max-width: 70%;
+		max-height: 60vw;
 		height: auto;
+		margin: 0 auto;
 	}
 }
 

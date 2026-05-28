@@ -50,9 +50,16 @@
 
 /* ── Mobile: stack footer columns ── */
 @media (max-width: 768px) {
+    /* Force the Bootstrap .row to stack vertically */
+    #footer .row {
+        flex-direction: column;
+    }
+
+    /* Override Bootstrap's flex: 1 0 0% on .col so columns go full width */
     #footer--left,
     #footer-center,
     #footer--right {
+        flex: 0 0 100%;
         width: 100%;
         text-align: center;
         justify-content: center;
