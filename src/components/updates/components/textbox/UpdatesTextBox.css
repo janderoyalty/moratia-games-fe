@@ -1,7 +1,15 @@
 #updates--text-box {
 	overflow-y: scroll;
-	height: 50vmin;
+	max-height: 50vh;
 	padding-right: 10px;
+	scrollbar-width: thin;
+	scrollbar-color: #f9f9f9 transparent;
+}
+
+@media (max-width: 768px) {
+	#updates--text-box {
+		max-height: 40vh;
+	}
 }
 
 #updates--text-box::-webkit-scrollbar {
