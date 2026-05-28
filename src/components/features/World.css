@@ -32,7 +32,7 @@
 
 .world--map--button {
 	position: absolute;
-	top: 100px;
+	top: 2rem;
 	left: 50%;
 	transform: translateX(-50%);
 	z-index: 10;
@@ -59,10 +59,10 @@
 }
 
 .world-modal-title {
-	font-size: 3.6rem !important;
+	font-size: clamp(1.75rem, 5vw, 3.6rem) !important;
 	font-weight: 700 !important;
 	text-transform: uppercase !important;
 	text-align: left !important;
 	font-family: "Poppins", sans-serif !important;
-	margin-bottom: 1rem !important;
+	margin-bottom: 0 !important;
 }
