@@ -11,10 +11,17 @@
 }
 
 #testimonials--bottom {
-    height: 25vmin;
+    min-height: 120px;
+    height: auto;
 }
 
 
 .carousel-indicators{
-    margin-bottom: -1rem;
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    #testimonials-container {
+        padding: 1rem;
+    }
 }
