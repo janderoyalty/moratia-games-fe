@@ -8,50 +8,38 @@
 .headers-text {
 	font-weight: bolder;
 	font-family: Poppins;
-	font-size: 70px;
+	font-size: clamp(2rem, 5vw, 4.375rem);
 	text-align: left;
 	text-transform: uppercase;
 }
 
-@media (max-width: 1024px) {
-	.headers-text {
-		font-size: 60px;
-	}
-}
-
-@media (max-width: 768px) {
-	.headers-text {
-		font-size: 50px;
-	}
-}
-
-@media (max-width: 480px) {
-	.headers-text {
-		font-size: 2rem;
-	}
-}
-
 .content {
-	scroll-margin-top: 59px;
+	scroll-margin-top: 70px;
 }
 
 .body-title {
 	font-weight: bold;
 	font-family: Poppins;
-	font-size: 17px;
+	font-size: 1.0625rem;
 }
 
 .sub-headers {
 	font-weight: bold;
 	font-family: Poppins;
-	font-size: 40px;
+	font-size: clamp(1.25rem, 3vw, 2.5rem);
 	text-align: left;
 }
 
 .body-text {
 	font-family: Poppins;
-	font-size: 15px;
+	font-size: clamp(0.875rem, 2vw, 1rem);
 	text-align: justify;
+}
+
+@media (max-width: 768px) {
+	.body-text {
+		text-align: left;
+	}
 }
 
 html {
