@@ -12,7 +12,7 @@
 
 #about-us--title{
     text-transform: uppercase;
-    
+
 }
 #about-us--right {
     padding: 5%;
@@ -20,7 +20,7 @@
     flex-direction: column;
     justify-content: center;
     overflow-y: scroll;
-    /* height: 400px; */
+    max-height: 60vh;
 }
 
 #about-us--left {
@@ -31,9 +31,29 @@
 }
 
 #about-us--image {
-    height: 40vmin;
+    max-height: 40vmin;
+    height: auto;
 }
 
-.image-size{
-    size: 25%;
+@media (max-width: 768px) {
+    #about-us .row {
+        flex-direction: column;
+    }
+
+    #about-us--right {
+        max-height: none;
+        overflow-y: visible;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    #about-us--left {
+        padding: 1rem;
+    }
+
+    #about-us--image {
+        width: 100%;
+        height: auto;
+        max-height: none;
+    }
 }
