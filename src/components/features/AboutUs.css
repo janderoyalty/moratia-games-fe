@@ -42,15 +42,9 @@
         flex-direction: column;
     }
 
+    /* Keep 5% padding (same as Updates) — do not reduce on mobile */
     #about-us--right {
-        max-height: none;
-        overflow-y: visible;
-        text-align: center;
-        padding: 1rem;
-    }
-
-    #about-us--left {
-        padding: 1rem;
+        text-align: left;
     }
 
     #about-us--image {
