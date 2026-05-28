@@ -46,7 +46,7 @@
 }
 
 .product-title {
-	font-size: 3.6rem;
+	font-size: clamp(1.5rem, 5vw, 3.6rem);
 	font-weight: 700;
 	text-transform: uppercase;
 	text-align: left;
@@ -64,14 +64,14 @@
 .available-now-product-buttons {
 	display: flex;
 	justify-content: space-between;
-	gap: 1.5rem;
+	gap: 0.5rem;
 	flex-wrap: wrap;
 }
 
 .in-development-product-buttons {
 	display: flex;
-	justify-content: end;
-	gap: 1.5rem;
+	justify-content: flex-end;
+	gap: 0.5rem;
 	flex-wrap: wrap;
 }
 
@@ -114,14 +114,16 @@
 #product-availability-button {
 	background-color: #25c115;
 	border: none;
-	width: 60%;
+	flex: 1;
+	min-width: 120px;
 	cursor: pointer !important;
 }
 
 #product-how-to-play-button {
 	background-color: #1586e1;
 	border: none;
-	width: 35%;
+	flex: 1;
+	min-width: 120px;
 	cursor: pointer !important;
 }
 
@@ -129,7 +131,8 @@
 	background-color: #f7b600;
 	color: #f9f9f9;
 	border: none;
-	width: 60%;
+	flex: 1;
+	min-width: 120px;
 	cursor: pointer !important;
 }
 
@@ -143,4 +146,24 @@
 
 #product-in-development-button:hover {
 	background-color: #d89f00; /* darker golden yellow */
+}
+
+@media (max-width: 768px) {
+	.product-section {
+		padding: 1rem;
+	}
+
+	.product-image {
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+@media (max-width: 480px) {
+	#product-availability-button,
+	#product-how-to-play-button,
+	#product-in-development-button {
+		width: 100%;
+		flex: none;
+	}
 }
