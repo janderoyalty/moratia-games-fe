@@ -19,7 +19,7 @@ const World = () => {
 			>
 				Learn More
 			</Button>
-			<Modal show={showModal} onHide={handleCloseModal} size="lg">
+			<Modal show={showModal} onHide={handleCloseModal} size="lg" centered scrollable>
 				<Modal.Header closeButton>
 					<Modal.Title className="world-modal-title">
 						The World of Moratia
