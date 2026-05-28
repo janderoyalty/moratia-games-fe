@@ -7,6 +7,8 @@
 #world--text-box {
 	overflow-y: scroll;
 	padding-right: 10px;
+	scrollbar-width: thin;
+	scrollbar-color: #f9f9f9 transparent;
 }
 
 #world--headers-text {
@@ -49,4 +51,10 @@
 /* Handle on hover */
 #world--text-box::-webkit-scrollbar-thumb:hover {
 	background: #bababa;
+}
+
+@media (max-width: 768px) {
+	#world--text-box {
+		max-height: 50vh;
+	}
 }

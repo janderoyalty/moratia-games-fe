@@ -7,7 +7,7 @@
 .swiper-slide {
 	background-position: center;
 	background-size: cover;
-	width: 300px;
+	width: clamp(200px, 80vw, 300px);
 	height: auto;
 }
 
