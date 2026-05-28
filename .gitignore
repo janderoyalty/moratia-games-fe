@@ -31,3 +31,4 @@ __pycache__/
 
 # Backup files
 *\ 2.*
+.claude/worktrees/
