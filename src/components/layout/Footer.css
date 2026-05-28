@@ -13,7 +13,7 @@
 }
 
 #footer-center{
-    font-size: small;
+    font-size: 0.875rem;
     align-items: center;
 }
 #footer--right {
@@ -46,4 +46,27 @@
 
 #modal-title {
     color: red;
+}
+
+/* ── Mobile: stack footer columns ── */
+@media (max-width: 768px) {
+    #footer--left,
+    #footer-center,
+    #footer--right {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Remove extra bottom margin from last column */
+    #footer--right {
+        margin-bottom: 0;
+    }
+
+    /* Social icon size on mobile */
+    #footer--right a svg {
+        width: 24px;
+        height: 24px;
+    }
 }
