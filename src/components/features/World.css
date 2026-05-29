@@ -3,6 +3,7 @@
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	position: relative; /* Anchors .world--map--button (position:absolute) to this section */
 }
 
 #world--map {

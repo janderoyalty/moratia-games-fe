@@ -17,8 +17,9 @@
 	width: 100px;
 }
 
-/* Center the Shop pill when the navbar is collapsed (< lg = 992px) */
+/* Mobile navbar (< lg = 992px) */
 @media (max-width: 991.98px) {
+	/* Center the Shop pill */
 	#shopify-button {
 		width: 100px;
 		display: block;
@@ -26,5 +27,25 @@
 		text-align: center;
 		min-height: 44px;
 		padding: 0.5rem 1rem;
+	}
+
+	/* Strip the dropdown card border and center items to match other nav links */
+	.dropdown-menu {
+		border: none;
+		background-color: transparent;
+		box-shadow: none;
+		text-align: center;
+		padding: 0;
+	}
+
+	.dropdown-item {
+		text-align: center;
+		color: #212529;
+	}
+
+	.dropdown-item:hover,
+	.dropdown-item:focus {
+		background-color: transparent;
+		color: #25c115;
 	}
 }

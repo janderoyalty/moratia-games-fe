@@ -13,10 +13,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 const NaviBar = () => {
 	const [showModal, setShowModal] = useState(false);
 	const [linkToOpen, setLinkToOpen] = useState("");
+	const [navExpanded, setNavExpanded] = useState(false);
 	const location = useLocation();
 	const navigate = useNavigate();
 
 	const handleLinkClick = (e, path) => {
+		setNavExpanded(false);
 		if (location.pathname === path) {
 			e.preventDefault();
 			window.scrollTo({ top: 0, behavior: "smooth" });
@@ -25,6 +27,7 @@ const NaviBar = () => {
 
 	const handleShopClick = (e, link) => {
 		e.preventDefault();
+		setNavExpanded(false);
 		setLinkToOpen(link);
 		setShowModal(true);
 	};
@@ -39,6 +42,7 @@ const NaviBar = () => {
 	};
 
 	const handleScrollToSection = (sectionId) => {
+		setNavExpanded(false);
 		if (location.pathname !== "/") {
 			navigate("/");
 			// Wait for page navigation to complete
@@ -47,7 +51,7 @@ const NaviBar = () => {
 				if (element) {
 					element.scrollIntoView({ behavior: "smooth" });
 				}
-			}, 300); // Adjust as needed
+			}, 300);
 		} else {
 			const element = document.getElementById(sectionId);
 			if (element) {
@@ -64,7 +68,8 @@ const NaviBar = () => {
 				variant="light"
 				sticky="top"
 				expand="lg"
-				collapseOnSelect="true"
+				expanded={navExpanded}
+				onToggle={setNavExpanded}
 				role="navigation"
 			>
 				<Container fluid>
